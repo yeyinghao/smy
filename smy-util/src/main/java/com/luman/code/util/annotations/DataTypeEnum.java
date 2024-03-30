@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) Ye Yinghao
+ * 2022.1 - 2024.3
+ */
+
+package com.luman.code.util.annotations;
+
+import com.luman.code.util.enums.BaseEnum;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public enum DataTypeEnum implements BaseEnum {
+
+	/**
+	 * 字符串
+	 */
+	STRING("字符串"),
+
+	/**
+	 * 日期
+	 */
+	DATE("日期"),
+
+	/**
+	 * 数字
+	 */
+	NUMBER("数字"),
+
+	;
+
+	/**
+	 * 响应业务码的描述
+	 */
+	private final String description;
+}
