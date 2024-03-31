@@ -1,9 +1,9 @@
-package com.luman.code.file.impl;
+package com.luman.code.file.client.impl;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.Header;
-import com.luman.code.file.FileClient;
-import com.luman.code.file.enums.FileErrorEnum;
+import com.luman.code.file.client.FileClient;
+import com.luman.code.util.enums.CommErrorEnum;
 import com.luman.code.util.exception.Assert;
 import io.minio.*;
 import io.minio.http.Method;
@@ -71,7 +71,7 @@ public class FileClientImpl implements FileClient {
 	@SneakyThrows
 	public void saveObject(String objectName, String fileName, InputStream inputStream) {
 		try {
-			Assert.notBlank(fileName, FileErrorEnum.FILE_NAME_NOT_BLANK);
+			Assert.notBlank(fileName, CommErrorEnum.BIZ_PROCESS_FAIL, "文件名称不能为空");
 			// 下载文件时自动添加文件名
 			Map<String, String> headers = new HashMap<>();
 			headers.put(Header.CONTENT_DISPOSITION.getValue(), "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
@@ -102,7 +102,7 @@ public class FileClientImpl implements FileClient {
 			objects.add(new DeleteObject(objectName));
 		}
 		Iterable<Result<DeleteError>> results = minioClient.removeObjects(RemoveObjectsArgs.builder().bucket(bucketName).objects(objects).build());
-		Assert.notEmpty(results, FileErrorEnum.FILE_BATCH_DELETE_FAIL);
+		Assert.notEmpty(results, CommErrorEnum.BIZ_PROCESS_FAIL, "批量删除失败");
 	}
 
 	@Override

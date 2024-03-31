@@ -1,4 +1,4 @@
-package com.luman.code.cache;
+package com.luman.code.cache.client;
 
 import org.redisson.api.*;
 

@@ -26,6 +26,11 @@ public interface CommConstant extends BaseConstant {
 	String SHORT_HORIZONTAL = "-";
 
 	/**
+	 * 下划线
+	 */
+	String UNDERLINE = "_";
+
+	/**
 	 * 分隔符
 	 */
 	String DELIMITER = ",";

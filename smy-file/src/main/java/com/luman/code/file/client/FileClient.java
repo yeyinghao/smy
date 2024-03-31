@@ -1,4 +1,4 @@
-package com.luman.code.file;
+package com.luman.code.file.client;
 
 import io.minio.StatObjectResponse;
 

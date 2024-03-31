@@ -6,8 +6,8 @@
 package com.luman.code.limiter.annotation;
 
 import com.luman.code.limiter.config.LimiterConfig;
-import com.luman.code.limiter.enums.LimiterErrorEnum;
 import com.luman.code.monitor.constant.LogConstant;
+import com.luman.code.util.enums.CommErrorEnum;
 import com.luman.code.util.enums.ErrorEnum;
 import com.luman.code.util.exception.Assert;
 import com.luman.code.util.exception.BizException;
@@ -71,15 +71,14 @@ public class RedisLimitAspect {
 			rateLimiter.trySetRate(RateType.OVERALL, redisLimit.count(), redisLimit.time(), RateIntervalUnit.SECONDS);
 			// 获取令牌失败,则提示限流
 			tryAcquire = rateLimiter.tryAcquire();
-			Assert.isFalse(tryAcquire, LimiterErrorEnum.TOO_MANY_REQUEST);
+			Assert.isFalse(tryAcquire, CommErrorEnum.BIZ_PROCESS_FAIL, "访问过于频繁,请稍后再试");
 			return joinPoint.proceed();
 		} catch (BizException e) {
 			errorEnum = e.getErrorEnum();
 			res = !ErrorEnumUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, key, CommUtil.getStringByBoolean(tryAcquire),
-					CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, key, CommUtil.getStringByBoolean(tryAcquire), CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));
 		}
 	}
 }

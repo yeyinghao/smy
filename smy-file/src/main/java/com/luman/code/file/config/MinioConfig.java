@@ -1,5 +1,6 @@
 package com.luman.code.file.config;
 
+import com.luman.code.util.util.LoggerUtil;
 import io.minio.MinioClient;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +24,6 @@ public class MinioConfig {
 	 */
 	@Value("${minio.endpoint}")
 	private String endPoint;
-
-//	/**
-//	 * "TCP/IP端口号"
-//	 */
-//	@Value("${minio.port}")
-//	private Integer port;
 
 	/**
 	 * "accessKey类似于用户ID，用于唯一标识你的账户"
@@ -67,7 +62,11 @@ public class MinioConfig {
 	 */
 	@Bean
 	public MinioClient minioClient() {
-		return MinioClient.builder().credentials(accessKey, secretKey)
-				.endpoint(endPoint).build();
+		try {
+			return MinioClient.builder().credentials(accessKey, secretKey).endpoint(endPoint).build();
+		} catch (Throwable e) {
+			LoggerUtil.error(log, e);
+		}
+		return null;
 	}
 }

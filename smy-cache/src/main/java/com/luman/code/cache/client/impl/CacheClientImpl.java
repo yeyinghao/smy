@@ -1,6 +1,6 @@
-package com.luman.code.cache.impl;
+package com.luman.code.cache.client.impl;
 
-import com.luman.code.cache.CacheClient;
+import com.luman.code.cache.client.CacheClient;
 import com.luman.code.cache.config.RedissonConfig;
 import com.luman.code.monitor.cal.Cal;
 import lombok.RequiredArgsConstructor;

@@ -3,7 +3,6 @@ package com.luman.code.cache.config;
 import cn.hutool.core.map.MapUtil;
 import lombok.Data;
 import org.redisson.api.RedissonClient;
-import org.redisson.spring.cache.CacheConfig;
 import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
@@ -26,14 +25,29 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "smy.cache")
 public class RedissonConfig {
 
+	/**
+	 * 项目key前缀
+	 */
 	private String projectKeyPrefix;
 
-	private String chcheKeyPrefix;
+	/**
+	 * 缓存key前缀
+	 */
+	private String cacheKeyPrefix;
 
+	/**
+	 * TTL毫秒
+	 */
 	private Long ttlMillSecond;
 
+	/**
+	 * 最大空闲时间毫秒
+	 */
 	private Long maxIdleTimeMillSecond;
 
+	/**
+	 * 默认过期秒
+	 */
 	private Long defaultExpiredSecond;
 
 	/**
@@ -44,10 +58,10 @@ public class RedissonConfig {
 	 */
 	@Bean
 	public CacheManager cacheManager(RedissonClient redissonClient) {
-		Map<String, CacheConfig> config = MapUtil.newHashMap();
+		Map<String, org.redisson.spring.cache.CacheConfig> config = MapUtil.newHashMap();
 		// 创建一个名称为"testMap"的缓存，过期时间ttl为24分钟，同时最长空闲时maxIdleTime为12分钟。
-		CacheConfig cacheConfig = new CacheConfig(ttlMillSecond, maxIdleTimeMillSecond);
-		config.put(chcheKeyPrefix, cacheConfig);
+		org.redisson.spring.cache.CacheConfig cacheConfig = new org.redisson.spring.cache.CacheConfig(ttlMillSecond, maxIdleTimeMillSecond);
+		config.put(cacheKeyPrefix, cacheConfig);
 		return new RedissonSpringCacheManager(redissonClient, config);
 	}
 }
