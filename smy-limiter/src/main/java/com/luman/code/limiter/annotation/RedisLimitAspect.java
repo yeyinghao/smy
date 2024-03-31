@@ -61,7 +61,11 @@ public class RedisLimitAspect {
 		ErrorEnum errorEnum = null;
 		String key = null;
 		boolean tryAcquire = true;
+		String className = null;
+		String methodName = null;
 		try {
+			className = joinPoint.getSignature().getDeclaringType().getSimpleName();
+			methodName = joinPoint.getSignature().getName();
 			Object generateKey = limiterConfig.getKey(joinPoint, redisLimit);
 			//redis key
 			key = redisLimit.prefix() + generateKey.toString();
@@ -78,7 +82,7 @@ public class RedisLimitAspect {
 			res = !ErrorEnumUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, key, CommUtil.getStringByBoolean(tryAcquire), CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, className, methodName, key, CommUtil.getStringByBoolean(tryAcquire), CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));
 		}
 	}
 }

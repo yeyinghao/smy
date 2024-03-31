@@ -64,4 +64,14 @@ public interface CommConstant extends BaseConstant {
 	 * 系统字符编码
 	 */
 	String CHARSET = "UTF-8";
+
+	/**
+	 * 线程池Executor默认
+	 */
+	String THREAD_POOL_EXECUTOR_DEFAULT = "threadPoolExecutor";
+
+	/**
+	 * 跨域最大时间 3600 * 24
+	 */
+	long CORS_MAX_AGE_SECOND = 86400;
 }

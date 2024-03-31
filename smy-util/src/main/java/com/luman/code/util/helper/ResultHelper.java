@@ -1,6 +1,5 @@
 package com.luman.code.util.helper;
 
-import cn.hutool.core.util.StrUtil;
 import com.luman.code.util.constant.CommConstant;
 import com.luman.code.util.enums.CommErrorEnum;
 import com.luman.code.util.enums.ErrorEnum;
@@ -8,6 +7,9 @@ import com.luman.code.util.util.TraceIdUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * 结果辅助
@@ -103,13 +105,15 @@ public class ResultHelper<T> {
 	 * @param subMsg    子的错误消息
 	 * @return {@link ResultHelper}<{@link T}>
 	 */
-	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String subMsg) {
+	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String... subMsg) {
 		ResultHelper<T> resultHelper = new ResultHelper<>();
 		resultHelper.code = errorEnum.getCode();
 		resultHelper.resCode = errorEnum.name();
 		StringBuilder msg = new StringBuilder(errorEnum.getDescription());
-		if (StrUtil.isNotBlank(subMsg)) {
-			msg.append(CommConstant.DELIMITER).append(subMsg);
+		if (Objects.nonNull(subMsg)) {
+			Arrays.asList(subMsg).forEach(item -> {
+				msg.append(CommConstant.DELIMITER).append(item);
+			});
 		}
 		resultHelper.resMsg = msg.toString();
 		resultHelper.success = Boolean.FALSE;

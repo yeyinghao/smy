@@ -3,7 +3,7 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.code.dal.model;
+package com.luman.code.secret.dto;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
