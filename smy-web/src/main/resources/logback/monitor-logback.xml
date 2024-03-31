@@ -1,0 +1,190 @@
+<!--
+  ~ Copyright (c) Ye Yinghao
+  ~ 2022.1 - 2023.7
+  -->
+
+<included>
+	<!--  监控日志输出目录  -->
+	<property name="MONITOR_LOG" value="monitor"/>
+	<!--cal日志打印-->
+	<appender name="CAL_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/cal.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/cal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="CAL_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="CAL_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!-- dal-日志打印 -->
+	<appender name="DAL_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/dal.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/dal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="DAL_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="DAL_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!--   rest-日志打印	-->
+	<appender name="REST_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/rest.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/rest.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="REST_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="REST_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!--   web-日志打印	-->
+	<appender name="WEB_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/web.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/web.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="WEB_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="WEB_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!--   sal-日志打印	-->
+	<appender name="SAL_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/sal.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/sal.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="SAL_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="SAL_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!--   limiter -日志打印	-->
+	<appender name="LIMITER_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/limiter.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/limiter.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="LIMITER_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="LIMITER_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+
+	<!--   task -日志打印	-->
+	<appender name="TASK_MONITOR_LOGGER_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.path}/${MONITOR_LOG}/task.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${MONITOR_LOG}/task.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+			<maxHistory>${maxHistory}</maxHistory>
+			<!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- 设置文件大于10MB进行压缩归档 -->
+				<maxFileSize>${maxFileSize}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<!-- 格式化输出 -->
+			<pattern>
+				${FILE_LOG_PATTERN}
+			</pattern>
+			<!-- 设置字符集 -->
+			<charset>${charset}</charset>
+		</encoder>
+	</appender>
+	<logger name="TASK_MONITOR_LOGGER" level="info" additivity="true">
+		<appender-ref ref="TASK_MONITOR_LOGGER_APPENDER"/>
+	</logger>
+</included>
