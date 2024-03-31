@@ -8,9 +8,11 @@ package com.luman.code.file.enums;
 import com.luman.code.util.enums.BaseEnum;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @RequiredArgsConstructor
+@ToString
 public enum FileTypeEnum implements BaseEnum {
 
 	/**

@@ -13,8 +13,8 @@ import lombok.ToString;
  * @date: 2022/6/5 13:52
  */
 @Getter
-@ToString
 @RequiredArgsConstructor
+@ToString
 public enum CommErrorEnum implements ErrorEnum {
 
 	/**

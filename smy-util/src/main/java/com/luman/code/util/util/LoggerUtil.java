@@ -154,11 +154,9 @@ public class LoggerUtil {
 	 * @return {@link String}
 	 */
 	private static String object2String(Object obj) {
-		String temp = String.valueOf(obj);
-		if (StrUtil.isBlank(temp) || StrUtil.equalsIgnoreCase(StrUtil.NULL, temp)) {
-			return EMPTY_STRING;
-		} else {
-			return temp;
+		if (Objects.nonNull(obj)) {
+			return obj.toString();
 		}
+		return StrUtil.EMPTY;
 	}
 }

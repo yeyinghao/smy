@@ -3,7 +3,7 @@
  * 2022.1 - 2024.2
  */
 
-package com.luman.code.drm.config;
+package com.luman.code.drm.xxl.config;
 
 import com.luman.code.util.util.LoggerUtil;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
