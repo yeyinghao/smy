@@ -39,14 +39,16 @@ public class CalAspect {
 		String calKey = null;
 		boolean isGet;
 		boolean getNotNull = false;
-		boolean res = false;
+		boolean res = true;
 		try {
 			isGet = cal.isGet();
 			calKey = String.valueOf(joinPoint.getArgs()[0]);
 			Object proceed = joinPoint.proceed();
 			getNotNull = isGet && proceed != null;
-			res = true;
 			return proceed;
+		} catch (Throwable e) {
+			res = false;
+			throw e;
 		} finally {
 			LoggerUtil.info(log, calKey, CommUtil.getStringByBoolean(getNotNull));
 			LoggerUtil.info(log, joinPoint, res, startTime);
