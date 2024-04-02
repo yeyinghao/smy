@@ -1,5 +1,6 @@
 package com.luman.code.smy.web.handler;
 
+import cn.dev33.satoken.exception.NotLoginException;
 import cn.hutool.core.util.StrUtil;
 import com.luman.code.smy.constant.CommConstant;
 import com.luman.code.smy.enums.CommErrorEnum;
@@ -50,10 +51,22 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
+	 * sa-token-未登录异常
+	 *
+	 * @param e e
+	 * @return {@link ResultHelper}<{@link String}>
+	 */
+	@ExceptionHandler(NotLoginException.class)
+	public ResultHelper<String> notLoginExceptionHandler(NotLoginException e) {
+		LoggerUtil.error(log, e);
+		return ResultHelper.fail(CommErrorEnum.FORBIDDEN,e.getMessage());
+	}
+
+	/**
 	 * 拦截NoHandlerFoundException异常
 	 */
 	@ExceptionHandler(NoHandlerFoundException.class)
-	public ResultHelper<String> sqlExceptionHandler(NoHandlerFoundException e) {
+	public ResultHelper<String> noHandlerFoundExceptionHandler(NoHandlerFoundException e) {
 		LoggerUtil.info(log, e, request.getServletPath());
 		return ResultHelper.fail(CommErrorEnum.NOT_FOUND);
 	}
@@ -62,7 +75,7 @@ public class GlobalExceptionHandler {
 	 * 拦截HttpRequestMethodNotSupportedException异常
 	 */
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-	public ResultHelper<String> sqlExceptionHandler(HttpRequestMethodNotSupportedException e) {
+	public ResultHelper<String> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException e) {
 		LoggerUtil.info(log, e, request.getServletPath());
 		return ResultHelper.fail(CommErrorEnum.BIZ_PROCESS_FAIL, "请求方式不支持");
 	}
