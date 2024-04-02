@@ -88,12 +88,11 @@ public class LoggerUtil {
 	 * @param joinPoint 连接点
 	 * @param res       res
 	 * @param startTime 开始时间
-	 * @param objs      obj
 	 */
-	public static void info(Logger logger, ProceedingJoinPoint joinPoint, boolean res, long startTime, Object... objs) {
+	public static void info(Logger logger, ProceedingJoinPoint joinPoint, boolean res, long startTime) {
 		String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
 		String methodName = joinPoint.getSignature().getName();
-		logger.info(getContentString(className, methodName, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime), objs));
+		logger.info(getContentString(className, methodName, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime)));
 	}
 
 	/**
