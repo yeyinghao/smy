@@ -5,7 +5,6 @@
 package com.luman.code.smy.annotations.dal;
 
 import com.luman.code.smy.constant.MonitorConstant;
-import com.luman.code.smy.util.CommUtil;
 import com.luman.code.smy.util.LoggerUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -37,17 +36,14 @@ public class DalAspect {
 	@Around("execution(* com.luman.code.domain..*.*Service.*(..))")
 	public Object around(ProceedingJoinPoint joinPoint) {
 		long startTime = System.currentTimeMillis();
-		String className = null;
-		String methodName = null;
-		boolean res = false;
+		boolean res = true;
 		try {
-			className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-			methodName = joinPoint.getSignature().getName();
-			res = true;
 			return joinPoint.proceed();
+		} catch (Throwable e) {
+			res = false;
+			throw e;
 		} finally {
-			LoggerUtil.info(log, className, methodName, CommUtil.getStringByBoolean(res),
-					CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, joinPoint, res, startTime);
 		}
 	}
 }

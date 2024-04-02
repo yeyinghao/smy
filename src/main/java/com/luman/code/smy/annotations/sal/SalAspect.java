@@ -38,5 +38,4 @@ public class SalAspect {
 		return MonitorUtil.monitor(joinPoint, log);
 	}
 
-
 }

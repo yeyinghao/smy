@@ -5,10 +5,10 @@
 
 package com.luman.code.smy.util;
 
-import cn.hutool.core.util.StrUtil;
 import com.luman.code.smy.constant.CommConstant;
 import com.luman.code.smy.exception.BizException;
 import lombok.experimental.UtilityClass;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 
 import java.util.Arrays;
@@ -82,6 +82,21 @@ public class LoggerUtil {
 	}
 
 	/**
+	 * 信息
+	 *
+	 * @param logger    日志记录器
+	 * @param joinPoint 连接点
+	 * @param res       res
+	 * @param startTime 开始时间
+	 * @param objs      obj
+	 */
+	public static void info(Logger logger, ProceedingJoinPoint joinPoint, boolean res, long startTime, Object... objs) {
+		String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
+		String methodName = joinPoint.getSignature().getName();
+		logger.info(getContentString(className, methodName, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime), objs));
+	}
+
+	/**
 	 * info日志
 	 *
 	 * @param logger 日志记录器
@@ -99,7 +114,7 @@ public class LoggerUtil {
 	 * @param e      e
 	 */
 	public static void info(Logger logger, BizException e) {
-		logger.info(getContentString(e));
+		logger.info(getContentString(e.getErrorEnum(), e.getSubMessage()));
 	}
 
 	/**
@@ -129,22 +144,8 @@ public class LoggerUtil {
 	 * @param objs obj
 	 * @return {@link String}
 	 */
-	private static String getContentString(Object[] objs) {
+	private static String getContentString(Object... objs) {
 		return LEFT_DELIMITER + Arrays.stream(objs).map(LoggerUtil::object2String).collect(Collectors.joining(CommConstant.DELIMITER)) + RIGHT_DELIMITER;
-	}
-
-	/**
-	 * 获取内容字符串
-	 *
-	 * @param e e
-	 * @return {@link String}
-	 */
-	private static String getContentString(BizException e) {
-		StringBuilder bizError = new StringBuilder(String.valueOf(e.getErrorEnum()));
-		if (Objects.nonNull(e.getSubMesssage())) {
-			Arrays.asList(e.getSubMesssage()).forEach(item -> bizError.append(CommConstant.DELIMITER).append(item));
-		}
-		return LEFT_DELIMITER + bizError + RIGHT_DELIMITER;
 	}
 
 	/**
@@ -157,6 +158,6 @@ public class LoggerUtil {
 		if (Objects.nonNull(obj)) {
 			return obj.toString();
 		}
-		return StrUtil.EMPTY;
+		return EMPTY_STRING;
 	}
 }

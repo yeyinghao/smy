@@ -15,8 +15,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * @author yeyinghao
  * @version 1.0.0
@@ -28,11 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @Slf4j(topic = MonitorConstant.WEB_MONITOR_LOGGER)
 public class WebAspect {
-
-	/**
-	 * 请求
-	 */
-	private final HttpServletRequest request;
 
 	/**
 	 * 周围

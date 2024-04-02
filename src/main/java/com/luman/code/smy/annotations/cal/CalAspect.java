@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 /**
@@ -37,14 +36,11 @@ public class CalAspect {
 	@Around("@annotation(cal)")
 	public Object around(ProceedingJoinPoint joinPoint, Cal cal) {
 		long startTime = System.currentTimeMillis();
-		String calMethod = null;
 		String calKey = null;
 		boolean isGet;
 		boolean getNotNull = false;
 		boolean res = false;
 		try {
-			MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-			calMethod = signature.getMethod().getName();
 			isGet = cal.isGet();
 			calKey = String.valueOf(joinPoint.getArgs()[0]);
 			Object proceed = joinPoint.proceed();
@@ -52,8 +48,8 @@ public class CalAspect {
 			res = true;
 			return proceed;
 		} finally {
-			LoggerUtil.info(log, calMethod, calKey, CommUtil.getStringByBoolean(res),
-					CommUtil.getStringByBoolean(getNotNull), CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, calKey, CommUtil.getStringByBoolean(getNotNull));
+			LoggerUtil.info(log, joinPoint, res, startTime);
 		}
 	}
 }

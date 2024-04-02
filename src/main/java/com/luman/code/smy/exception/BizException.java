@@ -22,17 +22,17 @@ public class BizException extends RuntimeException {
 	/**
 	 * 子消息
 	 */
-	private String[] subMesssage;
+	private String[] subMessage;
 
 	/**
 	 * 业务异常
 	 *
 	 * @param errorEnum   基本枚举
-	 * @param subMesssage 子消息
+	 * @param subMessage 子消息
 	 */
-	public BizException(ErrorEnum errorEnum, String... subMesssage) {
+	public BizException(ErrorEnum errorEnum, String... subMessage) {
 		super(errorEnum.getDescription());
 		this.errorEnum = errorEnum;
-		this.subMesssage = subMesssage;
+		this.subMessage = subMessage;
 	}
 }

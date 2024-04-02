@@ -14,10 +14,9 @@ import com.luman.code.smy.enums.CommErrorEnum;
 import com.luman.code.smy.enums.ErrorEnum;
 import com.luman.code.smy.exception.Assert;
 import com.luman.code.smy.exception.BizException;
+import com.luman.code.smy.feature.secret.service.SecretService;
 import com.luman.code.smy.helper.ResultHelper;
 import com.luman.code.smy.model.SecretDTO;
-import com.luman.code.smy.feature.secret.service.SecretService;
-import com.luman.code.smy.util.CommUtil;
 import com.luman.code.smy.util.ErrorUtil;
 import com.luman.code.smy.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
@@ -72,15 +71,11 @@ public class SecretAspect {
 		long startTime = System.currentTimeMillis();
 		boolean res = true;
 		ErrorEnum errorEnum = null;
-		String className = null;
-		String methodName = null;
 		SecretDTO req = null;
 		String reqPlainText = null;
 		SecretDTO resp = null;
 		String respPlainText = null;
 		try {
-			className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-			methodName = joinPoint.getSignature().getName();
 			req = (SecretDTO) joinPoint.getArgs()[0];
 			decryptBizContentByAes(req);
 			verifySignByRsa(req);
@@ -96,7 +91,8 @@ public class SecretAspect {
 			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, className, methodName, req, reqPlainText, resp, respPlainText, CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, req, reqPlainText, resp, respPlainText, errorEnum);
+			LoggerUtil.info(log, joinPoint, res, startTime);
 		}
 	}
 
