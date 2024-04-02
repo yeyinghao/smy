@@ -73,30 +73,10 @@ public class ResultHelper<T> {
 	 *
 	 * @return {@link ResultHelper}<{@link Boolean}>
 	 */
-	public static ResultHelper<Boolean> of() {
-		ResultHelper<Boolean> resultHelper = new ResultHelper<>();
-		resultHelper.code = CommErrorEnum.SUCCESS.getCode();
-		resultHelper.resCode = CommErrorEnum.SUCCESS.name();
-		resultHelper.resMsg = CommErrorEnum.SUCCESS.getDescription();
-		resultHelper.data = Boolean.TRUE;
-		resultHelper.success = Boolean.TRUE;
-		return resultHelper;
+	public static ResultHelper<Boolean> success() {
+		return of(Boolean.TRUE);
 	}
 
-	/**
-	 * 失败
-	 *
-	 * @param errorEnum 基本枚举
-	 * @return {@link ResultHelper}<{@link T}>
-	 */
-	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum) {
-		ResultHelper<T> resultHelper = new ResultHelper<>();
-		resultHelper.code = errorEnum.getCode();
-		resultHelper.resCode = errorEnum.name();
-		resultHelper.resMsg = errorEnum.getDescription();
-		resultHelper.success = Boolean.FALSE;
-		return resultHelper;
-	}
 
 	/**
 	 * 失败

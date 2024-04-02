@@ -4,7 +4,7 @@
 
 package com.luman.code.monitor.dal;
 
-import com.luman.code.monitor.constant.LogConstant;
+import com.luman.code.monitor.constant.MonitorConstant;
 import com.luman.code.util.util.CommUtil;
 import com.luman.code.util.util.LoggerUtil;
 import lombok.SneakyThrows;
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@Slf4j(topic = LogConstant.DAL_MONITOR_LOGGER)
+@Slf4j(topic = MonitorConstant.DAL_MONITOR_LOGGER)
 public class DalAspect {
 
 	/**
@@ -34,7 +34,7 @@ public class DalAspect {
 	 * @return {@link Object}
 	 */
 	@SneakyThrows
-	@Around("execution(* com.yyh.code.service.db..*.*Service.*(..))")
+	@Around("execution(* com.luman.code.domain..*.*Service.*(..))")
 	public Object around(ProceedingJoinPoint joinPoint) {
 		long startTime = System.currentTimeMillis();
 		String className = null;

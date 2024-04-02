@@ -4,7 +4,7 @@
 
 package com.luman.code.monitor.cal;
 
-import com.luman.code.monitor.constant.LogConstant;
+import com.luman.code.monitor.constant.MonitorConstant;
 import com.luman.code.util.util.CommUtil;
 import com.luman.code.util.util.LoggerUtil;
 import lombok.SneakyThrows;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-@Slf4j(topic = LogConstant.CAL_MONITOR_LOGGER)
+@Slf4j(topic = MonitorConstant.CAL_MONITOR_LOGGER)
 public class CalAspect {
 
 	/**

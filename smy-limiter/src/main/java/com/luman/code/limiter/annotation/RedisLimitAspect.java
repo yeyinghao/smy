@@ -6,13 +6,13 @@
 package com.luman.code.limiter.annotation;
 
 import com.luman.code.limiter.config.LimiterConfig;
-import com.luman.code.monitor.constant.LogConstant;
+import com.luman.code.limiter.constant.LimiterConstant;
 import com.luman.code.util.enums.CommErrorEnum;
 import com.luman.code.util.enums.ErrorEnum;
 import com.luman.code.util.exception.Assert;
 import com.luman.code.util.exception.BizException;
 import com.luman.code.util.util.CommUtil;
-import com.luman.code.util.util.ErrorEnumUtil;
+import com.luman.code.util.util.ErrorUtil;
 import com.luman.code.util.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @RequiredArgsConstructor
-@Slf4j(topic = LogConstant.LIMITER_MONITOR_LOGGER)
+@Slf4j(topic = LimiterConstant.LIMITER_MONITOR_LOGGER)
 public class RedisLimitAspect {
 
 	/**
@@ -79,7 +79,7 @@ public class RedisLimitAspect {
 			return joinPoint.proceed();
 		} catch (BizException e) {
 			errorEnum = e.getErrorEnum();
-			res = !ErrorEnumUtil.isError(errorEnum);
+			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
 			LoggerUtil.info(log, className, methodName, key, CommUtil.getStringByBoolean(tryAcquire), CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));

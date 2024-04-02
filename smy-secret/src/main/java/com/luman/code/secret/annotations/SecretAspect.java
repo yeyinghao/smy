@@ -18,7 +18,7 @@ import com.luman.code.util.exception.Assert;
 import com.luman.code.util.exception.BizException;
 import com.luman.code.util.helper.ResultHelper;
 import com.luman.code.util.util.CommUtil;
-import com.luman.code.util.util.ErrorEnumUtil;
+import com.luman.code.util.util.ErrorUtil;
 import com.luman.code.util.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -93,7 +93,7 @@ public class SecretAspect {
 			return resultHelper;
 		} catch (BizException e) {
 			errorEnum = e.getErrorEnum();
-			res = !ErrorEnumUtil.isError(errorEnum);
+			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
 			LoggerUtil.info(log, className, methodName, req, reqPlainText, resp, respPlainText, CommUtil.getStringByBoolean(res), errorEnum, CommUtil.getCostTime(startTime));

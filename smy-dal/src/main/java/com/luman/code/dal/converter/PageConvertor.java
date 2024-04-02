@@ -6,7 +6,7 @@
 package com.luman.code.dal.converter;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.luman.code.dal.model.PageRes;
+import com.luman.code.util.model.PageRes;
 import com.luman.code.util.convertor.BeanUtilsCallBack;
 import com.luman.code.util.convertor.CommConvertor;
 

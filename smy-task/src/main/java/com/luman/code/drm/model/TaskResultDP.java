@@ -6,7 +6,7 @@
 package com.luman.code.drm.model;
 
 import com.luman.code.util.enums.BaseEnum;
-import com.luman.code.util.model.DP;
+import com.luman.code.util.model.base.DP;
 import lombok.*;
 
 import java.util.Map;

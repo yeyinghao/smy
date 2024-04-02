@@ -5,21 +5,14 @@
 
 package com.luman.code.monitor.sal;
 
-import com.luman.code.monitor.constant.LogConstant;
-import com.luman.code.util.enums.ErrorEnum;
-import com.luman.code.util.exception.BizException;
-import com.luman.code.util.util.CommUtil;
-import com.luman.code.util.util.ErrorEnumUtil;
-import com.luman.code.util.util.LoggerUtil;
+import com.luman.code.monitor.constant.MonitorConstant;
+import com.luman.code.monitor.util.MonitorUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author yeyinghao
@@ -29,7 +22,7 @@ import java.util.List;
  */
 @Aspect
 @Component
-@Slf4j(topic = LogConstant.SAL_MONITOR_LOGGER)
+@Slf4j(topic = MonitorConstant.SAL_MONITOR_LOGGER)
 public class SalAspect {
 
 	/**
@@ -42,26 +35,8 @@ public class SalAspect {
 	@SneakyThrows
 	@Around("@annotation(sal)")
 	public Object around(ProceedingJoinPoint joinPoint, Sal sal) {
-		long startTime = System.currentTimeMillis();
-		List<Object> param = null;
-		String className = null;
-		String methodName = null;
-		boolean res = true;
-		Object resp = null;
-		ErrorEnum errorEnum = null;
-		try {
-			className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-			methodName = joinPoint.getSignature().getName();
-			param = Arrays.asList(joinPoint.getArgs());
-			resp = joinPoint.proceed();
-			return resp;
-		} catch (BizException e) {
-			errorEnum = e.getErrorEnum();
-			res = !ErrorEnumUtil.isError(errorEnum);
-			throw e;
-		} finally {
-			LoggerUtil.info(log, className, methodName, param, resp, CommUtil.getStringByBoolean(res), errorEnum,
-					CommUtil.getCostTime(startTime));
-		}
+		return MonitorUtil.monitor(joinPoint, log);
 	}
+
+
 }

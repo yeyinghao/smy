@@ -38,13 +38,12 @@
     <modules>
         <module>smy-cache</module>
         <module>smy-dal</module>
-        <module>smy-drm</module>
         <module>smy-file</module>
         <module>smy-limiter</module>
         <module>smy-monitor</module>
         <module>smy-secret</module>
         <module>smy-task</module>
-        <module>smy-web</module>
+        <module>smy-adapter</module>
         <module>smy-util</module>
     </modules>
 
@@ -59,11 +58,6 @@
             <dependency>
                 <groupId>com.luman.code</groupId>
                 <artifactId>smy-dal</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.luman.code</groupId>
-                <artifactId>smy-drm</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -93,7 +87,7 @@
             </dependency>
             <dependency>
                 <groupId>com.luman.code</groupId>
-                <artifactId>smy-web</artifactId>
+                <artifactId>smy-adapter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -256,26 +250,6 @@
                 </executions>
             </plugin>
         </plugins>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.19.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.5.4.RELEASE</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <developers>
