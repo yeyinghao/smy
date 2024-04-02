@@ -59,7 +59,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NotLoginException.class)
 	public ResultHelper<String> notLoginExceptionHandler(NotLoginException e) {
 		LoggerUtil.error(log, e);
-		return ResultHelper.fail(CommErrorEnum.FORBIDDEN,e.getMessage());
+		return ResultHelper.fail(CommErrorEnum.FORBIDDEN,"未登录, 无法访问");
 	}
 
 	/**
