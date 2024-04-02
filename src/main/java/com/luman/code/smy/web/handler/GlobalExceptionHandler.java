@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(NotLoginException.class)
 	public ResultHelper<String> notLoginExceptionHandler(NotLoginException e) {
-		LoggerUtil.error(log, e);
+		LoggerUtil.info(log, e.getMessage());
 		return ResultHelper.fail(CommErrorEnum.FORBIDDEN,"禁止访问");
 	}
 
@@ -67,7 +67,7 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResultHelper<String> noHandlerFoundExceptionHandler(NoHandlerFoundException e) {
-		LoggerUtil.info(log, e, request.getServletPath());
+		LoggerUtil.info(log, e.getMessage(), request.getServletPath());
 		return ResultHelper.fail(CommErrorEnum.NOT_FOUND);
 	}
 
@@ -76,7 +76,7 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public ResultHelper<String> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException e) {
-		LoggerUtil.info(log, e, request.getServletPath());
+		LoggerUtil.info(log, e.getMessage(), request.getServletPath());
 		return ResultHelper.fail(CommErrorEnum.BIZ_PROCESS_FAIL, "请求方式不支持");
 	}
 
@@ -88,7 +88,6 @@ public class GlobalExceptionHandler {
 		LoggerUtil.info(log, e);
 		return ResultHelper.fail(e.getErrorEnum(), e.getSubMessage());
 	}
-
 
 	/**
 	 * 绑定异常
