@@ -1,4 +1,6 @@
-package com.luman.code.common.constant;
+package com.luman.code.common.feature.limiter.constant;
+
+import com.luman.code.common.constant.BaseConstant;
 
 /**
  * 项目常量类

@@ -6,7 +6,7 @@
 package com.luman.code.common.annotations.limiter;
 
 import com.luman.code.common.feature.limiter.config.LimiterConfig;
-import com.luman.code.common.constant.LimiterConstant;
+import com.luman.code.common.feature.limiter.constant.LimiterConstant;
 import com.luman.code.common.enums.CommErrorEnum;
 import com.luman.code.common.enums.ErrorEnum;
 import com.luman.code.common.exception.Assert;

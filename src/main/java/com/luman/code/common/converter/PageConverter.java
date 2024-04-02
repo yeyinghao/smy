@@ -3,7 +3,7 @@
  * 2022.1 - 2023.8
  */
 
-package com.luman.code.common.convertor;
+package com.luman.code.common.converter;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.luman.code.common.model.PageRes;
@@ -17,7 +17,7 @@ import java.util.function.Supplier;
  * @author yeyinghao
  * @date 2023/08/04
  */
-public class PageConvertor {
+public class PageConverter {
 
 	/**
 	 * 构建页面
@@ -51,6 +51,6 @@ public class PageConvertor {
 	 * @return {@link PageRes}<{@link T}>
 	 */
 	public static <S, T> PageRes<T> buildPage(PageRes<S> page, Supplier<T> target, BeanUtilsCallBack<S, T> callBack) {
-		return new PageRes<>(page.getPageIndex(), page.getPageSize(), page.getTotalSize(), CommConvertor.copyList(page.getRecords(), target, callBack));
+		return new PageRes<>(page.getPageIndex(), page.getPageSize(), page.getTotalSize(), CommConverter.copyList(page.getRecords(), target, callBack));
 	}
 }

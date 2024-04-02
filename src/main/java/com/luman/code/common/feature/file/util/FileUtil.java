@@ -30,7 +30,7 @@ public class FileUtil {
 	 * @param fileName 文件名称
 	 * @return {@link String}
 	 */
-	public static String createFileKey(FileTypeEnum fileType, String userCode, String bizId, String fileName) {
+	public static String createObjectName(FileTypeEnum fileType, String userCode, String bizId, String fileName) {
 		StringBuilder sb = new StringBuilder();
 		String suffix = FileNameUtil.getSuffix(fileName);
 		String uuid = IdUtil.fastSimpleUUID();
@@ -48,7 +48,7 @@ public class FileUtil {
 	 * @param fileName 文件名称
 	 * @return {@link String}
 	 */
-	public static String createFileKey(FileTypeEnum fileType, String userCode, String fileName) {
+	public static String createObjectName(FileTypeEnum fileType, String userCode, String fileName) {
 		StringBuilder sb = new StringBuilder();
 		String suffix = FileNameUtil.getSuffix(fileName);
 		String uuid = IdUtil.fastSimpleUUID();
@@ -64,7 +64,7 @@ public class FileUtil {
 	 * @param fileName 文件名称
 	 * @return {@link String}
 	 */
-	public static String createFileKey(FileTypeEnum fileType, String fileName) {
+	public static String createObjectName(FileTypeEnum fileType, String fileName) {
 		StringBuilder sb = new StringBuilder();
 		String suffix = FileNameUtil.getSuffix(fileName);
 		String uuid = IdUtil.fastSimpleUUID();

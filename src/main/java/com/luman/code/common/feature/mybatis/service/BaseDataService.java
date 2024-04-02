@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.luman.code.common.convertor.PageConvertor;
+import com.luman.code.common.converter.PageConverter;
 import com.luman.code.common.model.BaseDP;
 import com.luman.code.common.model.BasePO;
 import com.luman.code.common.model.PageReq;
@@ -33,10 +33,10 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	protected abstract D convertToDO(P persistenceObject);
 
 	/**
-	 * 转换为DOS
+	 * 转换为DOs
 	 *
 	 * @param persistenceObjects 持久化对象
-	 * @return {@link List}<{@link com.luman.code.common.model.base.DP}>
+	 * @return {@link List}<{@link D}>
 	 */
 	protected List<D> convertToDOs(List<P> persistenceObjects) {
 		if (CollectionUtil.isEmpty(persistenceObjects)) {
@@ -46,10 +46,10 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	}
 
 	/**
-	 * 转换为pos
+	 * 转换为POs
 	 *
 	 * @param domainObjects 域对象
-	 * @return {@link List}<{@link com.luman.code.common.model.base.PO}>
+	 * @return {@link List}<{@link P}>
 	 */
 	protected List<P> convertToPOs(List<D> domainObjects) {
 		if (CollectionUtil.isEmpty(domainObjects)) {
@@ -127,7 +127,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * 根据id列表查询
 	 *
 	 * @param ids 主键id列表
-	 * @return {@link List}<{@link com.luman.code.common.model.base.DP}>
+	 * @return {@link List}<{@link D}>
 	 */
 	public List<D> findByIds(List<Long> ids) {
 		List<P> list = lambdaQuery().in(P::getId, ids).list();
@@ -138,11 +138,11 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * 分页查询
 	 *
 	 * @param req 请求
-	 * @return {@link PageRes}<{@link com.luman.code.common.model.base.DP}>
+	 * @return {@link PageRes}<{@link D}>
 	 */
 	public PageRes<D> listByPage(PageReq req) {
 		IPage<P> page = new Page<>(req.getPageIndex(), req.getPageSize());
 		lambdaQuery().page(page);
-		return PageConvertor.buildPage(page, convertToDOs(page.getRecords()));
+		return PageConverter.buildPage(page, convertToDOs(page.getRecords()));
 	}
 }
