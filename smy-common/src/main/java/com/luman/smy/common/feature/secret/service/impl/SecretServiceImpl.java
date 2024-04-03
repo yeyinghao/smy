@@ -1,7 +1,8 @@
-package com.luman.smy.common.feature.secret.service;
+package com.luman.smy.common.feature.secret.service.impl;
 
 import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.crypto.symmetric.AES;
+import com.luman.smy.common.feature.secret.service.SecretService;
 
 public class SecretServiceImpl implements SecretService {
 	@Override
