@@ -13,10 +13,10 @@ import java.util.function.Supplier;
 
 
 /**
- * 常见转换器
+ * 公共转换器
  *
  * @author yeyinghao
- * @date 2023/08/01
+ * @date 2024/04/04
  */
 public class CommConverter {
 

@@ -28,17 +28,17 @@ public class PageRes<T> extends RES {
 	/**
 	 * 当前页
 	 */
-	private Integer pageIndex;
+	private Long pageIndex;
 
 	/**
 	 * 条数
 	 */
-	private Integer pageSize;
+	private Long pageSize;
 
 	/**
 	 * 总条数
 	 */
-	private Integer totalSize;
+	private Long totalSize;
 
 	/**
 	 * 记录

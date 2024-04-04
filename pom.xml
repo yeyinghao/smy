@@ -43,16 +43,18 @@
         <dependencies>
             <!-- springboot框架 -->
             <dependency>
-                <groupId>com.luman.code</groupId>
-                <artifactId>smy-common</artifactId>
-            </dependency>
-
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${springboot.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+
+            <!-- smy框架 -->
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-common</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <!-- Biz -->

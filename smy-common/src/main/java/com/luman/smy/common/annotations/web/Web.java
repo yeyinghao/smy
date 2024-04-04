@@ -20,4 +20,18 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Web {
 
+	/**
+	 * 名称, 支持spel
+	 *
+	 * @return {@link String}
+	 */
+	String name();
+
+	/**
+	 * 描述, 支持spel
+	 *
+	 * @return {@link String}
+	 */
+	String desc();
+
 }

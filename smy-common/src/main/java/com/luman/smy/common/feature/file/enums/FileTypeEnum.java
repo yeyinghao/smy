@@ -10,6 +10,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+/**
+ * 文件类型enum
+ *
+ * @author yeyinghao
+ * @date 2024/04/04
+ */
 @Getter
 @RequiredArgsConstructor
 @ToString
@@ -28,7 +34,7 @@ public enum FileTypeEnum implements BaseEnum {
 	/**
 	 * 案件文件
 	 */
-	CASE("case/", "其他文件"),
+	CASE("case/", "案件文件"),
 
 	/**
 	 * 模板文件

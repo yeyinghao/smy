@@ -6,11 +6,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 /**
+ * 通用错误枚举
+ *
  * @author yeyinghao
- * @version 1.0.0
- * @description: 通用结果异常枚举
- * <p>200 成功 400 参数错误 403 无权限 500 服务器异常 501 数据获取失败
- * @date: 2022/6/5 13:52
+ * @date 2024/04/04
  */
 @Getter
 @RequiredArgsConstructor

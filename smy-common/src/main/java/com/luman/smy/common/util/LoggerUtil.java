@@ -8,7 +8,6 @@ package com.luman.smy.common.util;
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.exception.BizException;
 import lombok.experimental.UtilityClass;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
 
 import java.util.Arrays;
@@ -79,20 +78,6 @@ public class LoggerUtil {
 	 */
 	public static void info(Logger logger, Object... objs) {
 		logger.info(getContentString(objs));
-	}
-
-	/**
-	 * 信息
-	 *
-	 * @param logger    日志记录器
-	 * @param joinPoint 连接点
-	 * @param res       res
-	 * @param startTime 开始时间
-	 */
-	public static void info(Logger logger, ProceedingJoinPoint joinPoint, boolean res, long startTime) {
-		String className = joinPoint.getSignature().getDeclaringType().getSimpleName();
-		String methodName = joinPoint.getSignature().getName();
-		logger.info(getContentString(className, methodName, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime)));
 	}
 
 	/**

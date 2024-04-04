@@ -46,6 +46,16 @@ public class TaskResultDP extends DP {
 	private Integer failNum;
 
 	/**
+	 * 成功msg
+	 */
+	private String succMsg;
+
+	/**
+	 * 失败msg
+	 */
+	private String failMsg;
+
+	/**
 	 * ext信息
 	 */
 	private Map<String, Object> extInfo;
@@ -55,6 +65,7 @@ public class TaskResultDP extends DP {
 	 */
 	public void addSussNum() {
 		this.succNum += 1;
+		this.totalNum += 1;
 	}
 
 	/**
@@ -62,6 +73,7 @@ public class TaskResultDP extends DP {
 	 */
 	public void addFailNum() {
 		this.failNum += 1;
+		this.totalNum += 1;
 	}
 
 	/**

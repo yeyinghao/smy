@@ -1,7 +1,10 @@
 package com.luman.smy.common.constant;
 
 /**
- * 项目常量类
+ * 通讯常数
+ *
+ * @author yeyinghao
+ * @date 2024/04/04
  */
 public interface CommConstant extends BaseConstant {
 

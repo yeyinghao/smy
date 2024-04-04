@@ -18,10 +18,10 @@ import javax.annotation.PreDestroy;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 缓存服务实现
+ *
  * @author yeyinghao
- * @version 1.0.0
- * @description:
- * @date: 2023/2/28 13:51
+ * @date 2024/04/04
  */
 @Service
 @Slf4j
@@ -33,115 +33,97 @@ public class CacheServiceImpl implements CacheService {
 	 */
 	private final RedissonClient redissonClient;
 
+	/**
+	 * redisson配置
+	 */
 	private final RedissonConfig redissonConfig;
 
 	@Cal(isGet = true)
 	@Override
-	public <T> T getObject(String key) {
-		RBucket<T> bucket = redissonClient.getBucket(key);
-		return bucket.get();
-	}
-
-	@Cal(isGet = true)
-	@Override
-	public String getString(String key) {
-		RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
+	public <T> T get(String key) {
+		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
 		return bucket.get();
 	}
 
 	@Cal(isGet = false)
 	@Override
-	public <T> void saveObject(String key, T value) {
-		RBucket<T> bucket = redissonClient.getBucket(key);
+	public <T> void save(String key, T value) {
+		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
 		bucket.set(value, redissonConfig.getDefaultExpiredSecond(), TimeUnit.SECONDS);
-	}
-
-	@Cal(isGet = false)
-	@Override
-	public void saveString(String key, String value) {
-		RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		bucket.set(value, redissonConfig.getDefaultExpiredSecond(), TimeUnit.SECONDS);
-	}
-
-	@Cal(isGet = false)
-	@Override
-	public void saveStringExpire(String key, String value, long expired) {
-		RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		bucket.set(value, expired <= 0 ? redissonConfig.getDefaultExpiredSecond() : expired, TimeUnit.SECONDS);
-	}
-
-	@Cal(isGet = false)
-	@Override
-	public boolean saveStringIfAbsentExpire(String key, String value, long expired) {
-		RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		return bucket.trySet(value, expired <= 0 ? redissonConfig.getDefaultExpiredSecond() : expired, TimeUnit.SECONDS);
-	}
-
-	@Cal(isGet = false)
-	@Override
-	public boolean saveStringIfAbsent(String key, String value) {
-		RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		return bucket.trySet(value);
 	}
 
 	@Cal(isGet = false)
 	@Override
 	public <T> void saveExpire(String key, T value, long expired) {
-		RBucket<T> bucket = redissonClient.getBucket(key);
-		bucket.set(value, expired <= 0 ? redissonConfig.getDefaultExpiredSecond() : expired, TimeUnit.SECONDS);
+		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
+		bucket.set(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
+	}
+
+	@Cal(isGet = false)
+	@Override
+	public <T> boolean saveIfAbsent(String key, T value) {
+		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key), StringCodec.INSTANCE);
+		return bucket.trySet(value);
+	}
+
+	@Cal(isGet = false)
+	@Override
+	public <T> boolean saveIfAbsentExpire(String key, T value, long expired) {
+		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key), StringCodec.INSTANCE);
+		return bucket.trySet(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public void remove(String key) {
-		redissonClient.getBucket(key).delete();
+		redissonClient.getBucket(redissonConfig.getRealKey(key)).delete();
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public boolean exists(String key) {
-		return redissonClient.getBucket(key).isExists();
+		return redissonClient.getBucket(redissonConfig.getRealKey(key)).isExists();
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public <T> RList<T> getRedisList(String key) {
-		return redissonClient.getList(key);
+		return redissonClient.getList(redissonConfig.getRealKey(key));
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public <K, V> RMapCache<K, V> getRedisMapCache(String key) {
-		return redissonClient.getMapCache(key);
+		return redissonClient.getMapCache(redissonConfig.getRealKey(key));
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public <K, V> RMap<K, V> getRedisMap(String key) {
-		return redissonClient.getMap(key);
+		return redissonClient.getMap(redissonConfig.getRealKey(key));
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public <T> RSet<T> getRedisSet(String key) {
-		return redissonClient.getSet(key);
+		return redissonClient.getSet(redissonConfig.getRealKey(key));
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public <T> RScoredSortedSet<T> getRedisScoredSortedSet(String key) {
-		return redissonClient.getScoredSortedSet(key);
+		return redissonClient.getScoredSortedSet(redissonConfig.getRealKey(key));
 	}
 
 	@Cal(isGet = true)
 	@Override
 	public RLock getRedisLock(String key) {
-		return redissonClient.getLock(key);
+		return redissonClient.getLock(redissonConfig.getRealKey(key));
 	}
 
 	@Override
-	public long getKeyExpired(String realKey) {
-		return redissonClient.getKeys().remainTimeToLive(realKey) / 1000;
+	public long getKeyExpired(String key) {
+		return redissonClient.getKeys().remainTimeToLive(redissonConfig.getRealKey(key)) / 1000;
 	}
 
 	@PreDestroy

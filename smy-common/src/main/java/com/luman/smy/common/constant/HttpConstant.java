@@ -5,10 +5,10 @@
 package com.luman.smy.common.constant;
 
 /**
+ * http常数
+ *
  * @author yeyinghao
- * @version 1.0.0
- * @description:
- * @date: 2023/2/27 21:34
+ * @date 2024/04/04
  */
 public interface HttpConstant extends BaseConstant {
 	// HttpStatus 定义 开始

@@ -14,10 +14,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 缓存监控
+ *
  * @author yeyinghao
- * @version 1.0.0
- * @description:
- * @date: 2023/2/25 21:59
+ * @date 2024/04/04
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

@@ -6,10 +6,10 @@
 package com.luman.smy.common.constant;
 
 /**
- * Pmssa令牌常数
+ * sa令牌常数
  *
  * @author yeyinghao
- * @date 2024/01/12
+ * @date 2024/04/04
  */
 public interface SaTokenConstant extends BaseConstant {
 

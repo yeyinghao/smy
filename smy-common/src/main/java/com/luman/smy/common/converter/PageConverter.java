@@ -27,7 +27,7 @@ public class PageConverter {
 	 * @return {@link PageRes}<{@link T}>
 	 */
 	public static <S, T> PageRes<T> buildPage(IPage<S> page, List<T> results) {
-		return new PageRes<>((int) page.getPages(), (int) page.getSize(), (int) page.getTotal(), results);
+		return new PageRes<>(page.getPages(), page.getSize(), page.getTotal(), results);
 	}
 
 

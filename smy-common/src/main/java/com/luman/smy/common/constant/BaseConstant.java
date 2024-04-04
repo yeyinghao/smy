@@ -5,5 +5,11 @@
 
 package com.luman.smy.common.constant;
 
+/**
+ * 基础常数
+ *
+ * @author yeyinghao
+ * @date 2024/04/04
+ */
 public interface BaseConstant {
 }

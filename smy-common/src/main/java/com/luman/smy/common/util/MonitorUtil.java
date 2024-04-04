@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MonitorUtil {
 
-	public static Object monitor(ProceedingJoinPoint joinPoint, Logger log) throws Throwable {
+	public static Object monitor(ProceedingJoinPoint joinPoint, String name, String desc, Logger log) throws Throwable {
 		long startTime = System.currentTimeMillis();
 		List<Object> param = null;
 		boolean res = true;
@@ -25,8 +25,7 @@ public class MonitorUtil {
 			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, param, resp, errorEnum);
-			LoggerUtil.info(log, joinPoint, res, startTime);
+			LoggerUtil.info(log, name, desc, param, resp, errorEnum, res, startTime);
 		}
 	}
 }

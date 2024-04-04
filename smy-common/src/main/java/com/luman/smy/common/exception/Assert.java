@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * 抛出异常工具类
+ * 断言
  *
  * @author yeyinghao
  * @date 2023/12/10
@@ -22,7 +22,7 @@ import java.util.Objects;
 public class Assert {
 
 	/**
-	 *
+	 * 抛出异常
 	 */
 	private static void throwEx(boolean condition, ErrorEnum errorCode, String... subMessage) {
 		if (condition) {

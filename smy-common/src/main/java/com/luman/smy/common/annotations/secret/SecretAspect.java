@@ -19,6 +19,7 @@ import com.luman.smy.common.helper.ResultHelper;
 import com.luman.smy.common.model.SecretDTO;
 import com.luman.smy.common.util.ErrorUtil;
 import com.luman.smy.common.util.LoggerUtil;
+import com.luman.smy.common.util.SpelUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
- * 秘密切面
+ * 加解密切面
  *
  * @author yeyinghao
  * @date 2024/01/03
@@ -75,7 +76,11 @@ public class SecretAspect {
 		String reqPlainText = null;
 		SecretDTO resp = null;
 		String respPlainText = null;
+		String name = null;
+		String desc = null;
 		try {
+			name = SpelUtil.generateKeyBySpEL(secret.name(), joinPoint);
+			desc = SpelUtil.generateKeyBySpEL(secret.desc(), joinPoint);
 			req = (SecretDTO) joinPoint.getArgs()[0];
 			decryptBizContentByAes(req);
 			verifySignByRsa(req);
@@ -91,8 +96,7 @@ public class SecretAspect {
 			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, req, reqPlainText, resp, respPlainText, errorEnum);
-			LoggerUtil.info(log, joinPoint, res, startTime);
+			LoggerUtil.info(log, name, desc, req, reqPlainText, resp, respPlainText, errorEnum, res, startTime);
 		}
 	}
 

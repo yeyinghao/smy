@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 秘密
+ * 加解密注解
  *
  * @author yeyinghao
  * @date 2024/03/20
@@ -19,5 +19,19 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Secret {
+
+	/**
+	 * 名称, 支持spel
+	 *
+	 * @return {@link String}
+	 */
+	String name();
+
+	/**
+	 * 描述, 支持spel
+	 *
+	 * @return {@link String}
+	 */
+	String desc();
 
 }

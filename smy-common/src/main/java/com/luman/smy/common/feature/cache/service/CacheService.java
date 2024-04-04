@@ -21,7 +21,24 @@ public interface CacheService {
 	 * @param key 缓存key
 	 * @return 缓存返回值
 	 */
-	<T> T getObject(String key);
+	<T> T get(String key);
+
+	/**
+	 * 保存对象
+	 *
+	 * @param key   关键
+	 * @param value 价值
+	 */
+	<T> void save(String key, T value);
+
+	/**
+	 * 保存字符串过期
+	 *
+	 * @param key     缓存key
+	 * @param value   缓存值
+	 * @param expired 缓存过期时间
+	 */
+	<T> void saveExpire(String key, T value, long expired);
 
 	/**
 	 * 获取key过期时间(秒)
@@ -32,37 +49,13 @@ public interface CacheService {
 	long getKeyExpired(String key);
 
 	/**
-	 * 得到字符串
+	 * 如果没有则保存字符串
 	 *
-	 * @param key 缓存key
-	 * @return 缓存返回值
+	 * @param key   缓存key
+	 * @param value 缓存值
+	 * @return boolean
 	 */
-	String getString(String key);
-
-	/**
-	 * 保存对象
-	 *
-	 * @param key   关键
-	 * @param value 价值
-	 */
-	<T> void saveObject(String key, T value);
-
-	/**
-	 * 保存字符串
-	 *
-	 * @param key   关键
-	 * @param value 价值
-	 */
-	void saveString(String key, String value);
-
-	/**
-	 * 保存字符串过期
-	 *
-	 * @param key     缓存key
-	 * @param value   缓存值
-	 * @param expired 缓存过期时间
-	 */
-	void saveStringExpire(String key, String value, long expired);
+	<T> boolean saveIfAbsent(String key, T value);
 
 	/**
 	 * 如果没有，保存字符串过期
@@ -72,25 +65,7 @@ public interface CacheService {
 	 * @param expired 缓存过期时间
 	 * @return boolean
 	 */
-	boolean saveStringIfAbsentExpire(String key, String value, long expired);
-
-	/**
-	 * 如果没有则保存字符串
-	 *
-	 * @param key   缓存key
-	 * @param value 缓存值
-	 * @return boolean
-	 */
-	boolean saveStringIfAbsent(String key, String value);
-
-	/**
-	 * 保存过期
-	 *
-	 * @param key     缓存key
-	 * @param value   缓存值
-	 * @param expired 缓存过期时间
-	 */
-	<T> void saveExpire(String key, T value, long expired);
+	<T> boolean saveIfAbsentExpire(String key, T value, long expired);
 
 	/**
 	 * 删除

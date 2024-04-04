@@ -10,6 +10,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+/**
+ * 数据类型enum
+ *
+ * @author yeyinghao
+ * @date 2024/04/04
+ */
 @Getter
 @RequiredArgsConstructor
 @ToString

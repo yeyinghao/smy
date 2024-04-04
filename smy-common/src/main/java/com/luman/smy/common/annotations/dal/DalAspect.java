@@ -15,10 +15,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
 /**
+ * dal切面
+ *
  * @author yeyinghao
- * @version 1.0.0
- * @description:
- * @date: 2023/2/25 21:59
+ * @date 2024/04/04
  */
 @Aspect
 @Component
