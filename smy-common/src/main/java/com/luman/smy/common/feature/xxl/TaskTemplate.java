@@ -6,6 +6,7 @@ import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.exception.BizException;
 import com.luman.smy.common.model.TaskResultDP;
 import com.luman.smy.common.util.LoggerUtil;
+import com.luman.smy.common.util.TraceIdUtil;
 import com.xxl.job.core.context.XxlJobHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,16 @@ import java.util.function.Supplier;
 public class TaskTemplate {
 
 	/**
+	 * tarnceId附加日志模式
+	 */
+	private static final String TRANCE_ID_APPEND_LOG_PATTERN = "task start tranceId={}";
+
+	/**
+	 * 错误枚举追加日志模式
+	 */
+	private static final String ERROR_ENUM_APPEND_LOG_PATTERN = "errorEnum={}, subMessage={}";
+
+	/**
 	 * 任务处理
 	 *
 	 * @param consumer 消费者
@@ -35,6 +46,7 @@ public class TaskTemplate {
 	public <T> boolean taskHandle(BaseEnum taskEnum, Supplier<Collection<T>> supplier, Consumer<T> consumer) {
 		TaskResultDP taskResultDP = TaskResultDP.init(taskEnum);
 		try {
+			printLog();
 			Collection<T> objects = supplier.get();
 			objects.forEach(item -> {
 				try {
@@ -42,11 +54,9 @@ public class TaskTemplate {
 					taskResultDP.addSussNum();
 					return;
 				} catch (BizException e) {
-					XxlJobHelper.log("errorEnum={}, subMessage={}", e.getErrorEnum(), e.getSubMessage());
-					LoggerUtil.info(log, e);
+					printLog(e);
 				} catch (Throwable e) {
-					XxlJobHelper.log(e);
-					LoggerUtil.error(log, e);
+					printLog(e);
 				}
 				LoggerUtil.info(log, item);
 				XxlJobHelper.log(item.toString());
@@ -54,15 +64,46 @@ public class TaskTemplate {
 			});
 			return XxlJobHelper.handleSuccess(CommConstant.TASK_SUCC_MSG);
 		} catch (BizException e) {
-			XxlJobHelper.log("errorEnum={}, subMessage={}", e.getErrorEnum(), e.getSubMessage());
-			LoggerUtil.info(log, e);
+			printLog(e);
 		} catch (Throwable e) {
-			XxlJobHelper.log(e);
-			LoggerUtil.error(log, e);
+			printLog(e);
 		} finally {
-			XxlJobHelper.log(taskResultDP.toString());
-			LoggerUtil.info(log, taskResultDP);
+			printLog(taskResultDP);
 		}
 		return XxlJobHelper.handleFail(CommConstant.TASK_FAIL_MSG);
+	}
+
+	private static void printLog() {
+		XxlJobHelper.log(TRANCE_ID_APPEND_LOG_PATTERN, TraceIdUtil.getThreadTraceId());
+	}
+
+	/**
+	 * 打印日志
+	 *
+	 * @param e e
+	 */
+	private static void printLog(BizException e) {
+		LoggerUtil.info(log, e);
+		XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getSubMessage());
+	}
+
+	/**
+	 * 打印日志
+	 *
+	 * @param e e
+	 */
+	private static void printLog(Throwable e) {
+		LoggerUtil.error(log, e);
+		XxlJobHelper.log(e);
+	}
+
+	/**
+	 * 打印日志
+	 *
+	 * @param taskResultDP 任务结果dp
+	 */
+	private static void printLog(TaskResultDP taskResultDP) {
+		LoggerUtil.info(log, taskResultDP);
+		XxlJobHelper.log(taskResultDP.toString());
 	}
 }
