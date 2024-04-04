@@ -24,6 +24,20 @@ import java.lang.annotation.Target;
 public @interface Cal {
 
 	/**
+	 * 名称
+	 *
+	 * @return {@link String}
+	 */
+	String name();
+
+	/**
+	 * 描述
+	 *
+	 * @return {@link String}
+	 */
+	String desc();
+	
+	/**
 	 * 是否是get调用 统计命中率
 	 *
 	 * @return boolean

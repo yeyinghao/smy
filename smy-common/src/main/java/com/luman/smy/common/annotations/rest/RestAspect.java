@@ -8,7 +8,6 @@ package com.luman.smy.common.annotations.rest;
 
 import com.luman.smy.common.constant.MonitorConstant;
 import com.luman.smy.common.util.MonitorUtil;
-import com.luman.smy.common.util.SpelUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -37,8 +36,6 @@ public class RestAspect {
 	@SneakyThrows
 	@Around("@annotation(rest)")
 	public Object around(ProceedingJoinPoint joinPoint, Rest rest) {
-		String name = SpelUtil.generateKeyBySpEL(rest.name(), joinPoint);
-		String desc = SpelUtil.generateKeyBySpEL(rest.desc(), joinPoint);
-		return MonitorUtil.monitor(joinPoint, name, desc, log);
+		return MonitorUtil.monitor(joinPoint, rest.name(), rest.desc(), log);
 	}
 }

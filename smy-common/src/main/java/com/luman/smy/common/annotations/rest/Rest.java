@@ -21,14 +21,14 @@ import java.lang.annotation.Target;
 public @interface Rest {
 
 	/**
-	 * 名称, 支持spel
+	 * 名称
 	 *
 	 * @return {@link String}
 	 */
 	String name();
 
 	/**
-	 * 描述, 支持spel
+	 * 描述
 	 *
 	 * @return {@link String}
 	 */
