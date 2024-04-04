@@ -10,7 +10,6 @@ import com.luman.smy.common.model.base.DP;
 import lombok.*;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 任务结果vo
@@ -46,16 +45,6 @@ public class TaskResultDP extends DP {
 	private Integer failNum;
 
 	/**
-	 * 成功msg
-	 */
-	private String succMsg;
-
-	/**
-	 * 失败msg
-	 */
-	private String failMsg;
-
-	/**
 	 * ext信息
 	 */
 	private Map<String, Object> extInfo;
@@ -77,21 +66,11 @@ public class TaskResultDP extends DP {
 	}
 
 	/**
-	 * 任务处理是否成功
-	 * 总数和成功数相等则判定成功
-	 *
-	 * @return boolean
-	 */
-	public boolean isSucc() {
-		return Objects.equals(this.succNum, this.totalNum);
-	}
-
-	/**
 	 * Init任务结果dp
 	 *
 	 * @return {@link TaskResultDP}
 	 */
-	public static TaskResultDP initTaskResultDP(BaseEnum taskEnum) {
+	public static TaskResultDP init(BaseEnum taskEnum) {
 		return TaskResultDP.builder().taskEnum(taskEnum).totalNum(0).succNum(0).failNum(0).build();
 	}
 }

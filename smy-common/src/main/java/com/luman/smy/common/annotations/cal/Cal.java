@@ -36,7 +36,7 @@ public @interface Cal {
 	 * @return {@link String}
 	 */
 	String desc();
-	
+
 	/**
 	 * 是否是get调用 统计命中率
 	 *

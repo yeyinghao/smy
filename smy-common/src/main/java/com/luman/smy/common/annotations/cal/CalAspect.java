@@ -50,8 +50,8 @@ public class CalAspect {
 			res = false;
 			throw e;
 		} finally {
-			LoggerUtil.info(log, calKey, CommUtil.getStringByBoolean(getNotNull));
-			LoggerUtil.info(log, joinPoint, res, startTime);
+			LoggerUtil.info(log, cal.name(), cal.desc(), calKey, CommUtil.getStringByBoolean(getNotNull),
+					CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime));
 		}
 	}
 }

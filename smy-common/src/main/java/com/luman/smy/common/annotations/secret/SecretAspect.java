@@ -17,6 +17,7 @@ import com.luman.smy.common.exception.BizException;
 import com.luman.smy.common.feature.secret.service.SecretService;
 import com.luman.smy.common.helper.ResultHelper;
 import com.luman.smy.common.model.SecretDTO;
+import com.luman.smy.common.util.CommUtil;
 import com.luman.smy.common.util.ErrorUtil;
 import com.luman.smy.common.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
@@ -91,7 +92,8 @@ public class SecretAspect {
 			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, secret.name(), secret.desc(), req, reqPlainText, resp, respPlainText, errorEnum, res, startTime);
+			LoggerUtil.info(log, secret.name(), secret.desc(), req, reqPlainText, resp, respPlainText, errorEnum
+					, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime));
 		}
 	}
 

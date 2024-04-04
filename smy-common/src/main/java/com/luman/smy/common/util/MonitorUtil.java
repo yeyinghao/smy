@@ -25,7 +25,8 @@ public class MonitorUtil {
 			res = !ErrorUtil.isError(errorEnum);
 			throw e;
 		} finally {
-			LoggerUtil.info(log, name, desc, param, resp, errorEnum, res, startTime);
+			LoggerUtil.info(log, name, desc, param, resp, errorEnum
+					, CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime));
 		}
 	}
 }
