@@ -62,6 +62,20 @@ public class MinioConfig {
 	private String bucketName;
 
 	/**
+	 * 下载地址是否替换为https
+	 * 配置为true, 则使用http
+	 * false, 使用https
+	 */
+	@Value("${minio.isHttp}")
+	private Boolean isHttp;
+
+	/**
+	 * 下载地址默认过期时间
+	 */
+	@Value("${minio.expirySecond}")
+	private Long expirySecond;
+
+	/**
 	 * minio客户
 	 *
 	 * @return {@link MinioClient}
@@ -74,5 +88,23 @@ public class MinioConfig {
 			LoggerUtil.error(log, e);
 		}
 		return null;
+	}
+
+	/**
+	 * 下载地址是否替换为https
+	 *
+	 * @return boolean
+	 */
+	public boolean isHttp() {
+		return this.isHttp;
+	}
+
+	/**
+	 * 下载地址是否替换为https
+	 *
+	 * @return boolean
+	 */
+	public long expirySecond() {
+		return expirySecond;
 	}
 }

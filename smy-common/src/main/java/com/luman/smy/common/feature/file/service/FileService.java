@@ -76,7 +76,17 @@ public interface FileService {
 	 */
 	Boolean isExist(String fileKey);
 
+	/**
+	 * 删除列表对象
+	 *
+	 * @param objectNameList 对象名称列表
+	 */
 	void removeListObject(List<String> objectNameList);
 
+	/**
+	 * 列出对象名称
+	 *
+	 * @return {@link List}<{@link String}>
+	 */
 	List<String> listObjectNames();
 }

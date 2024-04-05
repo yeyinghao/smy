@@ -32,9 +32,9 @@ public enum FileTypeEnum implements BaseEnum {
 	TEMPORARY("temporary/", "临时文件"),
 
 	/**
-	 * 案件文件
+	 * 业务文件
 	 */
-	CASE("case/", "案件文件"),
+	BIZ("biz/", "业务文件"),
 
 	/**
 	 * 模板文件
