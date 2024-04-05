@@ -39,90 +39,90 @@ public class CacheServiceImpl implements CacheService {
 	 */
 	private final RedissonConfig redissonConfig;
 
-	@Cal(name = CalConstant.GET.name, desc = CalConstant.GET.desc, isGet = true)
+	@Cal(name = CalConstant.GET.NAME, desc = CalConstant.GET.DESC, isGet = true)
 	@Override
 	public <T> T get(String key) {
 		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
 		return bucket.get();
 	}
 
-	@Cal(name = CalConstant.SAVE.name, desc = CalConstant.SAVE.desc, isGet = false)
+	@Cal(name = CalConstant.SAVE.NAME, desc = CalConstant.SAVE.DESC, isGet = false)
 	@Override
 	public <T> void save(String key, T value) {
 		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
 		bucket.set(value, redissonConfig.getDefaultExpiredSecond(), TimeUnit.SECONDS);
 	}
 
-	@Cal(name = CalConstant.SAVE_EXPIRE.name, desc = CalConstant.SAVE_EXPIRE.desc, isGet = false)
+	@Cal(name = CalConstant.SAVE_EXPIRE.NAME, desc = CalConstant.SAVE_EXPIRE.DESC, isGet = false)
 	@Override
 	public <T> void saveExpire(String key, T value, long expired) {
 		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key));
 		bucket.set(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
 	}
 
-	@Cal(name = CalConstant.SAVE_IF_ABSENT.name, desc = CalConstant.SAVE_IF_ABSENT.desc, isGet = false)
+	@Cal(name = CalConstant.SAVE_IF_ABSENT.NAME, desc = CalConstant.SAVE_IF_ABSENT.DESC, isGet = false)
 	@Override
 	public <T> boolean saveIfAbsent(String key, T value) {
 		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key), StringCodec.INSTANCE);
 		return bucket.trySet(value);
 	}
 
-	@Cal(name = CalConstant.SAVE_IF_ABSENT_EXPIRE.name, desc = CalConstant.SAVE_IF_ABSENT_EXPIRE.desc, isGet = false)
+	@Cal(name = CalConstant.SAVE_IF_ABSENT_EXPIRE.NAME, desc = CalConstant.SAVE_IF_ABSENT_EXPIRE.DESC, isGet = false)
 	@Override
 	public <T> boolean saveIfAbsentExpire(String key, T value, long expired) {
 		RBucket<T> bucket = redissonClient.getBucket(redissonConfig.getRealKey(key), StringCodec.INSTANCE);
 		return bucket.trySet(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
 	}
 
-	@Cal(name = CalConstant.REMOVE.name, desc = CalConstant.REMOVE.desc, isGet = true)
+	@Cal(name = CalConstant.REMOVE.NAME, desc = CalConstant.REMOVE.DESC, isGet = true)
 	@Override
 	public void remove(String key) {
 		redissonClient.getBucket(redissonConfig.getRealKey(key)).delete();
 	}
 
-	@Cal(name = CalConstant.EXISTS.name, desc = CalConstant.EXISTS.desc, isGet = true)
+	@Cal(name = CalConstant.EXISTS.NAME, desc = CalConstant.EXISTS.DESC, isGet = true)
 	@Override
 	public boolean exists(String key) {
 		return redissonClient.getBucket(redissonConfig.getRealKey(key)).isExists();
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_LIST.name, desc = CalConstant.GET_REDIS_LIST.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_LIST.NAME, desc = CalConstant.GET_REDIS_LIST.DESC, isGet = true)
 	@Override
 	public <T> RList<T> getRedisList(String key) {
 		return redissonClient.getList(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_MAP_CACHE.name, desc = CalConstant.GET_REDIS_MAP_CACHE.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_MAP_CACHE.NAME, desc = CalConstant.GET_REDIS_MAP_CACHE.DESC, isGet = true)
 	@Override
 	public <K, V> RMapCache<K, V> getRedisMapCache(String key) {
 		return redissonClient.getMapCache(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_MAP.name, desc = CalConstant.GET_REDIS_MAP.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_MAP.NAME, desc = CalConstant.GET_REDIS_MAP.DESC, isGet = true)
 	@Override
 	public <K, V> RMap<K, V> getRedisMap(String key) {
 		return redissonClient.getMap(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_SET.name, desc = CalConstant.GET_REDIS_SET.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_SET.NAME, desc = CalConstant.GET_REDIS_SET.DESC, isGet = true)
 	@Override
 	public <T> RSet<T> getRedisSet(String key) {
 		return redissonClient.getSet(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_SCORED_SORTED_SET.name, desc = CalConstant.GET_REDIS_SCORED_SORTED_SET.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_SCORED_SORTED_SET.NAME, desc = CalConstant.GET_REDIS_SCORED_SORTED_SET.DESC, isGet = true)
 	@Override
 	public <T> RScoredSortedSet<T> getRedisScoredSortedSet(String key) {
 		return redissonClient.getScoredSortedSet(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_REDIS_LOCK.name, desc = CalConstant.GET_REDIS_LOCK.desc, isGet = true)
+	@Cal(name = CalConstant.GET_REDIS_LOCK.NAME, desc = CalConstant.GET_REDIS_LOCK.DESC, isGet = true)
 	@Override
 	public RLock getRedisLock(String key) {
 		return redissonClient.getLock(redissonConfig.getRealKey(key));
 	}
 
-	@Cal(name = CalConstant.GET_KEY_EXPIRED.name, desc = CalConstant.GET_KEY_EXPIRED.desc, isGet = false)
+	@Cal(name = CalConstant.GET_KEY_EXPIRED.NAME, desc = CalConstant.GET_KEY_EXPIRED.DESC, isGet = false)
 	@Override
 	public long getKeyExpired(String key) {
 		return redissonClient.getKeys().remainTimeToLive(redissonConfig.getRealKey(key)) / 1000;
