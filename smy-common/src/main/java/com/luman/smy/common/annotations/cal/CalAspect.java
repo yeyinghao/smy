@@ -5,8 +5,10 @@
 package com.luman.smy.common.annotations.cal;
 
 import com.luman.smy.common.constant.MonitorConstant;
+import com.luman.smy.common.feature.cache.config.RedissonConfig;
 import com.luman.smy.common.util.CommUtil;
 import com.luman.smy.common.util.LoggerUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -22,8 +24,14 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
+@RequiredArgsConstructor
 @Slf4j(topic = MonitorConstant.CAL_MONITOR_LOGGER)
 public class CalAspect {
+
+	/**
+	 * redisson配置
+	 */
+	private final RedissonConfig redissonConfig;
 
 	/**
 	 * 周围
@@ -42,7 +50,7 @@ public class CalAspect {
 		boolean res = true;
 		try {
 			isGet = cal.isGet();
-			calKey = String.valueOf(joinPoint.getArgs()[0]);
+			calKey = redissonConfig.getRealKey(String.valueOf(joinPoint.getArgs()[0]));
 			Object proceed = joinPoint.proceed();
 			getNotNull = isGet && proceed != null;
 			return proceed;
@@ -50,8 +58,7 @@ public class CalAspect {
 			res = false;
 			throw e;
 		} finally {
-			LoggerUtil.info(log, cal.name(), cal.desc(), calKey, CommUtil.getStringByBoolean(getNotNull),
-					CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime));
+			LoggerUtil.info(log, cal.name(), cal.desc(), calKey, CommUtil.getStringByBoolean(getNotNull), CommUtil.getStringByBoolean(res), CommUtil.getCostTime(startTime));
 		}
 	}
 }

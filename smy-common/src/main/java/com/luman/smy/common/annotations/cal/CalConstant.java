@@ -55,12 +55,10 @@ public interface CalConstant extends BaseConstant {
 		String DESC = "获取List对象";
 	}
 
-
 	interface GET_REDIS_MAP_CACHE {
 		String NAME = "GET_REDIS_MAP_CACHE";
 		String DESC = "获取MapCache对象";
 	}
-
 
 	interface GET_REDIS_MAP {
 		String NAME = "GET_REDIS_MAP";
@@ -71,7 +69,6 @@ public interface CalConstant extends BaseConstant {
 		String NAME = "GET_REDIS_SET";
 		String DESC = "获取Set对象";
 	}
-
 
 	interface GET_REDIS_SCORED_SORTED_SET {
 		String NAME = "GET_REDIS_SCORED_SORTED_SET";
