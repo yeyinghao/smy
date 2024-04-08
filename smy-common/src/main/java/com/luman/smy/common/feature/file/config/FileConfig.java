@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @Slf4j
-public class MinioConfig {
+public class FileConfig {
 
 	/**
 	 * 是一个URL，域名，IPv4或者IPv6地址")

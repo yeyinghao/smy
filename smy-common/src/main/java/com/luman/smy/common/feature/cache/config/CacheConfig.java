@@ -27,7 +27,7 @@ import java.util.Map;
 @Data
 @ConfigurationProperties(prefix = "smy.cache")
 @Slf4j
-public class RedissonConfig {
+public class CacheConfig {
 
 	/**
 	 * 项目key前缀

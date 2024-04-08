@@ -3,7 +3,7 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.common.feature.cache.service;
+package com.luman.smy.common.feature.cache;
 
 import org.redisson.api.*;
 
@@ -13,7 +13,7 @@ import org.redisson.api.*;
  * @author yeyinghao
  * @date 2023/09/17
  */
-public interface CacheService {
+public interface CacheClient {
 
 	/**
 	 * 得到对象

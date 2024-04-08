@@ -3,7 +3,7 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.smy.common.annotations.cal;
+package com.luman.smy.common.feature.cache.constant;
 
 import com.luman.smy.common.constant.BaseConstant;
 

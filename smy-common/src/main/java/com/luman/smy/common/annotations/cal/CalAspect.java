@@ -5,7 +5,6 @@
 package com.luman.smy.common.annotations.cal;
 
 import com.luman.smy.common.constant.MonitorConstant;
-import com.luman.smy.common.feature.cache.config.RedissonConfig;
 import com.luman.smy.common.util.CommUtil;
 import com.luman.smy.common.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +28,6 @@ import org.springframework.stereotype.Component;
 public class CalAspect {
 
 	/**
-	 * redisson配置
-	 */
-	private final RedissonConfig redissonConfig;
-
-	/**
 	 * 周围
 	 *
 	 * @param joinPoint 连接点
@@ -50,7 +44,7 @@ public class CalAspect {
 		boolean res = true;
 		try {
 			isGet = cal.isGet();
-			calKey = redissonConfig.getRealKey(String.valueOf(joinPoint.getArgs()[0]));
+			calKey = String.valueOf(joinPoint.getArgs()[0]);
 			Object proceed = joinPoint.proceed();
 			getNotNull = isGet && proceed != null;
 			return proceed;

@@ -3,8 +3,9 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.common.feature.file.service;
+package com.luman.smy.common.feature.file;
 
+import com.luman.smy.common.feature.file.model.FileStatDTO;
 import io.minio.StatObjectResponse;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,7 +67,7 @@ public interface FileService {
 	 * @param fileKey 对象名称
 	 * @return {@link StatObjectResponse}
 	 */
-	StatObjectResponse statObject(String fileKey);
+	FileStatDTO statObject(String fileKey);
 
 	/**
 	 * 对象是否存在

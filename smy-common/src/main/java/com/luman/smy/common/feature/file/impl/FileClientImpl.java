@@ -3,14 +3,14 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.common.feature.file.service.impl;
+package com.luman.smy.common.feature.file.impl;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.Header;
 import com.luman.smy.common.enums.CommErrorEnum;
 import com.luman.smy.common.exception.Assert;
-import com.luman.smy.common.feature.file.config.MinioConfig;
-import com.luman.smy.common.feature.file.service.FileService;
+import com.luman.smy.common.feature.file.FileClient;
+import com.luman.smy.common.feature.file.config.FileConfig;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.DeleteError;
@@ -19,9 +19,7 @@ import io.minio.messages.Item;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.*;
@@ -34,7 +32,7 @@ import java.util.*;
  */
 @Service
 @RequiredArgsConstructor
-public class FileServiceImpl implements FileService {
+public class FileClientImpl implements FileClient {
 
 	/**
 	 * minio客户端
@@ -44,28 +42,11 @@ public class FileServiceImpl implements FileService {
 	/**
 	 * minio配置
 	 */
-	private final MinioConfig minioConfig;
+	private final FileConfig minioConfig;
 
-	@Override
 	@SneakyThrows
-	public void uploadFile(MultipartFile file, String objectName) {
-		putObject(objectName, file.getOriginalFilename(), new ByteArrayInputStream(file.getBytes()));
-	}
-
 	@Override
 	public void uploadFile(String objectName, String fileName, InputStream inputStream) {
-		putObject(objectName, fileName, inputStream);
-	}
-
-	/**
-	 * 推送对象
-	 *
-	 * @param objectName  对象名称
-	 * @param fileName    文件名称
-	 * @param inputStream 输入流
-	 */
-	@SneakyThrows
-	private void putObject(String objectName, String fileName, InputStream inputStream) {
 		try {
 			Assert.notBlank(fileName, CommErrorEnum.BIZ_PROCESS_FAIL, "文件名称不能为空");
 			// 下载文件时自动添加文件名
@@ -128,15 +109,5 @@ public class FileServiceImpl implements FileService {
 			listObjectNames.add(item.objectName());
 		}
 		return listObjectNames;
-	}
-
-	@Override
-	public Boolean isExist(String objectName) {
-		try {
-			statObject(objectName);
-		} catch (Throwable e) {
-			return false;
-		}
-		return false;
 	}
 }
