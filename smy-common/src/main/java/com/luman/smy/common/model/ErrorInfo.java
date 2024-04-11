@@ -6,7 +6,7 @@
 package com.luman.smy.common.model;
 
 import com.luman.smy.common.enums.BaseEnum;
-import com.luman.smy.common.model.base.INFO;
+import com.luman.smy.common.base.INFO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

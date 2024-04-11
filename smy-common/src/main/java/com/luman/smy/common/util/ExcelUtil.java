@@ -9,7 +9,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelWriter;
-import com.luman.smy.common.annotations.excel.ExcelAlias;
+import com.luman.smy.common.annotations.ExcelAlias;
 import lombok.SneakyThrows;
 
 import java.io.ByteArrayOutputStream;

@@ -5,7 +5,7 @@
 
 package com.luman.smy.common.model;
 
-import com.luman.smy.common.model.base.REQ;
+import com.luman.smy.common.base.REQ;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Range;

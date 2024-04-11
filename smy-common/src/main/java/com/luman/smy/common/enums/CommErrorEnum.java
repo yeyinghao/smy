@@ -27,9 +27,9 @@ public enum CommErrorEnum implements ErrorEnum {
 	ILLEGAL_PARAMETER(HttpConstant.BAD_REQUEST, "参数非法"),
 
 	/**
-	 * 业务处理失败
+	 * 业务异常
 	 */
-	BIZ_PROCESS_FAIL(HttpConstant.BAD_REQUEST, "业务处理失败"),
+	BIZ_ERROR(HttpConstant.BAD_REQUEST, "业务异常"),
 
 	/**
 	 * 未授权

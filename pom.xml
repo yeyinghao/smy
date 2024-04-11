@@ -36,7 +36,15 @@
     </properties>
 
     <modules>
+        <module>smy-cache</module>
         <module>smy-common</module>
+        <module>smy-config</module>
+        <module>smy-dal</module>
+        <module>smy-file</module>
+        <module>smy-task</module>
+        <module>smy-test</module>
+        <module>smy-token</module>
+        <module>smy-web</module>
     </modules>
 
     <dependencyManagement>
@@ -50,12 +58,53 @@
                 <type>pom</type>
             </dependency>
 
-            <!-- smy框架 -->
+            <!-- smy框架 start -->
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-cache</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.luman.smy</groupId>
                 <artifactId>smy-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-file</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-task</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-token</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.luman.smy</groupId>
+                <artifactId>smy-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- smy框架 end -->
 
             <!-- Biz -->
             <!-- lombok -->

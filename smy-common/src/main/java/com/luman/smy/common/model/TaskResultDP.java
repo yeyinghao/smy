@@ -6,7 +6,7 @@
 package com.luman.smy.common.model;
 
 import com.luman.smy.common.enums.BaseEnum;
-import com.luman.smy.common.model.base.DP;
+import com.luman.smy.common.base.DP;
 import lombok.*;
 
 import java.util.Map;

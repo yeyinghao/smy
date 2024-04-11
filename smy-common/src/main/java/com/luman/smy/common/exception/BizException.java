@@ -1,8 +1,13 @@
 package com.luman.smy.common.exception;
 
+import com.luman.smy.common.constant.CommConstant;
+import com.luman.smy.common.constant.HttpConstant;
 import com.luman.smy.common.enums.ErrorEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 业务异常
@@ -15,6 +20,13 @@ import lombok.EqualsAndHashCode;
 public class BizException extends RuntimeException {
 
 	/**
+	 * http状态
+	 */
+	private static final List<Integer> HTTP_STATUSES =
+			Arrays.asList(HttpConstant.INTERNAL_SERVER_ERROR, HttpConstant.SERVICE_UNAVAILABLE);
+
+
+	/**
 	 * 基本枚举
 	 */
 	private ErrorEnum errorEnum;
@@ -22,17 +34,21 @@ public class BizException extends RuntimeException {
 	/**
 	 * 子消息
 	 */
-	private String[] subMessage;
+	private Object[] subMessage;
 
 	/**
 	 * 业务异常
 	 *
-	 * @param errorEnum   基本枚举
+	 * @param errorEnum  基本枚举
 	 * @param subMessage 子消息
 	 */
-	public BizException(ErrorEnum errorEnum, String... subMessage) {
+	public BizException(ErrorEnum errorEnum, Object... subMessage) {
 		super(errorEnum.getDescription());
 		this.errorEnum = errorEnum;
 		this.subMessage = subMessage;
+	}
+
+	public String getResult() {
+		return HTTP_STATUSES.contains(this.errorEnum.getCode()) ? CommConstant.Y : CommConstant.N;
 	}
 }

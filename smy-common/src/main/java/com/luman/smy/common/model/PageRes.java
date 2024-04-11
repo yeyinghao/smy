@@ -5,7 +5,7 @@
 
 package com.luman.smy.common.model;
 
-import com.luman.smy.common.model.base.RES;
+import com.luman.smy.common.base.RES;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

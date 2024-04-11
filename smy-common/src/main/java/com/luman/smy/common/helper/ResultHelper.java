@@ -85,7 +85,7 @@ public class ResultHelper<T> {
 	 * @param subMsg    子的错误消息
 	 * @return {@link ResultHelper}<{@link T}>
 	 */
-	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String... subMsg) {
+	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, Object... subMsg) {
 		ResultHelper<T> resultHelper = new ResultHelper<>();
 		resultHelper.code = errorEnum.getCode();
 		resultHelper.resCode = errorEnum.name();

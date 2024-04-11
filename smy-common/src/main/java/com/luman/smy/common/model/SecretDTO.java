@@ -12,9 +12,9 @@ import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luman.smy.common.constant.CommConstant;
-import com.luman.smy.common.model.base.DTO;
-import com.luman.smy.common.model.base.REQ;
-import com.luman.smy.common.model.base.RES;
+import com.luman.smy.common.base.DTO;
+import com.luman.smy.common.base.REQ;
+import com.luman.smy.common.base.RES;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
