@@ -15,12 +15,12 @@ public interface TaskService<T> {
 	 *
 	 * @return {@link List}<{@link T}>
 	 */
-	List<T> dataHandle();
+	List<T> datas();
 
 	/**
 	 * doHandle
 	 *
 	 * @param t t
 	 */
-	void doHandle(T t);
+	void handle(T t);
 }
