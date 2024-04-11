@@ -58,8 +58,7 @@ public class TaskTemplate {
 				} catch (Throwable e) {
 					printLog(e);
 				}
-				LoggerUtil.info(log, item);
-				XxlJobHelper.log(item.toString());
+				printLog(item);
 				taskResultDP.addFailNum();
 			});
 			return XxlJobHelper.handleSuccess(CommConstant.TASK_SUCC_MSG);
@@ -73,8 +72,22 @@ public class TaskTemplate {
 		return XxlJobHelper.handleFail(CommConstant.TASK_FAIL_MSG);
 	}
 
+	/**
+	 * 打印日志
+	 *
+	 * @param item 项
+	 */
+	private static <T> void printLog(T item) {
+		LoggerUtil.info(log, item);
+		XxlJobHelper.log(String.valueOf(item));
+	}
+
+	/**
+	 * 打印日志
+	 */
 	private static void printLog() {
 		XxlJobHelper.log(TRANCE_ID_APPEND_LOG_PATTERN, TraceIdUtil.getThreadTraceId());
+		LoggerUtil.info(log, "task start");
 	}
 
 	/**
@@ -95,15 +108,5 @@ public class TaskTemplate {
 	private static void printLog(Throwable e) {
 		LoggerUtil.error(log, e);
 		XxlJobHelper.log(e);
-	}
-
-	/**
-	 * 打印日志
-	 *
-	 * @param taskResultDP 任务结果dp
-	 */
-	private static void printLog(TaskResultDP taskResultDP) {
-		LoggerUtil.info(log, taskResultDP);
-		XxlJobHelper.log(taskResultDP.toString());
 	}
 }

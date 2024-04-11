@@ -71,7 +71,7 @@ public interface CommConstant extends BaseConstant {
 	/**
 	 * 线程池Executor默认
 	 */
-	String THREAD_POOL_EXECUTOR_DEFAULT = "threadPoolExecutor";
+	String THREAD_POOL_EXECUTOR_DEFAULT = "smy";
 
 	/**
 	 * 跨域最大时间 3600 * 24
