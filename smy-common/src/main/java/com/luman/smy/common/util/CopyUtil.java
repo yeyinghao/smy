@@ -6,10 +6,10 @@ package com.luman.smy.common.util;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
+import com.luman.smy.common.function.CopyCallBack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 
@@ -40,7 +40,7 @@ public class CopyUtil {
 	 * @param callBack 回调函数
 	 * @return {@link T}
 	 */
-	public static <S, T> T copy(S source, Supplier<T> target, BiFunction<S, T, T> callBack) {
+	public static <S, T> T copy(S source, Supplier<T> target, CopyCallBack<S, T> callBack) {
 		if (null == source) {
 			return null;
 		}
@@ -48,7 +48,7 @@ public class CopyUtil {
 		BeanUtil.copyProperties(source, t);
 		if (callBack != null) {
 			// 回调
-			callBack.apply(source, t);
+			callBack.callBack(source, t);
 		}
 		return t;
 	}
@@ -72,7 +72,7 @@ public class CopyUtil {
 	 * @param callBack 回调函数
 	 * @return {@link List}<{@link T}>
 	 */
-	public static <S, T> List<T> copyList(List<S> sources, Supplier<T> target, BiFunction<S, T, T> callBack) {
+	public static <S, T> List<T> copyList(List<S> sources, Supplier<T> target, CopyCallBack<S, T> callBack) {
 		if (CollectionUtil.isEmpty(sources)) {
 			return new ArrayList<>();
 		}
@@ -82,7 +82,7 @@ public class CopyUtil {
 			BeanUtil.copyProperties(source, t);
 			if (callBack != null) {
 				// 回调
-				callBack.apply(source, t);
+				callBack.callBack(source, t);
 			}
 			list.add(t);
 		}

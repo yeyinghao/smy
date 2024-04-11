@@ -9,7 +9,7 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.util.IdUtil;
-import com.luman.smy.file.enums.FileTypeEnum;
+import com.luman.smy.common.enums.FileTypeEnum;
 
 import java.time.LocalDateTime;
 

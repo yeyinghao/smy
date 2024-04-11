@@ -3,9 +3,8 @@
  * 2022.1 - 2023.12
  */
 
-package com.luman.smy.file.enums;
+package com.luman.smy.common.enums;
 
-import com.luman.smy.common.enums.BaseEnum;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
