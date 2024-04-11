@@ -3,7 +3,7 @@ package com.luman.smy.common.template.impl;
 import com.luman.smy.common.constant.LoggerConstant;
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.template.ExecuteTemplate;
-import com.luman.smy.common.template.WebTemplate;
+import com.luman.smy.common.template.RestTemplate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 @Component
 @RequiredArgsConstructor
 @Slf4j(topic = LoggerConstant.REST_MONITOR_LOGGER)
-public class RestTemplateImpl implements WebTemplate {
+public class RestTemplateImpl implements RestTemplate {
 
 	/**
 	 * 执行模板
