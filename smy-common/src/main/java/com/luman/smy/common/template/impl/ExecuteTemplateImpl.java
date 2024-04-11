@@ -10,6 +10,7 @@ import com.luman.smy.common.util.TimeUtil;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 @Component
@@ -32,7 +33,7 @@ public class ExecuteTemplateImpl implements ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(logger, baseEnum, res, result, errorEnum, subMsg, objs, TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(logger, baseEnum, res, result, errorEnum, subMsg, Arrays.asList(objs), TimeUtil.getCostTime(startTime));
 		}
 	}
 
@@ -51,7 +52,7 @@ public class ExecuteTemplateImpl implements ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(logger, baseEnum, result, errorEnum, subMsg, objs, TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(logger, baseEnum, result, errorEnum, subMsg, Arrays.asList(objs), TimeUtil.getCostTime(startTime));
 		}
 	}
 }
