@@ -36,71 +36,75 @@ public class CacheServiceImpl implements CacheService {
 
 	@Override
 	public <T> T get(String key) {
-		return cacheClient.get(redissonConfig.getRealKey(key));
+		return cacheClient.get(getRealKey(key));
 	}
 
 	@Override
 	public <T> void save(String key, T value) {
-		cacheClient.save(redissonConfig.getRealKey(key), value);
+		cacheClient.save(getRealKey(key), value);
 	}
 
 	@Override
 	public <T> void saveExpire(String key, T value, long expired) {
-		cacheClient.saveExpire(redissonConfig.getRealKey(key), value, expired);
+		cacheClient.saveExpire(getRealKey(key), value, expired);
 	}
 
 	@Override
 	public <T> boolean saveIfAbsent(String key, T value) {
-		return cacheClient.saveIfAbsent(redissonConfig.getRealKey(key), value);
+		return cacheClient.saveIfAbsent(getRealKey(key), value);
 	}
 
 	@Override
 	public <T> boolean saveIfAbsentExpire(String key, T value, long expired) {
-		return cacheClient.saveIfAbsentExpire(redissonConfig.getRealKey(key), value, expired);
+		return cacheClient.saveIfAbsentExpire(getRealKey(key), value, expired);
 	}
 
 	@Override
-	public void remove(String key) {
-		cacheClient.remove(redissonConfig.getRealKey(key));
+	public void delete(String key) {
+		cacheClient.delete(getRealKey(key));
 	}
 
 	@Override
-	public boolean exists(String key) {
-		return cacheClient.exists(redissonConfig.getRealKey(key));
+	public boolean isExists(String key) {
+		return cacheClient.isExists(getRealKey(key));
 	}
 
 	@Override
-	public <T> RList<T> getRedisList(String key) {
-		return cacheClient.getRedisList(redissonConfig.getRealKey(key));
+	public <T> RList<T> getList(String key) {
+		return cacheClient.getList(getRealKey(key));
 	}
 
 	@Override
-	public <K, V> RMapCache<K, V> getRedisMapCache(String key) {
-		return cacheClient.getRedisMapCache(redissonConfig.getRealKey(key));
+	public <K, V> RMapCache<K, V> getMapCache(String key) {
+		return cacheClient.getMapCache(getRealKey(key));
 	}
 
 	@Override
-	public <K, V> RMap<K, V> getRedisMap(String key) {
-		return cacheClient.getRedisMap(redissonConfig.getRealKey(key));
+	public <K, V> RMap<K, V> getMap(String key) {
+		return cacheClient.getMap(getRealKey(key));
 	}
 
 	@Override
-	public <T> RSet<T> getRedisSet(String key) {
-		return cacheClient.getRedisSet(redissonConfig.getRealKey(key));
+	public <T> RSet<T> getSet(String key) {
+		return cacheClient.getSet(getRealKey(key));
 	}
 
 	@Override
-	public <T> RScoredSortedSet<T> getRedisScoredSortedSet(String key) {
-		return cacheClient.getRedisScoredSortedSet(redissonConfig.getRealKey(key));
+	public <T> RScoredSortedSet<T> getScoredSortedSet(String key) {
+		return cacheClient.getScoredSortedSet(getRealKey(key));
 	}
 
 	@Override
-	public RLock getRedisLock(String key) {
-		return cacheClient.getRedisLock(redissonConfig.getRealKey(key));
+	public RLock getLock(String key) {
+		return cacheClient.getLock(getRealKey(key));
 	}
 
 	@Override
 	public long remainTimeToLive(String key) {
-		return cacheClient.remainTimeToLive(redissonConfig.getRealKey(key)) / 1000;
+		return cacheClient.remainTimeToLive(getRealKey(key)) / 1000;
+	}
+
+	private String getRealKey(String key) {
+		return redissonConfig.getRealKey(key);
 	}
 }

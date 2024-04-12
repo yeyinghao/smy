@@ -86,56 +86,56 @@ public class CacheClientImpl implements CacheClient {
 	}
 
 	@Override
-	public void remove(String key) {
+	public void delete(String key) {
 		executeTemplate.execute(log, CalEnum.GET, () -> {
 			redissonClient.getBucket(key).delete();
 		}, key);
 	}
 
 	@Override
-	public boolean exists(String key) {
+	public boolean isExists(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getBucket(key).isExists();
 		}, key);
 	}
 
 	@Override
-	public <T> RList<T> getRedisList(String key) {
+	public <T> RList<T> getList(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getList(key);
 		}, key);
 	}
 
 	@Override
-	public <K, V> RMapCache<K, V> getRedisMapCache(String key) {
+	public <K, V> RMapCache<K, V> getMapCache(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getMapCache(key);
 		}, key);
 	}
 
 	@Override
-	public <K, V> RMap<K, V> getRedisMap(String key) {
+	public <K, V> RMap<K, V> getMap(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getMap(key);
 		}, key);
 	}
 
 	@Override
-	public <T> RSet<T> getRedisSet(String key) {
+	public <T> RSet<T> getSet(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getSet(key);
 		}, key);
 	}
 
 	@Override
-	public <T> RScoredSortedSet<T> getRedisScoredSortedSet(String key) {
+	public <T> RScoredSortedSet<T> getScoredSortedSet(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getScoredSortedSet(key);
 		}, key);
 	}
 
 	@Override
-	public RLock getRedisLock(String key) {
+	public RLock getLock(String key) {
 		return executeTemplate.execute(log, CalEnum.GET, () -> {
 			return redissonClient.getLock(key);
 		}, key);

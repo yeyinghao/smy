@@ -72,7 +72,7 @@ public interface CacheService {
 	 *
 	 * @param key 关键
 	 */
-	void remove(String key);
+	void delete(String key);
 
 	/**
 	 * 存在
@@ -80,7 +80,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return boolean
 	 */
-	boolean exists(String key);
+	boolean isExists(String key);
 
 	/**
 	 * 获取redis列表
@@ -88,7 +88,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RList}<{@link T}>
 	 */
-	<T> RList<T> getRedisList(String key);
+	<T> RList<T> getList(String key);
 
 	/**
 	 * 获取redis映射缓存
@@ -96,7 +96,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RMapCache}<{@link K}, {@link V}>
 	 */
-	<K, V> RMapCache<K, V> getRedisMapCache(String key);
+	<K, V> RMapCache<K, V> getMapCache(String key);
 
 	/**
 	 * 获取redis地图
@@ -104,7 +104,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RMap}<{@link K}, {@link V}>
 	 */
-	<K, V> RMap<K, V> getRedisMap(String key);
+	<K, V> RMap<K, V> getMap(String key);
 
 	/**
 	 * 设置redis
@@ -112,7 +112,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RSet}<{@link T}>
 	 */
-	<T> RSet<T> getRedisSet(String key);
+	<T> RSet<T> getSet(String key);
 
 	/**
 	 * 得到redis评分排序集
@@ -120,7 +120,7 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RScoredSortedSet}<{@link T}>
 	 */
-	<T> RScoredSortedSet<T> getRedisScoredSortedSet(String key);
+	<T> RScoredSortedSet<T> getScoredSortedSet(String key);
 
 	/**
 	 * 获取redis锁
@@ -128,5 +128,5 @@ public interface CacheService {
 	 * @param key 关键
 	 * @return {@link RLock}
 	 */
-	RLock getRedisLock(String key);
+	RLock getLock(String key);
 }

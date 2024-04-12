@@ -106,8 +106,8 @@ public class LockTmeplateImpl implements LockTmeplate {
 	 */
 	private RLock getRLock(BaseEnum baseEnum, Object bizId) {
 		if (Objects.isNull(bizId)) {
-			return cacheService.getRedisLock(baseEnum.name());
+			return cacheService.getLock(baseEnum.name());
 		}
-		return cacheService.getRedisLock(baseEnum.name() + bizId);
+		return cacheService.getLock(baseEnum.name() + bizId);
 	}
 }
