@@ -1,10 +1,9 @@
 package com.luman.smy.dal.service;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.luman.smy.common.model.BaseDP;
 import com.luman.smy.common.model.PageReq;
 import com.luman.smy.common.model.PageRes;
@@ -20,7 +19,7 @@ import java.util.stream.Collectors;
  * @author yeyinghao
  * @date 2024/04/02
  */
-public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extends ServiceImpl<BaseMapper<P>, P> {
+public interface DataService<P extends BasePO, D extends BaseDP> extends IService<P> {
 
 	/**
 	 * 转换成Po
@@ -28,7 +27,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param domainObject 域对象
 	 * @return {@link P}
 	 */
-	protected abstract P convertToPO(D domainObject);
+	P convertToPO(D domainObject);
 
 	/**
 	 * 转换来DO
@@ -36,7 +35,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param persistenceObject 持久化对象
 	 * @return {@link D}
 	 */
-	protected abstract D convertToDO(P persistenceObject);
+	D convertToDO(P persistenceObject);
 
 	/**
 	 * 转换为DOs
@@ -44,7 +43,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param persistenceObjects 持久化对象
 	 * @return {@link List}<{@link D}>
 	 */
-	protected List<D> convertToDOs(List<P> persistenceObjects) {
+	default List<D> convertToDOs(List<P> persistenceObjects) {
 		if (CollectionUtil.isEmpty(persistenceObjects)) {
 			return CollectionUtil.newArrayList();
 		}
@@ -57,7 +56,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param domainObjects 域对象
 	 * @return {@link List}<{@link P}>
 	 */
-	protected List<P> convertToPOs(List<D> domainObjects) {
+	default List<P> convertToPOs(List<D> domainObjects) {
 		if (CollectionUtil.isEmpty(domainObjects)) {
 			return CollectionUtil.newArrayList();
 		}
@@ -69,7 +68,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param entity 数据库领域对象
 	 */
-	public void save(D entity) {
+	default void save(D entity) {
 		P po = convertToPO(entity);
 		save(po);
 		entity.setId(po.getId());
@@ -80,7 +79,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param entities 数据库领域对象
 	 */
-	public void saveBatch(List<D> entities) {
+	default void saveBatch(List<D> entities) {
 		saveBatch(convertToPOs(entities));
 	}
 
@@ -89,7 +88,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param id 主键id
 	 */
-	public void deleteById(Long id) {
+	default void deleteById(Long id) {
 		lambdaUpdate().eq(P::getId, id).update();
 	}
 
@@ -98,7 +97,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param ids 主键id列表
 	 */
-	public void deleteByIds(List<Long> ids) {
+	default void deleteByIds(List<Long> ids) {
 		lambdaUpdate().in(P::getId, ids).remove();
 	}
 
@@ -107,7 +106,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param entity 数据库领域对象
 	 */
-	public void updateById(D entity) {
+	default void updateById(D entity) {
 		lambdaUpdate().eq(P::getId, entity.getId()).update(convertToPO(entity));
 	}
 
@@ -116,7 +115,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 *
 	 * @param id 主键id
 	 */
-	public D findById(Long id) {
+	default D findById(Long id) {
 		P entity = lambdaQuery().eq(P::getId, id).one();
 		return convertToDO(entity);
 	}
@@ -124,7 +123,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	/**
 	 * 查询所有
 	 */
-	public List<D> findAll() {
+	default List<D> findAll() {
 		List<P> list = lambdaQuery().list();
 		return convertToDOs(list);
 	}
@@ -135,7 +134,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param ids 主键id列表
 	 * @return {@link List}<{@link D}>
 	 */
-	public List<D> findByIds(List<Long> ids) {
+	default List<D> findByIds(List<Long> ids) {
 		List<P> list = lambdaQuery().in(P::getId, ids).list();
 		return convertToDOs(list);
 	}
@@ -146,7 +145,7 @@ public abstract class BaseDataService<P extends BasePO, D extends BaseDP> extend
 	 * @param req 请求
 	 * @return {@link PageRes}<{@link D}>
 	 */
-	public PageRes<D> listByPage(PageReq req) {
+	default PageRes<D> listByPage(PageReq req) {
 		IPage<P> page = new Page<>(req.getPageIndex(), req.getPageSize());
 		lambdaQuery().page(page);
 		return PageUtil.buildPage(page, convertToDOs(page.getRecords()));
