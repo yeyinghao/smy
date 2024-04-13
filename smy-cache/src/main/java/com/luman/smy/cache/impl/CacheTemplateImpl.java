@@ -1,6 +1,6 @@
 package com.luman.smy.cache.impl;
 
-import com.luman.smy.cache.CacheTmeplate;
+import com.luman.smy.cache.CacheTemplate;
 import com.luman.smy.common.constant.LoggerConstant;
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.template.ExecuteTemplate;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 @Component
 @Slf4j(topic = LoggerConstant.CAL_MONITOR_LOGGER)
 @RequiredArgsConstructor
-public class CacheTmeplateImpl implements CacheTmeplate {
+public class CacheTemplateImpl implements CacheTemplate {
 
 	/**
 	 * 执行模板

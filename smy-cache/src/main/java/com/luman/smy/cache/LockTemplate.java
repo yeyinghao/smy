@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author yeyinghao
  * @date 2024/04/11
  */
-public interface LockTmeplate {
+public interface LockTemplate {
 
 	/**
 	 * 锁

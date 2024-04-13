@@ -6,11 +6,11 @@
 package com.luman.smy.dal.util;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.luman.smy.common.function.CopyCallBack;
 import com.luman.smy.common.model.PageRes;
 import com.luman.smy.common.util.CopyUtil;
 
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 /**
@@ -49,10 +49,10 @@ public class PageUtil {
 	 *
 	 * @param page     页面
 	 * @param target   目标
-	 * @param callBack 回调
+	 * @param biConsumer 回调
 	 * @return {@link PageRes}<{@link T}>
 	 */
-	public static <S, T> PageRes<T> buildPage(PageRes<S> page, Supplier<T> target, CopyCallBack<S, T> callBack) {
-		return new PageRes<>(page.getPageIndex(), page.getPageSize(), page.getTotalSize(), CopyUtil.copyList(page.getRecords(), target, callBack));
+	public static <S, T> PageRes<T> buildPage(PageRes<S> page, Supplier<T> target, BiConsumer<S, T> biConsumer) {
+		return new PageRes<>(page.getPageIndex(), page.getPageSize(), page.getTotalSize(), CopyUtil.copyList(page.getRecords(), target, biConsumer));
 	}
 }

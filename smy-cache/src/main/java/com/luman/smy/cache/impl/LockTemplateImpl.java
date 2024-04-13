@@ -1,7 +1,7 @@
 package com.luman.smy.cache.impl;
 
 import com.luman.smy.cache.CacheService;
-import com.luman.smy.cache.LockTmeplate;
+import com.luman.smy.cache.LockTemplate;
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.enums.CommErrorEnum;
 import com.luman.smy.common.exception.Assert;
@@ -20,7 +20,7 @@ import java.util.function.Supplier;
  */
 @Component
 @RequiredArgsConstructor
-public class LockTmeplateImpl implements LockTmeplate {
+public class LockTemplateImpl implements LockTemplate {
 
 	/**
 	 * 缓存服务
