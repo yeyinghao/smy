@@ -24,43 +24,43 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	/**
 	 * 转换成Po
 	 *
-	 * @param domainObject 域对象
+	 * @param dp 域对象
 	 * @return {@link P}
 	 */
-	P convertToPO(D domainObject);
+	P convertToPO(D dp);
 
 	/**
 	 * 转换来DO
 	 *
-	 * @param persistenceObject 持久化对象
+	 * @param po 持久化对象
 	 * @return {@link D}
 	 */
-	D convertToDO(P persistenceObject);
+	D convertToDO(P po);
 
 	/**
 	 * 转换为DOs
 	 *
-	 * @param persistenceObjects 持久化对象
+	 * @param pos 持久化对象
 	 * @return {@link List}<{@link D}>
 	 */
-	default List<D> convertToDOs(List<P> persistenceObjects) {
-		if (CollectionUtil.isEmpty(persistenceObjects)) {
+	default List<D> convertToDOs(List<P> pos) {
+		if (CollectionUtil.isEmpty(pos)) {
 			return CollectionUtil.newArrayList();
 		}
-		return persistenceObjects.stream().map(this::convertToDO).collect(Collectors.toList());
+		return pos.stream().map(this::convertToDO).collect(Collectors.toList());
 	}
 
 	/**
 	 * 转换为POs
 	 *
-	 * @param domainObjects 域对象
+	 * @param dos 域对象
 	 * @return {@link List}<{@link P}>
 	 */
-	default List<P> convertToPOs(List<D> domainObjects) {
-		if (CollectionUtil.isEmpty(domainObjects)) {
+	default List<P> convertToPOs(List<D> dos) {
+		if (CollectionUtil.isEmpty(dos)) {
 			return CollectionUtil.newArrayList();
 		}
-		return domainObjects.stream().map(this::convertToPO).collect(Collectors.toList());
+		return dos.stream().map(this::convertToPO).collect(Collectors.toList());
 	}
 
 	/**
