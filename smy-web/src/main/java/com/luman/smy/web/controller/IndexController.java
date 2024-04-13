@@ -23,7 +23,7 @@ public class IndexController {
 	 *
 	 * @return {@link ResultHelper}<{@link Boolean}>
 	 */
-	@GetMapping
+	@GetMapping("/index")
 	public ResultHelper<String> index() {
 		return ResultHelper.of("service is running");
 	}
