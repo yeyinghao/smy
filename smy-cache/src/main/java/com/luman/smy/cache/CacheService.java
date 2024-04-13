@@ -47,7 +47,7 @@ public interface CacheService {
 	 * @param value 缓存值
 	 * @return boolean
 	 */
-	<T> boolean saveIfAbsent(String key, T value);
+	<T> boolean trySave(String key, T value);
 
 	/**
 	 * 如果没有，保存字符串过期
@@ -57,7 +57,7 @@ public interface CacheService {
 	 * @param expired 缓存过期时间
 	 * @return boolean
 	 */
-	<T> boolean saveIfAbsentExpire(String key, T value, long expired);
+	<T> boolean trySaveExpire(String key, T value, long expired);
 
 	/**
 	 * 删除

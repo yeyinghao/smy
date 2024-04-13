@@ -50,13 +50,13 @@ public class CacheServiceImpl implements CacheService {
 	}
 
 	@Override
-	public <T> boolean saveIfAbsent(String key, T value) {
-		return cacheClient.saveIfAbsent(getRealKey(key), value);
+	public <T> boolean trySave(String key, T value) {
+		return cacheClient.trySave(getRealKey(key), value);
 	}
 
 	@Override
-	public <T> boolean saveIfAbsentExpire(String key, T value, long expired) {
-		return cacheClient.saveIfAbsentExpire(getRealKey(key), value, expired);
+	public <T> boolean trySaveExpire(String key, T value, long expired) {
+		return cacheClient.trySaveExpire(getRealKey(key), value, expired);
 	}
 
 	@Override
