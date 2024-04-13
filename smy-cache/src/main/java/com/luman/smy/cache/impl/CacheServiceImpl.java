@@ -100,7 +100,7 @@ public class CacheServiceImpl implements CacheService {
 	}
 
 	@Override
-	public long remainTimeToLive(String key) {
+	public long remainTimeToLiveSecond(String key) {
 		return cacheClient.remainTimeToLive(getRealKey(key)) / 1000;
 	}
 

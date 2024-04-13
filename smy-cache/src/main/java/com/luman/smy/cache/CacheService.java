@@ -41,14 +41,6 @@ public interface CacheService {
 	<T> void saveExpire(String key, T value, long expired);
 
 	/**
-	 * 获取key过期时间(秒)
-	 *
-	 * @param key key
-	 * @return long
-	 */
-	long remainTimeToLive(String key);
-
-	/**
 	 * 如果没有则保存字符串
 	 *
 	 * @param key   缓存key
@@ -129,4 +121,12 @@ public interface CacheService {
 	 * @return {@link RLock}
 	 */
 	RLock getLock(String key);
+
+	/**
+	 * 获取key过期时间(秒)
+	 *
+	 * @param key key
+	 * @return long
+	 */
+	long remainTimeToLiveSecond(String key);
 }
