@@ -1,9 +1,9 @@
-package com.luman.smy.file.mananer;
+package com.luman.smy.web.manager;
 
-import com.luman.smy.file.model.req.GetFileDownloadUrlReq;
-import com.luman.smy.file.model.req.GetUploadFileUrlReq;
-import com.luman.smy.file.model.req.UploadFileReq;
-import com.luman.smy.file.model.vo.GetUploadFileUrlVO;
+import com.luman.smy.web.model.file.req.GetFileDownloadUrlReq;
+import com.luman.smy.web.model.file.req.GetUploadFileUrlReq;
+import com.luman.smy.web.model.file.req.UploadFileReq;
+import com.luman.smy.web.model.file.vo.GetUploadFileUrlVO;
 
 import java.io.InputStream;
 

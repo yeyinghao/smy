@@ -3,7 +3,7 @@
  * 2022.1 - 2024.3
  */
 
-package com.luman.smy.file.model.req;
+package com.luman.smy.web.model.file.req;
 
 
 import lombok.Data;

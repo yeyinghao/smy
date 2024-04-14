@@ -8,10 +8,9 @@ package com.luman.smy.file.impl;
 import com.luman.smy.common.util.LoggerUtil;
 import com.luman.smy.file.FileClient;
 import com.luman.smy.file.FileService;
-import com.luman.smy.file.model.FileStatDTO;
+import com.luman.smy.file.model.FileStatInfo;
 import io.minio.StatObjectResponse;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -56,9 +55,9 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public FileStatDTO statObject(String objectName) {
+	public FileStatInfo statObject(String objectName) {
 		StatObjectResponse statObjectResponse = fileClient.statObject(objectName);
-		return new FileStatDTO();
+		return new FileStatInfo();
 	}
 
 	@Override

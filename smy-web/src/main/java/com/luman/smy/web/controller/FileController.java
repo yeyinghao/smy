@@ -3,14 +3,14 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.smy.file.controller;
+package com.luman.smy.web.controller;
 
 import com.luman.smy.common.helper.ResultHelper;
-import com.luman.smy.file.mananer.FileManager;
-import com.luman.smy.file.model.req.GetFileDownloadUrlReq;
-import com.luman.smy.file.model.req.GetUploadFileUrlReq;
-import com.luman.smy.file.model.req.UploadFileReq;
-import com.luman.smy.file.model.vo.GetUploadFileUrlVO;
+import com.luman.smy.web.model.file.req.GetFileDownloadUrlReq;
+import com.luman.smy.web.model.file.req.GetUploadFileUrlReq;
+import com.luman.smy.web.model.file.req.UploadFileReq;
+import com.luman.smy.web.model.file.vo.GetUploadFileUrlVO;
+import com.luman.smy.web.manager.FileManager;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;

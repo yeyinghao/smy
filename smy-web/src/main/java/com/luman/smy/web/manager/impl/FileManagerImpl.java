@@ -1,13 +1,13 @@
-package com.luman.smy.file.mananer.impl;
+package com.luman.smy.web.manager.impl;
 
+import com.luman.smy.web.model.file.req.GetFileDownloadUrlReq;
+import com.luman.smy.web.model.file.req.GetUploadFileUrlReq;
+import com.luman.smy.web.model.file.req.UploadFileReq;
+import com.luman.smy.web.model.file.vo.GetUploadFileUrlVO;
 import com.luman.smy.file.FileService;
 import com.luman.smy.file.config.FileConfig;
-import com.luman.smy.file.mananer.FileManager;
-import com.luman.smy.file.model.req.GetFileDownloadUrlReq;
-import com.luman.smy.file.model.req.GetUploadFileUrlReq;
-import com.luman.smy.file.model.req.UploadFileReq;
-import com.luman.smy.file.model.vo.GetUploadFileUrlVO;
 import com.luman.smy.file.util.FileUtil;
+import com.luman.smy.web.manager.FileManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

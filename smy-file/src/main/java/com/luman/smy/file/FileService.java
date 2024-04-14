@@ -5,7 +5,7 @@
 
 package com.luman.smy.file;
 
-import com.luman.smy.file.model.FileStatDTO;
+import com.luman.smy.file.model.FileStatInfo;
 import io.minio.StatObjectResponse;
 
 import java.io.InputStream;
@@ -59,7 +59,7 @@ public interface FileService {
 	 * @param fileKey 对象名称
 	 * @return {@link StatObjectResponse}
 	 */
-	FileStatDTO statObject(String fileKey);
+	FileStatInfo statObject(String fileKey);
 
 	/**
 	 * 对象是否存在

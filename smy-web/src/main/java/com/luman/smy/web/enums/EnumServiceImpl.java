@@ -1,4 +1,4 @@
-package com.luman.smy.common.enums.impl;
+package com.luman.smy.web.enums;
 
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.util.LoggerUtil;
