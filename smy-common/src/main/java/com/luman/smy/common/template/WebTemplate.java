@@ -1,6 +1,7 @@
 package com.luman.smy.common.template;
 
 import com.luman.smy.common.enums.BaseEnum;
+import com.luman.smy.common.helper.ResultHelper;
 
 import java.util.function.Supplier;
 
@@ -20,7 +21,7 @@ public interface WebTemplate {
 	 * @param objs     obj
 	 * @return {@link R}
 	 */
-	<R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs);
+	<R> ResultHelper<R> execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs);
 
 	/**
 	 * 执行

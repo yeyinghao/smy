@@ -2,6 +2,7 @@ package com.luman.smy.common.template.impl;
 
 import com.luman.smy.common.constant.LoggerConstant;
 import com.luman.smy.common.enums.BaseEnum;
+import com.luman.smy.common.helper.ResultHelper;
 import com.luman.smy.common.template.ExecuteTemplate;
 import com.luman.smy.common.template.WebTemplate;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,8 @@ public class WebTemplateImpl implements WebTemplate {
 	private final ExecuteTemplate executeTemplate;
 
 	@Override
-	public <R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
-		return executeTemplate.execute(log, baseEnum, supplier, objs);
+	public <R> ResultHelper<R> execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
+		return executeTemplate.execute(log, baseEnum, () -> ResultHelper.of(supplier.get()), objs);
 	}
 
 	@Override
