@@ -89,7 +89,7 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	 * @param id 主键id
 	 */
 	default void deleteById(Long id) {
-		lambdaUpdate().eq(P::getId, id).update();
+		removeById(id);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	 * @param ids 主键id列表
 	 */
 	default void deleteByIds(List<Long> ids) {
-		lambdaUpdate().in(P::getId, ids).remove();
+		removeByIds(ids);
 	}
 
 	/**
@@ -107,7 +107,7 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	 * @param entity 数据库领域对象
 	 */
 	default void updateById(D entity) {
-		lambdaUpdate().eq(P::getId, entity.getId()).update(convertToPO(entity));
+		updateById(convertToPO(entity));
 	}
 
 	/**
@@ -116,16 +116,14 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	 * @param id 主键id
 	 */
 	default D findById(Long id) {
-		P entity = lambdaQuery().eq(P::getId, id).one();
-		return convertToDO(entity);
+		return convertToDO(getById(id));
 	}
 
 	/**
 	 * 查询所有
 	 */
 	default List<D> findAll() {
-		List<P> list = lambdaQuery().list();
-		return convertToDOs(list);
+		return convertToDOs(list());
 	}
 
 	/**
@@ -135,8 +133,7 @@ public interface DataService<P extends BasePO, D extends BaseDP> extends IServic
 	 * @return {@link List}<{@link D}>
 	 */
 	default List<D> findByIds(List<Long> ids) {
-		List<P> list = lambdaQuery().in(P::getId, ids).list();
-		return convertToDOs(list);
+		return convertToDOs(listByIds(ids));
 	}
 
 	/**
