@@ -47,8 +47,8 @@ public class PageUtil {
 	/**
 	 * 构建页面
 	 *
-	 * @param page     页面
-	 * @param target   目标
+	 * @param page       页面
+	 * @param target     目标
 	 * @param biConsumer 回调
 	 * @return {@link PageRes}<{@link T}>
 	 */
