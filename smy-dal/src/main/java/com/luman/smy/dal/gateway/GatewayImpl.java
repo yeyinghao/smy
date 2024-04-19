@@ -19,8 +19,9 @@ import java.util.List;
  * @author yeyinghao
  * @date 2024/04/19
  */
-public abstract class GatewayImpl<PO extends BasePO, DP extends BaseDP> extends ServiceImpl<BaseMapper<PO>, PO>
-		implements Gateway<DP>, DataConvert<PO, DP> {
+@SuppressWarnings("unused")
+public abstract class GatewayImpl<PO extends BasePO, DP extends BaseDP> extends ServiceImpl<BaseMapper<PO>, PO> implements Gateway<DP>, DataConvert<PO, DP> {
+
 	@Override
 	public void save(DP entity) {
 		PO po = convertToPO(entity);

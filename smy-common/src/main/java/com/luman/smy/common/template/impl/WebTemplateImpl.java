@@ -29,11 +29,13 @@ public class WebTemplateImpl implements WebTemplate {
 
 	@Override
 	public <R> ResultHelper<R> execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
-		return executeTemplate.execute(log, baseEnum, () -> ResultHelper.of(supplier.get()), objs);
+		R res = executeTemplate.execute(log, baseEnum, supplier, objs);
+		return ResultHelper.of(res);
 	}
 
 	@Override
-	public void execute(BaseEnum baseEnum, Runnable runnable, Object... objs) {
+	public ResultHelper<Boolean> executeSuccess(BaseEnum baseEnum, Runnable runnable, Object... objs) {
 		executeTemplate.execute(log, baseEnum, runnable, objs);
+		return ResultHelper.success();
 	}
 }

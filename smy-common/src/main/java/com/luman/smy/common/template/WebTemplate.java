@@ -29,6 +29,7 @@ public interface WebTemplate {
 	 * @param baseEnum 基础枚举
 	 * @param runnable 可运行
 	 * @param objs     obj
+	 * @return {@link ResultHelper}<{@link Boolean}>
 	 */
-	void execute(BaseEnum baseEnum, Runnable runnable, Object... objs);
+	ResultHelper<Boolean> executeSuccess(BaseEnum baseEnum, Runnable runnable, Object... objs);
 }
