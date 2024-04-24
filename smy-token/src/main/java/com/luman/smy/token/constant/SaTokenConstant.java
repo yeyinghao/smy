@@ -18,6 +18,11 @@ public interface SaTokenConstant extends BaseConstant {
 	/**
 	 * jwt用户idkey
 	 */
+	String JWT_ID_KEY = "id";
+
+	/**
+	 * jwt用户idkey
+	 */
 	String JWT_USER_ID_KEY = "userId";
 
 	/**

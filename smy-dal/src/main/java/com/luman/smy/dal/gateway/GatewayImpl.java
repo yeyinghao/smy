@@ -30,6 +30,13 @@ public abstract class GatewayImpl<PO extends BasePO, DP extends BaseDP> extends 
 	}
 
 	@Override
+	public void saveOrUpdate(DP entity) {
+		PO po = convertToPO(entity);
+		saveOrUpdate(po);
+		entity.setId(po.getId());
+	}
+
+	@Override
 	public void saveBatch(List<DP> entities) {
 		saveBatch(convertToPOs(entities));
 	}

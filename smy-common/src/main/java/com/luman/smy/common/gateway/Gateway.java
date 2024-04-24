@@ -22,6 +22,13 @@ public interface Gateway<DP extends BaseDP> {
 	void save(DP entity);
 
 	/**
+	 * 保存
+	 *
+	 * @param entity 数据库领域对象
+	 */
+	void saveOrUpdate(DP entity);
+
+	/**
 	 * 批量保存
 	 *
 	 * @param entities 数据库领域对象
