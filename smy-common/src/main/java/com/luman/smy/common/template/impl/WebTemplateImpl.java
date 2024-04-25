@@ -34,8 +34,7 @@ public class WebTemplateImpl implements WebTemplate {
 	}
 
 	@Override
-	public ResultHelper<Boolean> executeSuccess(BaseEnum baseEnum, Runnable runnable, Object... objs) {
+	public void execute(BaseEnum baseEnum, Runnable runnable, Object... objs) {
 		executeTemplate.execute(log, baseEnum, runnable, objs);
-		return ResultHelper.success();
 	}
 }
