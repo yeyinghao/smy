@@ -20,7 +20,7 @@ import java.util.List;
  * @date 2024/04/19
  */
 @SuppressWarnings("unused")
-public abstract class GatewayImpl<PO extends BasePO, DP extends BaseDP> extends ServiceImpl<BaseMapper<PO>, PO> implements Gateway<DP>, DataConvert<PO, DP> {
+public abstract class GatewayImpl<PO extends BasePO, DP extends BaseDP, M extends BaseMapper<PO>> extends ServiceImpl<M, PO> implements Gateway<DP>, DataConvert<PO, DP> {
 
 	@Override
 	public void save(DP entity) {
