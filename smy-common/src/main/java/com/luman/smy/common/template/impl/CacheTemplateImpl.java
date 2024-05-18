@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  * @author yeyinghao
  * @date 2024/04/19
  */
-@Component
+@Component("cacheTemplate")
 @Slf4j(topic = LoggerConstant.CAL_MONITOR_LOGGER)
 public class CacheTemplateImpl implements Template {
 

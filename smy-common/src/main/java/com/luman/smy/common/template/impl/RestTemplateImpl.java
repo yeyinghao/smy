@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  * @author yeyinghao
  * @date 2024/04/19
  */
-@Component
+@Component("restTemplate")
 @Slf4j(topic = LoggerConstant.REST_MONITOR_LOGGER)
 public class RestTemplateImpl implements Template {
 
