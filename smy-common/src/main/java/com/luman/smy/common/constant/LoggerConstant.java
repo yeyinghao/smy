@@ -19,7 +19,7 @@ public interface LoggerConstant extends BaseConstant {
 	String REST_MONITOR_LOGGER = "REST_MONITOR_LOGGER";
 
 	/**
-	 * api调用日志
+	 * web调用日志
 	 */
 	String WEB_MONITOR_LOGGER = "WEB_MONITOR_LOGGER";
 
@@ -34,7 +34,7 @@ public interface LoggerConstant extends BaseConstant {
 	String DAL_MONITOR_LOGGER = "DAL_MONITOR_LOGGER";
 
 	/**
-	 * 限流日志
+	 * 任务日志
 	 */
 	String TASK_MONITOR_LOGGER = "TASK_MONITOR_LOGGER";
 }

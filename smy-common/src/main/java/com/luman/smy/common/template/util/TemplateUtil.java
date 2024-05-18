@@ -1,29 +1,34 @@
-package com.luman.smy.common.template.impl;
+package com.luman.smy.common.template.util;
 
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.enums.ErrorEnum;
 import com.luman.smy.common.exception.BizException;
-import com.luman.smy.common.template.ExecuteTemplate;
 import com.luman.smy.common.util.LoggerUtil;
 import com.luman.smy.common.util.TimeUtil;
 import org.slf4j.Logger;
-import org.springframework.stereotype.Component;
 
 import java.util.function.Supplier;
 
 /**
- * 执行模板实现
+ * 模板工具类
  *
  * @author yeyinghao
- * @date 2024/04/19
+ * @date 2024/05/19
  */
-@Component
-public class ExecuteTemplateImpl implements ExecuteTemplate {
+public class TemplateUtil {
 
-	@Override
-	public <R> R execute(Logger logger, BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
+	/**
+	 * 执行
+	 *
+	 * @param logger   日志记录器
+	 * @param baseEnum 基础枚举
+	 * @param supplier 供应商
+	 * @param objs     obj
+	 * @return {@link R }
+	 */
+	public static <R> R execute(Logger logger, BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		ErrorEnum errorEnum = null;
@@ -43,8 +48,15 @@ public class ExecuteTemplateImpl implements ExecuteTemplate {
 		}
 	}
 
-	@Override
-	public void execute(Logger logger, BaseEnum baseEnum, Runnable runnable, Object... objs) {
+	/**
+	 * 执行
+	 *
+	 * @param logger   日志记录器
+	 * @param baseEnum 基础枚举
+	 * @param runnable 可运行
+	 * @param objs     obj
+	 */
+	public static void execute(Logger logger, BaseEnum baseEnum, Runnable runnable, Object... objs) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		ErrorEnum errorEnum = null;
@@ -61,4 +73,5 @@ public class ExecuteTemplateImpl implements ExecuteTemplate {
 			LoggerUtil.info(logger, baseEnum, result, errorEnum, subMsg, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
 		}
 	}
+
 }
