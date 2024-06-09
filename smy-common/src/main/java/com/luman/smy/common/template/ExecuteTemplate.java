@@ -30,10 +30,10 @@ public interface ExecuteTemplate {
 	 *
 	 * @param baseEnum 基础枚举
 	 * @param supplier 供应商
-	 * @param objs     obj
+	 * @param args     obj
 	 * @return {@link R}
 	 */
-	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
+	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... args) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		R res = null;
@@ -45,7 +45,7 @@ public interface ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, JSONUtil.toJsonStr(res), result, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, result, "args", JSONUtil.toJsonStr(args), "res", JSONUtil.toJsonStr(res), TimeUtil.getCostTime(startTime));
 		}
 	}
 
@@ -54,9 +54,9 @@ public interface ExecuteTemplate {
 	 *
 	 * @param baseEnum 基础枚举
 	 * @param runnable 可运行
-	 * @param objs     obj
+	 * @param args     obj
 	 */
-	default void execute(BaseEnum baseEnum, Runnable runnable, Object... objs) {
+	default void execute(BaseEnum baseEnum, Runnable runnable, Object... args) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		try {
@@ -66,7 +66,7 @@ public interface ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, result, "args", JSONUtil.toJsonStr(args), TimeUtil.getCostTime(startTime));
 		}
 	}
 }
