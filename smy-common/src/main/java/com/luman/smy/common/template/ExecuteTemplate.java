@@ -9,6 +9,8 @@ import com.luman.smy.common.util.LoggerUtil;
 import com.luman.smy.common.util.TimeUtil;
 import org.slf4j.Logger;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -38,14 +40,14 @@ public interface ExecuteTemplate {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		ErrorEnum errorEnum = null;
-		Object[] subMsg = null;
+		List<Object> subMsg = null;
 		R res = null;
 		try {
 			res = supplier.get();
 			result = CommConstant.Y;
 			return res;
 		} catch (BizException e) {
-			subMsg = e.getSubMessage();
+			subMsg = Arrays.asList(e.getSubMessage());
 			errorEnum = e.getErrorEnum();
 			result = e.getResult();
 			throw e;
@@ -65,12 +67,12 @@ public interface ExecuteTemplate {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		ErrorEnum errorEnum = null;
-		Object[] subMsg = null;
+		List<Object> subMsg = null;
 		try {
 			runnable.run();
 			result = CommConstant.Y;
 		} catch (BizException e) {
-			subMsg = e.getSubMessage();
+			subMsg = Arrays.asList(e.getSubMessage());
 			errorEnum = e.getErrorEnum();
 			result = e.getResult();
 			throw e;
