@@ -47,7 +47,7 @@ public class CacheClientImpl implements CacheClient {
 		return cacheExecuteTemplate.execute(CalEnum.GET, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			return bucket.get();
-		}, key, true);
+		});
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class CacheClientImpl implements CacheClient {
 		cacheExecuteTemplate.execute(CalEnum.SAVE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			bucket.set(value, redissonConfig.getDefaultExpiredSecond(), TimeUnit.SECONDS);
-		}, key, false);
+		});
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class CacheClientImpl implements CacheClient {
 		cacheExecuteTemplate.execute(CalEnum.SAVE_EXPIRE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			bucket.set(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
-		}, key, false);
+		});
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class CacheClientImpl implements CacheClient {
 		return cacheExecuteTemplate.execute(CalEnum.TRY_SAVE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
 			return bucket.trySet(value);
-		}, key, false);
+		});
 	}
 
 	@Override
@@ -79,70 +79,70 @@ public class CacheClientImpl implements CacheClient {
 		return cacheExecuteTemplate.execute(CalEnum.TRY_SAVE_EXPIRE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
 			return bucket.trySet(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
-		}, key, false);
+		});
 	}
 
 	@Override
 	public void delete(String key) {
 		cacheExecuteTemplate.execute(CalEnum.DELETE, () -> {
 			redissonClient.getBucket(key).delete();
-		}, key, false);
+		});
 	}
 
 	@Override
 	public boolean isExists(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.IS_EXISTS, () -> {
 			return redissonClient.getBucket(key).isExists();
-		}, key, true);
+		});
 	}
 
 	@Override
 	public <T> RList<T> getList(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_LIST, () -> {
 			return redissonClient.getList(key);
-		}, key, true);
+		});
 	}
 
 	@Override
 	public <K, V> RMapCache<K, V> getMapCache(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_MAP_CACHE, () -> {
 			return redissonClient.getMapCache(key);
-		}, key, true);
+		});
 	}
 
 	@Override
 	public <K, V> RMap<K, V> getMap(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_MAP, () -> {
 			return redissonClient.getMap(key);
-		}, key, true);
+		});
 	}
 
 	@Override
 	public <T> RSet<T> getSet(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_SET, () -> {
 			return redissonClient.getSet(key);
-		}, key, true);
+		});
 	}
 
 	@Override
 	public <T> RScoredSortedSet<T> getScoredSortedSet(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_SCORED_SORTED_SET, () -> {
 			return redissonClient.getScoredSortedSet(key);
-		}, key, true);
+		});
 	}
 
 	@Override
 	public RLock getLock(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.GET_LOCK, () -> {
 			return redissonClient.getLock(key);
-		}, key, false);
+		});
 	}
 
 	@Override
 	public long remainTimeToLive(String key) {
 		return cacheExecuteTemplate.execute(CalEnum.REMAIN_TIME_TO_LIVE, () -> {
 			return redissonClient.getKeys().remainTimeToLive(key);
-		}, key, false);
+		});
 	}
 
 	@PreDestroy

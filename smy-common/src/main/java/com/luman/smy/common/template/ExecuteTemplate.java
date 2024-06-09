@@ -1,6 +1,5 @@
 package com.luman.smy.common.template;
 
-import cn.hutool.json.JSONUtil;
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.enums.BaseEnum;
 import com.luman.smy.common.exception.BizException;
@@ -30,22 +29,19 @@ public interface ExecuteTemplate {
 	 *
 	 * @param baseEnum 基础枚举
 	 * @param supplier 供应商
-	 * @param args     obj
 	 * @return {@link R}
 	 */
-	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... args) {
+	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
-		R res = null;
 		try {
-			res = supplier.get();
 			result = CommConstant.Y;
-			return res;
+			return supplier.get();
 		} catch (BizException e) {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, "args", JSONUtil.toJsonStr(args), "res", JSONUtil.toJsonStr(res), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, result, TimeUtil.getCostTime(startTime));
 		}
 	}
 
@@ -54,9 +50,8 @@ public interface ExecuteTemplate {
 	 *
 	 * @param baseEnum 基础枚举
 	 * @param runnable 可运行
-	 * @param args     obj
 	 */
-	default void execute(BaseEnum baseEnum, Runnable runnable, Object... args) {
+	default void execute(BaseEnum baseEnum, Runnable runnable) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		try {
@@ -66,7 +61,7 @@ public interface ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, "args", JSONUtil.toJsonStr(args), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, result, TimeUtil.getCostTime(startTime));
 		}
 	}
 }
