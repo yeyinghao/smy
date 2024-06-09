@@ -3,14 +3,11 @@ package com.luman.smy.common.template;
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.enums.BaseEnum;
-import com.luman.smy.common.enums.ErrorEnum;
 import com.luman.smy.common.exception.BizException;
 import com.luman.smy.common.util.LoggerUtil;
 import com.luman.smy.common.util.TimeUtil;
 import org.slf4j.Logger;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -39,20 +36,16 @@ public interface ExecuteTemplate {
 	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier, Object... objs) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
-		ErrorEnum errorEnum = null;
-		List<Object> subMsg = null;
 		R res = null;
 		try {
 			res = supplier.get();
 			result = CommConstant.Y;
 			return res;
 		} catch (BizException e) {
-			subMsg = Arrays.asList(e.getSubMessage());
-			errorEnum = e.getErrorEnum();
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, JSONUtil.toJsonStr(res), result, errorEnum, subMsg, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, JSONUtil.toJsonStr(res), result, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
 		}
 	}
 
@@ -66,18 +59,14 @@ public interface ExecuteTemplate {
 	default void execute(BaseEnum baseEnum, Runnable runnable, Object... objs) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
-		ErrorEnum errorEnum = null;
-		List<Object> subMsg = null;
 		try {
 			runnable.run();
 			result = CommConstant.Y;
 		} catch (BizException e) {
-			subMsg = Arrays.asList(e.getSubMessage());
-			errorEnum = e.getErrorEnum();
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, errorEnum, subMsg, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(getLogger(), baseEnum, result, JSONUtil.toJsonStr(objs), TimeUtil.getCostTime(startTime));
 		}
 	}
 }
