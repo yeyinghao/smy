@@ -1,5 +1,6 @@
 package com.luman.smy.common.helper;
 
+import cn.hutool.core.util.StrUtil;
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.enums.CommErrorEnum;
 import com.luman.smy.common.enums.ErrorEnum;
@@ -7,9 +8,6 @@ import com.luman.smy.common.util.TraceIdUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * 结果辅助
@@ -85,17 +83,30 @@ public class ResultHelper<T> {
 	 * @param subMsg    子的错误消息
 	 * @return {@link ResultHelper}<{@link T}>
 	 */
-	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, Object... subMsg) {
+	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String subMsg) {
 		ResultHelper<T> resultHelper = new ResultHelper<>();
 		resultHelper.code = errorEnum.getCode();
 		resultHelper.resCode = errorEnum.name();
 		StringBuilder msg = new StringBuilder(errorEnum.getDescription());
-		if (Objects.nonNull(subMsg)) {
-			Arrays.asList(subMsg).forEach(item -> {
-				msg.append(CommConstant.DELIMITER).append(item);
-			});
+		if (StrUtil.isNotBlank(subMsg)) {
+			msg.append(CommConstant.DELIMITER).append(subMsg);
 		}
 		resultHelper.resMsg = msg.toString();
+		resultHelper.success = Boolean.FALSE;
+		return resultHelper;
+	}
+
+	/**
+	 * 失败
+	 *
+	 * @param errorEnum 错误枚举
+	 * @return {@link ResultHelper }<{@link T }>
+	 */
+	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum) {
+		ResultHelper<T> resultHelper = new ResultHelper<>();
+		resultHelper.code = errorEnum.getCode();
+		resultHelper.resCode = errorEnum.name();
+		resultHelper.resMsg = errorEnum.getDescription();
 		resultHelper.success = Boolean.FALSE;
 		return resultHelper;
 	}
