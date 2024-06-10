@@ -34,7 +34,7 @@ public class BizException extends RuntimeException {
 	/**
 	 * 子消息
 	 */
-	private Object[] subMessage;
+	private String subMessage;
 
 	/**
 	 * 业务异常
@@ -42,7 +42,7 @@ public class BizException extends RuntimeException {
 	 * @param errorEnum  基本枚举
 	 * @param subMessage 子消息
 	 */
-	public BizException(ErrorEnum errorEnum, Object... subMessage) {
+	public BizException(ErrorEnum errorEnum, String subMessage) {
 		super(errorEnum.getDescription());
 		this.errorEnum = errorEnum;
 		this.subMessage = subMessage;
