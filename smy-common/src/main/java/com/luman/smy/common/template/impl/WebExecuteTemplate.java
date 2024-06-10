@@ -17,11 +17,11 @@ import java.util.function.Supplier;
 @Slf4j(topic = LoggerConstant.WEB_MONITOR_LOGGER)
 public class WebExecuteTemplate {
 
-	public <R> ResultHelper<R> execute(BaseEnum baseEnum, Supplier<R> supplier) {
+	public static <R> ResultHelper<R> execute(BaseEnum baseEnum, Supplier<R> supplier) {
 		return ResultHelper.of(ExecuteTemplateUtil.execute(log, baseEnum, supplier));
 	}
 
-	public ResultHelper<Boolean> execute(BaseEnum baseEnum, Runnable runnable) {
+	public static ResultHelper<Boolean> execute(BaseEnum baseEnum, Runnable runnable) {
 		ExecuteTemplateUtil.execute(log, baseEnum, runnable);
 		return ResultHelper.success();
 	}
