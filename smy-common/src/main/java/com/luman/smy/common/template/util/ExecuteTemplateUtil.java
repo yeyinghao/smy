@@ -1,4 +1,4 @@
-package com.luman.smy.common.template;
+package com.luman.smy.common.template.util;
 
 import com.luman.smy.common.constant.CommConstant;
 import com.luman.smy.common.enums.BaseEnum;
@@ -15,14 +15,7 @@ import java.util.function.Supplier;
  * @author yeyinghao
  * @date 2024/04/11
  */
-public interface ExecuteTemplate {
-
-	/**
-	 * 获取日志记录器
-	 *
-	 * @return {@link Logger }
-	 */
-	Logger getLogger();
+public class ExecuteTemplateUtil {
 
 	/**
 	 * 执行
@@ -31,7 +24,7 @@ public interface ExecuteTemplate {
 	 * @param supplier 供应商
 	 * @return {@link R}
 	 */
-	default <R> R execute(BaseEnum baseEnum, Supplier<R> supplier) {
+	public static <R> R execute(Logger logger, BaseEnum baseEnum, Supplier<R> supplier) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		try {
@@ -41,7 +34,7 @@ public interface ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(logger, baseEnum, result, TimeUtil.getCostTime(startTime));
 		}
 	}
 
@@ -51,7 +44,7 @@ public interface ExecuteTemplate {
 	 * @param baseEnum 基础枚举
 	 * @param runnable 可运行
 	 */
-	default void execute(BaseEnum baseEnum, Runnable runnable) {
+	public static void execute(Logger logger, BaseEnum baseEnum, Runnable runnable) {
 		long startTime = System.currentTimeMillis();
 		String result = CommConstant.N;
 		try {
@@ -61,7 +54,7 @@ public interface ExecuteTemplate {
 			result = e.getResult();
 			throw e;
 		} finally {
-			LoggerUtil.info(getLogger(), baseEnum, result, TimeUtil.getCostTime(startTime));
+			LoggerUtil.info(logger, baseEnum, result, TimeUtil.getCostTime(startTime));
 		}
 	}
 }

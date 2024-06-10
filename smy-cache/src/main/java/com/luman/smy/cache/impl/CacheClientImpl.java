@@ -8,7 +8,7 @@ package com.luman.smy.cache.impl;
 import com.luman.smy.cache.CacheClient;
 import com.luman.smy.cache.config.CacheConfig;
 import com.luman.smy.cache.enums.CalEnum;
-import com.luman.smy.common.template.ExecuteTemplate;
+import com.luman.smy.common.template.impl.CalExecuteTemplate;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.*;
 import org.redisson.client.codec.StringCodec;
@@ -37,14 +37,9 @@ public class CacheClientImpl implements CacheClient {
 	 */
 	private final CacheConfig redissonConfig;
 
-	/**
-	 * 执行模板
-	 */
-	private final ExecuteTemplate cacheExecuteTemplate;
-
 	@Override
 	public <T> T get(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			return bucket.get();
 		});
@@ -52,7 +47,7 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public <T> void save(String key, T value) {
-		cacheExecuteTemplate.execute(CalEnum.SAVE, () -> {
+		CalExecuteTemplate.execute(CalEnum.SAVE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			bucket.set(value, redissonConfig.getDefaultExpiredSecond(), TimeUnit.SECONDS);
 		});
@@ -60,7 +55,7 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public <T> void saveExpire(String key, T value, long expired) {
-		cacheExecuteTemplate.execute(CalEnum.SAVE_EXPIRE, () -> {
+		CalExecuteTemplate.execute(CalEnum.SAVE_EXPIRE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key);
 			bucket.set(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
 		});
@@ -68,7 +63,7 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public <T> boolean trySave(String key, T value) {
-		return cacheExecuteTemplate.execute(CalEnum.TRY_SAVE, () -> {
+		return CalExecuteTemplate.execute(CalEnum.TRY_SAVE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
 			return bucket.trySet(value);
 		});
@@ -76,7 +71,7 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public <T> boolean trySaveExpire(String key, T value, long expired) {
-		return cacheExecuteTemplate.execute(CalEnum.TRY_SAVE_EXPIRE, () -> {
+		return CalExecuteTemplate.execute(CalEnum.TRY_SAVE_EXPIRE, () -> {
 			RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
 			return bucket.trySet(value, redissonConfig.getExpired(expired), TimeUnit.SECONDS);
 		});
@@ -84,63 +79,63 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public void delete(String key) {
-		cacheExecuteTemplate.execute(CalEnum.DELETE, () -> {
+		CalExecuteTemplate.execute(CalEnum.DELETE, () -> {
 			redissonClient.getBucket(key).delete();
 		});
 	}
 
 	@Override
 	public boolean isExists(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.IS_EXISTS, () -> {
+		return CalExecuteTemplate.execute(CalEnum.IS_EXISTS, () -> {
 			return redissonClient.getBucket(key).isExists();
 		});
 	}
 
 	@Override
 	public <T> RList<T> getList(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_LIST, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_LIST, () -> {
 			return redissonClient.getList(key);
 		});
 	}
 
 	@Override
 	public <K, V> RMapCache<K, V> getMapCache(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_MAP_CACHE, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_MAP_CACHE, () -> {
 			return redissonClient.getMapCache(key);
 		});
 	}
 
 	@Override
 	public <K, V> RMap<K, V> getMap(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_MAP, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_MAP, () -> {
 			return redissonClient.getMap(key);
 		});
 	}
 
 	@Override
 	public <T> RSet<T> getSet(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_SET, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_SET, () -> {
 			return redissonClient.getSet(key);
 		});
 	}
 
 	@Override
 	public <T> RScoredSortedSet<T> getScoredSortedSet(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_SCORED_SORTED_SET, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_SCORED_SORTED_SET, () -> {
 			return redissonClient.getScoredSortedSet(key);
 		});
 	}
 
 	@Override
 	public RLock getLock(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.GET_LOCK, () -> {
+		return CalExecuteTemplate.execute(CalEnum.GET_LOCK, () -> {
 			return redissonClient.getLock(key);
 		});
 	}
 
 	@Override
 	public long remainTimeToLive(String key) {
-		return cacheExecuteTemplate.execute(CalEnum.REMAIN_TIME_TO_LIVE, () -> {
+		return CalExecuteTemplate.execute(CalEnum.REMAIN_TIME_TO_LIVE, () -> {
 			return redissonClient.getKeys().remainTimeToLive(key);
 		});
 	}
