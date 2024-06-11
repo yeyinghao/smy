@@ -98,7 +98,7 @@ public class LoggerUtil {
 	 * @param e      e
 	 */
 	public static void info(Logger logger, BizException e) {
-		logger.info(getContentString(e.getErrorEnum(), Arrays.asList(e.getSubMessage())));
+		logger.info(getContentString(e.getErrorEnum(), Arrays.asList(e.getMessage())));
 	}
 
 	/**

@@ -73,7 +73,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(BizException.class)
 	public ResultHelper<String> bizExceptionHandler(BizException e) {
 		LoggerUtil.info(log, e);
-		return ResultHelper.fail(e.getErrorEnum(), e.getSubMessage());
+		return ResultHelper.fail(e.getErrorEnum(), e.getMessage());
 	}
 
 	/**

@@ -50,7 +50,7 @@ public class TaskTemplate {
 					taskResultDP.addSussNum();
 					return;
 				} catch (BizException e) {
-					XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getSubMessage());
+					XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getMessage());
 				} catch (Throwable e) {
 					XxlJobHelper.log(e);
 				}
@@ -59,7 +59,7 @@ public class TaskTemplate {
 			});
 			return XxlJobHelper.handleSuccess(CommConstant.TASK_SUCC_MSG);
 		} catch (BizException e) {
-			XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getSubMessage());
+			XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getMessage());
 		} catch (Throwable e) {
 			XxlJobHelper.log(e);
 		} finally {

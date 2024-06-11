@@ -80,16 +80,16 @@ public class ResultHelper<T> {
 	 * 失败
 	 *
 	 * @param errorEnum 错误枚举
-	 * @param subMsg    子的错误消息
+	 * @param message    子的错误消息
 	 * @return {@link ResultHelper}<{@link T}>
 	 */
-	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String subMsg) {
+	public static <T> ResultHelper<T> fail(ErrorEnum errorEnum, String message) {
 		ResultHelper<T> resultHelper = new ResultHelper<>();
 		resultHelper.code = errorEnum.getCode();
 		resultHelper.resCode = errorEnum.name();
 		StringBuilder msg = new StringBuilder(errorEnum.getDescription());
-		if (StrUtil.isNotBlank(subMsg)) {
-			msg.append(CommConstant.DELIMITER).append(subMsg);
+		if (StrUtil.isNotBlank(message)) {
+			msg.append(CommConstant.DELIMITER).append(message);
 		}
 		resultHelper.resMsg = msg.toString();
 		resultHelper.success = Boolean.FALSE;

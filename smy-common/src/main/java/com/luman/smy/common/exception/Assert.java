@@ -24,7 +24,7 @@ public class Assert {
 	/**
 	 * 抛出异常
 	 */
-	private static void throwEx(boolean condition, ErrorEnum errorCode, String subMessage) {
+	private static void throwEx(boolean condition, ErrorEnum errorCode, String... subMessage) {
 		if (condition) {
 			throw new BizException(errorCode, subMessage);
 		}
@@ -37,7 +37,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isTrue(boolean condition, ErrorEnum errorCode, String subMessage) {
+	public static void isTrue(boolean condition, ErrorEnum errorCode, String... subMessage) {
 		throwEx(!condition, errorCode, subMessage);
 	}
 
@@ -48,7 +48,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isFalse(boolean condition, ErrorEnum errorCode, String subMessage) {
+	public static void isFalse(boolean condition, ErrorEnum errorCode, String... subMessage) {
 		throwEx(condition, errorCode, subMessage);
 	}
 
@@ -59,7 +59,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notNull(Object obj, ErrorEnum errorCode, String subMessage) {
+	public static void notNull(Object obj, ErrorEnum errorCode, String... subMessage) {
 		throwEx(Objects.isNull(obj), errorCode, subMessage);
 	}
 
@@ -70,7 +70,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isNull(Object obj, ErrorEnum errorCode, String subMessage) {
+	public static void isNull(Object obj, ErrorEnum errorCode, String... subMessage) {
 		throwEx(Objects.nonNull(obj), errorCode, subMessage);
 	}
 
@@ -81,7 +81,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notBlank(String obj, ErrorEnum errorCode, String subMessage) {
+	public static void notBlank(String obj, ErrorEnum errorCode, String... subMessage) {
 		throwEx(StrUtil.isBlank(obj), errorCode, subMessage);
 	}
 
@@ -92,7 +92,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notEmpty(Iterable<?> collection, ErrorEnum errorCode, String subMessage) {
+	public static void notEmpty(Iterable<?> collection, ErrorEnum errorCode, String... subMessage) {
 		throwEx(CollUtil.isEmpty(collection), errorCode, subMessage);
 	}
 
@@ -103,7 +103,7 @@ public class Assert {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notEmpty(Map<?, ?> map, ErrorEnum errorCode, String subMessage) {
+	public static void notEmpty(Map<?, ?> map, ErrorEnum errorCode, String... subMessage) {
 		throwEx(MapUtil.isEmpty(map), errorCode, subMessage);
 	}
 }
