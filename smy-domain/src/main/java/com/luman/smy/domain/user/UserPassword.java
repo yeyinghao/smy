@@ -1,9 +1,8 @@
 package com.luman.smy.domain.user;
 
+import jakarta.validation.ValidationException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
-
-import javax.validation.ValidationException;
 
 /**
  * 用户密码
