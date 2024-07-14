@@ -23,7 +23,7 @@
         <mybatis-encrypt-version>1.2.0</mybatis-encrypt-version>
         <sa-token.version>1.37.0</sa-token.version>
         <hutool.version>5.8.20</hutool.version>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <mysql-connector.version>8.0.27</mysql-connector.version>
         <mybatis-plus.version>3.5.7</mybatis-plus.version>
         <pagehelper.version>1.4.1</pagehelper.version>
