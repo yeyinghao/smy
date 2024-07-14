@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+	<contextName>logback</contextName>
+	<!--  日志输出主目录	 -->
+	<property name="log.path" value="./logs"/>
+	<!--  日志最大保留天数	 -->
+	<property name="maxHistory" value="30"/>
+	<!--  日志单个文件最大大小	 -->
+	<property name="maxFileSize" value="10MB"/>
+	<!--  日志编码格式  -->
+	<property name="charset" value="UTF-8"/>
+	<!--  文件日志输出目录	 -->
+	<property name="FILE_LOG" value="smy"/>
+	<!--  日志渲染增强类  -->
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+	<!--  traceId增强渲染  -->
+	<conversionRule conversionWord="traceId" converterClass="com.luman.smy.infra.common.converter.LogTraceConverter"/>
+	<!-- 控制台日志打印格式 -->
+	<property name="CONSOLE_LOG_PATTERN"
+			  value="[%yellow(%date{yyyy-MM-dd HH:mm:ss})] [%highlight(%-5level)] [%cyan(%traceId)] [%magenta(%thread)] [%blue(%file:%line)] [%green(%logger)] : %.4000m%n"/>
+	<!-- 文件日志打印格式 -->
+	<property name="FILE_LOG_PATTERN" value="%d %-5level [%traceId] %logger[%line] - %msg%n"/>
+	<!--引用公共日志-->
+	<include resource="logback/smy-logback.xml"/>
+	<!--引用监控日志-->
+	<include resource="logback/monitor-logback.xml"/>
+
+	<!--环境日志等级配置-->
+	<springProfile name="dev,local,frp,k8s">
+		<root>
+			<appender-ref ref="CONSOLE_LOGGER_APPENDER"/>
+			<appender-ref ref="DEBUG_FILE_LOGGER_APPENDER"/>
+			<appender-ref ref="WARN_FILE_LOGGER_APPENDER"/>
+			<appender-ref ref="INFO_FILE_LOGGER_APPENDER"/>
+			<appender-ref ref="ERROR_FILE_LOGGER_APPENDER"/>
+		</root>
+	</springProfile>
+
+	<springProfile name="test,prod">
+		<root>
+			<appender-ref ref="INFO_FILE_LOGGER_APPENDER"/>
+			<appender-ref ref="ERROR_FILE_LOGGER_APPENDER"/>
+		</root>
+	</springProfile>
+</configuration>

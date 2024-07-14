@@ -1,0 +1,82 @@
+spring:
+  application:
+    name: myboot
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true
+
+nacos:
+  config:
+    #是否开启Nacos配置预加载
+    bootstrap:
+      enable: true
+      log:
+        enable: true
+    data-id: app
+    type: yaml
+    group: DEFAULT_GROUP
+    auto-refresh: true
+
+smy:
+  cache:
+    projectKeyPrefix: pms
+    cacheKeyPrefix: cache
+    ttlMillSecond:  1440000
+    maxIdleTimeMillSecond:  720000
+    defaultExpiredSecond: 300
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: local
+nacos:
+  config:
+    server-addr: master:8848
+    namespace: f9f183ff-76c8-4eae-bf80-2aba39f27edb
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: frp
+nacos:
+  config:
+    server-addr: nacos.frp.lumanyy.com:8848
+    namespace: dc995b0b-10c6-4594-a047-0f38a199bc27
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: k8s
+nacos:
+  config:
+    server-addr: cloud-nacos:8848
+    namespace: 88f8ae6f-adac-4376-95b2-bf0e96482c6c
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: test
+nacos:
+  config:
+    server-addr: nacos:8848
+    namespace: 0d66d810-6cd3-46cf-88a1-3ed22f2f4460
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: prod
+nacos:
+  config:
+    server-addr: nacos:8848
+    namespace: 673f561f-d533-4770-9840-ef7e2f09487c
