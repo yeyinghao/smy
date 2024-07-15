@@ -3,12 +3,12 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.smy.integration.satoken;
+package com.luman.smy.infra.integration.satoken;
 
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.collection.CollUtil;
-import com.luman.smy.integration.satoken.constant.SaTokenConstant;
+import com.luman.smy.infra.integration.satoken.constant.SaTokenConstant;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

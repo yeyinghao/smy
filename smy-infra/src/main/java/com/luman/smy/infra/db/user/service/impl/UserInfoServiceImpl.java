@@ -4,7 +4,7 @@ import com.luman.smy.infra.db.user.dataobject.UserInfoDO;
 import com.luman.smy.infra.db.user.mapper.UserInfoMapper;
 import com.luman.smy.infra.db.user.model.UserInfo;
 import com.luman.smy.infra.db.user.service.UserInfoService;
-import com.luman.smy.integration.dal.impl.CoreServiceImpl;
+import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service

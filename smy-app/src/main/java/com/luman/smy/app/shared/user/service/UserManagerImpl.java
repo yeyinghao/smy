@@ -1,11 +1,11 @@
-package com.luman.smy.app.user.service;
+package com.luman.smy.app.shared.user.service;
 
 import com.alibaba.cola.catchlog.CatchAndLog;
-import com.luman.smy.client.user.api.UserManager;
-import com.luman.smy.app.user.command.UserRegisterCmdExe;
-import com.luman.smy.app.user.command.query.UserInfoQueryExe;
-import com.luman.smy.client.user.dto.UserRegisterCmd;
-import com.luman.smy.client.user.dto.data.UserVO;
+import com.luman.smy.app.shared.user.command.UserRegisterCmdExe;
+import com.luman.smy.client.shared.api.UserManager;
+import com.luman.smy.app.shared.user.command.query.UserInfoQueryExe;
+import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
-package com.luman.smy.integration.dal.impl;
+package com.luman.smy.infra.integration.dal.impl;
 
-import com.luman.smy.integration.dal.CoreService;
-import com.luman.smy.integration.dal.convert.DataConvert;
-import com.luman.smy.integration.dal.model.BaseDP;
-import com.luman.smy.integration.dal.model.BaseDO;
+import com.luman.smy.infra.integration.dal.CoreService;
+import com.luman.smy.infra.integration.dal.convert.DataConvert;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
+import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

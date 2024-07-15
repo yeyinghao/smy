@@ -3,7 +3,7 @@
  * 2022.1 - 2024.3
  */
 
-package com.luman.smy.integration.excel.annotations;
+package com.luman.smy.infra.integration.excel.annotations;
 
 import com.luman.smy.infra.common.enums.BaseEnum;
 import lombok.Getter;

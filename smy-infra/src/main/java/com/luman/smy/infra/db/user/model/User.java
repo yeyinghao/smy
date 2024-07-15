@@ -1,6 +1,6 @@
 package com.luman.smy.infra.db.user.model;
 
-import com.luman.smy.integration.dal.model.BaseDP;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

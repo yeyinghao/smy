@@ -3,11 +3,11 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.integration.cache.impl;
+package com.luman.smy.infra.integration.cache.impl;
 
-import com.luman.smy.integration.cache.CacheClient;
-import com.luman.smy.integration.cache.CacheService;
-import com.luman.smy.integration.cache.config.CacheConfig;
+import com.luman.smy.infra.integration.cache.CacheClient;
+import com.luman.smy.infra.integration.cache.CacheService;
+import com.luman.smy.infra.integration.cache.config.CacheConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.*;

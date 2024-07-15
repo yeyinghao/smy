@@ -1,4 +1,4 @@
-package com.luman.smy.client.user.dto.data;
+package com.luman.smy.client.shared.dto.data;
 
 import lombok.Data;
 

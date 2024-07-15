@@ -1,10 +1,10 @@
-package com.luman.smy.integration.cache.impl;
+package com.luman.smy.infra.integration.cache.impl;
 
 import com.luman.smy.infra.common.enums.BaseEnum;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
 import com.luman.smy.infra.common.exception.SmyAssert;
-import com.luman.smy.integration.cache.CacheService;
-import com.luman.smy.integration.cache.LockTemplate;
+import com.luman.smy.infra.integration.cache.CacheService;
+import com.luman.smy.infra.integration.cache.LockTemplate;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RLock;
 import org.springframework.stereotype.Component;

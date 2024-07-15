@@ -1,10 +1,10 @@
-package com.luman.smy.app.user.command;
+package com.luman.smy.app.shared.user.command;
 
 import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
-import com.luman.smy.app.user.assembler.UserAssembler;
-import com.luman.smy.client.user.dto.UserRegisterCmd;
-import com.luman.smy.client.user.dto.data.UserVO;
+import com.luman.smy.app.shared.user.assembler.UserAssembler;
+import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

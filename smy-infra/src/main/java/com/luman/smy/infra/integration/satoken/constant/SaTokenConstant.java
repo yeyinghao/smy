@@ -3,7 +3,7 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.smy.integration.satoken.constant;
+package com.luman.smy.infra.integration.satoken.constant;
 
 
 import com.luman.smy.infra.common.constant.BaseConstant;

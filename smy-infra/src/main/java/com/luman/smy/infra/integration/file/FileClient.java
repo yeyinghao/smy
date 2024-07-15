@@ -3,7 +3,7 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.integration.file;
+package com.luman.smy.infra.integration.file;
 
 import io.minio.StatObjectResponse;
 

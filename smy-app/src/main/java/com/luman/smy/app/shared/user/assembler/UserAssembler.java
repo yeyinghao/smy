@@ -1,10 +1,10 @@
-package com.luman.smy.app.user.assembler;
+package com.luman.smy.app.shared.user.assembler;
 
 import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.UserName;
 import com.luman.smy.domain.user.UserPassword;
-import com.luman.smy.client.user.dto.UserRegisterCmd;
-import com.luman.smy.client.user.dto.data.UserVO;
+import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 
 /**
  * User Application层 转换器

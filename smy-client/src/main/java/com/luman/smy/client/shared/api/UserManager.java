@@ -1,7 +1,7 @@
-package com.luman.smy.client.user.api;
+package com.luman.smy.client.shared.api;
 
-import com.luman.smy.client.user.dto.UserRegisterCmd;
-import com.luman.smy.client.user.dto.data.UserVO;
+import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.client.shared.dto.UserRegisterCmd;
 
 /**
  * 用户相关

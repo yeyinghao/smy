@@ -1,4 +1,4 @@
-package com.luman.smy.integration.file.config;
+package com.luman.smy.infra.integration.file.config;
 
 import com.luman.smy.infra.common.util.LoggerUtil;
 import io.minio.MinioClient;

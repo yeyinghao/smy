@@ -3,7 +3,7 @@
  * 2022.1 - 2024.3
  */
 
-package com.luman.smy.integration.task.model;
+package com.luman.smy.infra.integration.task.model;
 
 import com.luman.smy.infra.common.enums.BaseEnum;
 import lombok.AllArgsConstructor;

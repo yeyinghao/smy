@@ -1,4 +1,4 @@
-package com.luman.smy.integration.satoken.handler;
+package com.luman.smy.infra.integration.satoken.handler;
 
 
 import cn.dev33.satoken.exception.NotLoginException;

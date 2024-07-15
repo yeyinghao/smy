@@ -1,8 +1,8 @@
-package com.luman.smy.integration.dal.convert;
+package com.luman.smy.infra.integration.dal.convert;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.luman.smy.integration.dal.model.BaseDP;
-import com.luman.smy.integration.dal.model.BaseDO;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
+import com.luman.smy.infra.integration.dal.model.BaseDO;
 
 import java.util.List;
 import java.util.stream.Collectors;

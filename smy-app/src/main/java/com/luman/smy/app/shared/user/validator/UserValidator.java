@@ -1,4 +1,4 @@
-package com.luman.smy.app.user.validator;
+package com.luman.smy.app.shared.user.validator;
 
 /**
  * UserValidator

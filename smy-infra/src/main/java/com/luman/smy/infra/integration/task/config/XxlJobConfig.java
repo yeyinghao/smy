@@ -3,7 +3,7 @@
  * 2022.1 - 2024.2
  */
 
-package com.luman.smy.integration.task.config;
+package com.luman.smy.infra.integration.task.config;
 
 import com.luman.smy.infra.common.util.LoggerUtil;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;

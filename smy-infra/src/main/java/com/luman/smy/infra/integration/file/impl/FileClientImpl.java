@@ -3,14 +3,14 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.integration.file.impl;
+package com.luman.smy.infra.integration.file.impl;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.Header;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
 import com.luman.smy.infra.common.exception.SmyAssert;
-import com.luman.smy.integration.file.FileClient;
-import com.luman.smy.integration.file.config.FileConfig;
+import com.luman.smy.infra.integration.file.FileClient;
+import com.luman.smy.infra.integration.file.config.FileConfig;
 import io.minio.*;
 import io.minio.http.Method;
 import io.minio.messages.DeleteError;

@@ -1,8 +1,8 @@
 package com.amos.think.test;
 
-import com.luman.smy.client.user.api.UserManager;
-import com.luman.smy.client.user.dto.UserRegisterCmd;
-import com.luman.smy.client.user.dto.data.UserVO;
+import com.luman.smy.client.shared.api.UserManager;
+import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;

@@ -1,6 +1,6 @@
 package com.luman.smy.infra.db.user.dataobject;
 
-import com.luman.smy.integration.dal.model.BaseDO;
+import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

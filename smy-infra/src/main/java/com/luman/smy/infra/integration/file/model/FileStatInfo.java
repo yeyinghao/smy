@@ -1,4 +1,4 @@
-package com.luman.smy.integration.file.model;
+package com.luman.smy.infra.integration.file.model;
 
 
 public class FileStatInfo {

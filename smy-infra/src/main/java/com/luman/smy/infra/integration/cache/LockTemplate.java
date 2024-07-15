@@ -1,4 +1,4 @@
-package com.luman.smy.integration.cache;
+package com.luman.smy.infra.integration.cache;
 
 
 import com.luman.smy.infra.common.enums.BaseEnum;

@@ -13,7 +13,7 @@ nacos:
       enable: true
       log:
         enable: true
-    data-id: app
+    data-id: think
     type: yaml
     group: DEFAULT_GROUP
     auto-refresh: true

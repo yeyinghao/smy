@@ -1,4 +1,4 @@
-package com.luman.smy.integration.task;
+package com.luman.smy.infra.integration.task;
 
 import java.util.List;
 

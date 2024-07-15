@@ -3,9 +3,9 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.integration.file;
+package com.luman.smy.infra.integration.file;
 
-import com.luman.smy.integration.file.model.FileStatInfo;
+import com.luman.smy.infra.integration.file.model.FileStatInfo;
 import io.minio.StatObjectResponse;
 
 import java.io.InputStream;

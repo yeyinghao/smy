@@ -2,6 +2,7 @@ package com.luman.smy.start;
 
 import com.luman.smy.infra.common.util.LoggerUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Frank Zhang
  */
+@EnableDubbo
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba", "com.baomidou", "com.mysql"})
 @MapperScan("com.luman.smy.infra.db.**.mapper")

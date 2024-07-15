@@ -3,7 +3,7 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.integration.cache;
+package com.luman.smy.infra.integration.cache;
 
 import org.redisson.api.*;
 

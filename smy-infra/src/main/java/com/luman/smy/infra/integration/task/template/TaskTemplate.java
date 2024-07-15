@@ -1,10 +1,10 @@
-package com.luman.smy.integration.task.template;
+package com.luman.smy.infra.integration.task.template;
 
 import com.luman.smy.infra.common.constant.CommConstant;
 import com.luman.smy.infra.common.enums.BaseEnum;
 import com.luman.smy.infra.common.exception.SmyBizException;
 import com.luman.smy.infra.common.util.TraceIdUtil;
-import com.luman.smy.integration.task.model.TaskResult;
+import com.luman.smy.infra.integration.task.model.TaskResult;
 import com.xxl.job.core.context.XxlJobHelper;
 import org.springframework.stereotype.Component;
 

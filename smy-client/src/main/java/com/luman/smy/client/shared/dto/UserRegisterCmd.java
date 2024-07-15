@@ -1,4 +1,4 @@
-package com.luman.smy.client.user.dto;
+package com.luman.smy.client.shared.dto;
 
 import com.alibaba.cola.dto.Command;
 import lombok.AllArgsConstructor;

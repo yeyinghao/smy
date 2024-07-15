@@ -1,8 +1,8 @@
-package com.luman.smy.integration.dal;
+package com.luman.smy.infra.integration.dal;
 
 
-import com.luman.smy.integration.dal.model.BaseDP;
-import com.luman.smy.integration.dal.model.BaseDO;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
+import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 
 import java.util.List;

@@ -3,13 +3,13 @@
  * 2022.1 - 2024.3
  */
 
-package com.luman.smy.integration.file.util;
+package com.luman.smy.infra.integration.file.util;
 
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.util.IdUtil;
-import com.luman.smy.integration.file.enums.FileTypeEnum;
+import com.luman.smy.infra.integration.file.enums.FileTypeEnum;
 
 import java.time.LocalDateTime;
 

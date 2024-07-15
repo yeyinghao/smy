@@ -3,7 +3,7 @@
  * 2022.1 - 2023.12
  */
 
-package com.luman.smy.integration.dal.config;
+package com.luman.smy.infra.integration.dal.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;

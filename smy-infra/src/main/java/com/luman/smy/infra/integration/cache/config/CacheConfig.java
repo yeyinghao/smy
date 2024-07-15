@@ -1,4 +1,4 @@
-package com.luman.smy.integration.cache.config;
+package com.luman.smy.infra.integration.cache.config;
 
 import cn.hutool.core.map.MapUtil;
 import com.luman.smy.infra.common.constant.CommConstant;

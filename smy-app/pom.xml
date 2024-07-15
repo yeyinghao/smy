@@ -13,17 +13,25 @@
     <name>smy-app</name>
 
     <dependencies>
+
         <dependency>
             <groupId>com.luman</groupId>
             <artifactId>smy-client</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.luman</groupId>
             <artifactId>smy-infra</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-catchlog-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

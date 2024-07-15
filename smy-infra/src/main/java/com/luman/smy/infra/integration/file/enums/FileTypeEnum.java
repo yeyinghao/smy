@@ -3,7 +3,7 @@
  * 2022.1 - 2023.12
  */
 
-package com.luman.smy.integration.file.enums;
+package com.luman.smy.infra.integration.file.enums;
 
 import com.luman.smy.infra.common.enums.BaseEnum;
 import lombok.Getter;
