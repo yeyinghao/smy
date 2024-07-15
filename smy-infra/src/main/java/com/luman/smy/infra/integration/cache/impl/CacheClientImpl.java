@@ -10,7 +10,6 @@ import com.luman.smy.infra.integration.cache.config.CacheConfig;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.*;
-import org.redisson.client.codec.StringCodec;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -43,26 +42,22 @@ public class CacheClientImpl implements CacheClient {
 
 	@Override
 	public <T> void save(String key, T value) {
-		RBucket<T> bucket = redissonClient.getBucket(key);
-		bucket.setIfAbsent(value);
+		redissonClient.getBucket(key).set(value);
 	}
 
 	@Override
 	public <T> void saveExpire(String key, T value, long expired) {
-		RBucket<T> bucket = redissonClient.getBucket(key);
-		bucket.setIfAbsent(value, Duration.ofSeconds(redissonConfig.getExpired(expired)));
+		redissonClient.getBucket(key).set(value, Duration.ofSeconds(redissonConfig.getExpired(expired)));
 	}
 
 	@Override
 	public <T> boolean trySave(String key, T value) {
-		RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		return bucket.setIfAbsent(value);
+		return redissonClient.getBucket(key).setIfAbsent(value);
 	}
 
 	@Override
 	public <T> boolean trySaveExpire(String key, T value, long expired) {
-		RBucket<T> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
-		return bucket.setIfAbsent(value, Duration.ofSeconds(redissonConfig.getExpired(expired)));
+		return redissonClient.getBucket(key).setIfAbsent(value, Duration.ofSeconds(redissonConfig.getExpired(expired)));
 	}
 
 	@Override

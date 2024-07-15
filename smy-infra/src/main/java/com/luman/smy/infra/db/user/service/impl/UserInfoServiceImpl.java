@@ -8,7 +8,7 @@ import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserInfoServiceImpl extends CoreServiceImpl<UserInfoDO, UserInfo, UserInfoMapper> implements UserInfoService {
+public class UserInfoServiceImpl extends CoreServiceImpl<UserInfo, UserInfoDO, UserInfoMapper> implements UserInfoService {
 
 	@Override
 	public UserInfoDO convertToPO(UserInfo userInfo) {

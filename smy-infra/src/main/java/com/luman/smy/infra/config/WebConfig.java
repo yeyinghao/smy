@@ -3,7 +3,7 @@
  * 2022.1 - 2024.1
  */
 
-package com.luman.smy.infra.common.config;
+package com.luman.smy.infra.config;
 
 import cn.hutool.core.math.Money;
 import com.luman.smy.infra.common.constant.CommConstant;

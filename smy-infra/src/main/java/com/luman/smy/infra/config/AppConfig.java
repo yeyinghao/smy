@@ -1,4 +1,4 @@
-package com.luman.smy.infra.common.config;
+package com.luman.smy.infra.config;
 
 import org.springframework.context.annotation.Configuration;
 
