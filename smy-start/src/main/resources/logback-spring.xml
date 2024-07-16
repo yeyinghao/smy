@@ -25,6 +25,9 @@
 	<!--引用监控日志-->
 	<include resource="logback/monitor-logback.xml"/>
 
+	<!--关闭无用日志-->
+	<statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
 	<!--环境日志等级配置-->
 	<springProfile name="dev,local,frp,k8s">
 		<root>

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @EnableDubbo
 @EnableScheduling
-@SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba", "com.baomidou", "com.mysql"})
+@SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba"})
 @MapperScan("com.luman.smy.infra.db.**.mapper")
 @RestController
 @Slf4j

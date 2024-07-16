@@ -1,5 +1,8 @@
 package com.luman.smy.infra.integration.task;
 
+import com.luman.smy.infra.common.enums.BaseEnum;
+import org.springframework.boot.ApplicationRunner;
+
 import java.util.List;
 
 /**
@@ -8,7 +11,18 @@ import java.util.List;
  * @author yeyinghao
  * @date 2024/04/05
  */
-public interface TaskService<T> {
+public interface TaskService<T> extends ApplicationRunner {
+
+	/**
+	 * tarnceId附加日志模式
+	 */
+	String TRANCE_ID_APPEND_LOG_PATTERN = "task start tranceId={}";
+
+	/**
+	 * 错误枚举追加日志模式
+	 */
+	String ERROR_ENUM_APPEND_LOG_PATTERN = "errorEnum={}, subMessage={}";
+
 
 	/**
 	 * 数据处理
@@ -23,4 +37,6 @@ public interface TaskService<T> {
 	 * @param t t
 	 */
 	void handle(T t);
+
+	BaseEnum taskEnum();
 }
