@@ -7,13 +7,22 @@ import com.luman.smy.infra.integration.task.model.TaskResult;
 import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.IJobHandler;
 
+import java.util.List;
+
 /**
  * 任务模板
  *
  * @author yeyinghao
  * @date 2024/04/04
  */
-public abstract class TaskTemplate<T> extends IJobHandler implements TaskService<T> {
+public abstract class MultiTaskTemplate<T> extends IJobHandler implements TaskService<T> {
+
+	/**
+	 * 数据处理
+	 *
+	 * @return {@link List}<{@link T}>
+	 */
+	protected abstract List<T> datas();
 
 	@Override
 	public void execute() throws Exception {
@@ -33,10 +42,6 @@ public abstract class TaskTemplate<T> extends IJobHandler implements TaskService
 				XxlJobHelper.log(String.valueOf(item));
 				taskResultDP.addFailNum();
 			});
-		} catch (SmyBizException e) {
-			XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getMessage());
-		} catch (Throwable e) {
-			XxlJobHelper.log(e);
 		} finally {
 			XxlJobHelper.log(String.valueOf(taskResultDP));
 		}

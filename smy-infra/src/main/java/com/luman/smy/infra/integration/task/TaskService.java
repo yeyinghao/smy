@@ -3,8 +3,6 @@ package com.luman.smy.infra.integration.task;
 import com.luman.smy.infra.common.enums.BaseEnum;
 import org.springframework.boot.ApplicationRunner;
 
-import java.util.List;
-
 /**
  * 任务服务
  *
@@ -22,14 +20,6 @@ public interface TaskService<T> extends ApplicationRunner {
 	 * 错误枚举追加日志模式
 	 */
 	String ERROR_ENUM_APPEND_LOG_PATTERN = "errorEnum={}, subMessage={}";
-
-
-	/**
-	 * 数据处理
-	 *
-	 * @return {@link List}<{@link T}>
-	 */
-	List<T> datas();
 
 	/**
 	 * doHandle

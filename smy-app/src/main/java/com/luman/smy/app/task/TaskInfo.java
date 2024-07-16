@@ -5,7 +5,7 @@ import com.luman.smy.infra.common.enums.BaseEnum;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import com.luman.smy.infra.db.user.model.User;
 import com.luman.smy.infra.integration.cache.enums.CalEnum;
-import com.luman.smy.infra.integration.task.template.TaskTemplate;
+import com.luman.smy.infra.integration.task.template.MultiTaskTemplate;
 import com.xxl.job.core.executor.XxlJobExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class TaskInfo extends TaskTemplate<User> {
+public class TaskInfo extends MultiTaskTemplate<User> {
 
 	@Override
 	public List<User> datas() {
