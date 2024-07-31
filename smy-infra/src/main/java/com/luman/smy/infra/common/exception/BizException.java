@@ -1,6 +1,5 @@
 package com.luman.smy.infra.common.exception;
 
-import com.alibaba.cola.exception.BizException;
 import com.luman.smy.infra.common.constant.HttpConstant;
 import com.luman.smy.infra.common.enums.ErrorEnum;
 import lombok.EqualsAndHashCode;
@@ -17,7 +16,7 @@ import java.util.List;
  */
 @Getter
 @EqualsAndHashCode(callSuper = true)
-public class SmyBizException extends BizException {
+public class BizException extends RuntimeException {
 
 	/**
 	 * http状态
@@ -29,8 +28,8 @@ public class SmyBizException extends BizException {
 	 */
 	private final ErrorEnum errorEnum;
 
-	public SmyBizException(ErrorEnum errorEnum) {
-		super(errorEnum.name(), errorEnum.getDescription());
+	public BizException(ErrorEnum errorEnum) {
+		super(errorEnum.getDescription());
 		this.errorEnum = errorEnum;
 	}
 
@@ -40,18 +39,18 @@ public class SmyBizException extends BizException {
 	 * @param errorEnum 基本枚举
 	 * @param message   子消息
 	 */
-	public SmyBizException(ErrorEnum errorEnum, String message) {
-		super(errorEnum.name(), message);
+	public BizException(ErrorEnum errorEnum, String message) {
+		super(message);
 		this.errorEnum = errorEnum;
 	}
 
-	public SmyBizException(ErrorEnum errorEnum, Throwable ex) {
-		super(errorEnum.name(), errorEnum.getDescription(), ex);
+	public BizException(ErrorEnum errorEnum, Throwable ex) {
+		super(errorEnum.getDescription(), ex);
 		this.errorEnum = errorEnum;
 	}
 
-	public SmyBizException(ErrorEnum errorEnum, String message, Throwable ex) {
-		super(errorEnum.name(), message, ex);
+	public BizException(ErrorEnum errorEnum, String message, Throwable ex) {
+		super(message, ex);
 		this.errorEnum = errorEnum;
 	}
 

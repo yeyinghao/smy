@@ -1,10 +1,10 @@
 package com.luman.smy.adapter.web;
 
-import com.luman.smy.infra.common.enums.CommErrorEnum;
-import com.luman.smy.infra.common.exception.SmyAssert;
-import com.luman.smy.infra.common.response.SmyResponse;
+import cn.dev33.satoken.annotation.SaIgnore;
+import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,12 +24,10 @@ public class UserController {
 	@Autowired
 	private UserManager userService;
 
-
+	@SaIgnore
 	@PostMapping(value = "/register")
-	public SmyResponse register(@RequestBody UserRegisterCmd cmd) {
-		userService.register(cmd);
-		SmyAssert.isTrue(false, CommErrorEnum.ILLEGAL_PARAMETER, "失败了={}", "第一次");
-		return SmyResponse.buildSuccess();
+	public Response<UserVO> register(@RequestBody UserRegisterCmd cmd) {
+		return userService.register(cmd);
 	}
 
 }

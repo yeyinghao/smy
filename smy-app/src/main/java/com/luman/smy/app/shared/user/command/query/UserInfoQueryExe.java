@@ -1,10 +1,11 @@
 package com.luman.smy.app.shared.user.command.query;
 
-import com.alibaba.cola.dto.SingleResponse;
 import com.luman.smy.app.shared.user.assembler.UserAssembler;
+import com.luman.smy.client.dto.Response;
+import com.luman.smy.client.shared.dto.data.UserVO;
 import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
-import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.infra.common.helper.RHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,12 +23,12 @@ public class UserInfoQueryExe {
     @Autowired
     private UserGateway userGateway;
 
-    public SingleResponse<UserVO> execute(Long id) {
+    public Response<UserVO> execute(Long id) {
         UserEntity userEntity = userGateway.findById(id);
         if (Objects.isNull(userEntity)) {
         }
 
-        return SingleResponse.of(UserAssembler.toValueObject(userEntity));
+        return RHelper.of(UserAssembler.toValueObject(userEntity));
     }
 
 }

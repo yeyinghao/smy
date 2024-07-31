@@ -2,7 +2,7 @@ package com.luman.smy.infra.integration.cache.impl;
 
 import com.luman.smy.infra.common.enums.BaseEnum;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
-import com.luman.smy.infra.common.exception.SmyAssert;
+import com.luman.smy.infra.common.exception.CheckUtils;
 import com.luman.smy.infra.integration.cache.CacheService;
 import com.luman.smy.infra.integration.cache.LockTemplate;
 import lombok.RequiredArgsConstructor;
@@ -79,7 +79,7 @@ public class LockTemplateImpl implements LockTemplate {
 	public void tryLockEx(BaseEnum baseEnum, Object bizId, Runnable runnable) {
 		RLock rLock = getRLock(baseEnum, bizId);
 		try {
-			SmyAssert.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
+			CheckUtils.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			runnable.run();
 		} finally {
 			rLock.unlock();
@@ -90,7 +90,7 @@ public class LockTemplateImpl implements LockTemplate {
 	public <R> R tryLockEx(BaseEnum baseEnum, Object bizId, Supplier<R> supplier) {
 		RLock rLock = getRLock(baseEnum, bizId);
 		try {
-			SmyAssert.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
+			CheckUtils.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			return supplier.get();
 		} finally {
 			rLock.unlock();

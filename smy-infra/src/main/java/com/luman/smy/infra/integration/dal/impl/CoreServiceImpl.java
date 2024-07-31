@@ -3,6 +3,7 @@ package com.luman.smy.infra.integration.dal.impl;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.integration.dal.CoreService;
 import com.luman.smy.infra.integration.dal.convert.DataConvert;
 import com.luman.smy.infra.integration.dal.model.BaseDO;
@@ -17,7 +18,7 @@ import java.util.List;
  * @date 2024/04/19
  */
 @SuppressWarnings("unused")
-public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M extends BaseMapper<P>> extends ServiceImpl<M, P> implements CoreService<D, P>, DataConvert<P, D> {
+public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M extends BaseMapper<P>> extends ServiceImpl<M, P> implements CoreService<D>, DataConvert<P, D> {
 
 	@Override
 	public void save(D entity) {
@@ -69,7 +70,7 @@ public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M exte
 	}
 
 	@Override
-	public IPage<D> listByPage(IPage<P> page) {
-		return page(page).convert(this::convertToDP);
+	public IPage<D> listByPage(Long pageSize, Long pageIndex) {
+		return lambdaQuery().page(PageHelper.buildPage(pageSize, pageIndex)).convert(this::convertToDP);
 	}
 }

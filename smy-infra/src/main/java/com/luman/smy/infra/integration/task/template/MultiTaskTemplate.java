@@ -1,6 +1,6 @@
 package com.luman.smy.infra.integration.task.template;
 
-import com.luman.smy.infra.common.exception.SmyBizException;
+import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.util.TraceIdUtil;
 import com.luman.smy.infra.integration.task.TaskService;
 import com.luman.smy.infra.integration.task.model.TaskResult;
@@ -34,7 +34,7 @@ public abstract class MultiTaskTemplate<T> extends IJobHandler implements TaskSe
 					handle(item);
 					taskResultDP.addSussNum();
 					return;
-				} catch (SmyBizException e) {
+				} catch (BizException e) {
 					XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getMessage());
 				} catch (Throwable e) {
 					XxlJobHelper.log(e);

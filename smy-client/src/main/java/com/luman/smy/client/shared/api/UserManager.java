@@ -1,7 +1,8 @@
 package com.luman.smy.client.shared.api;
 
-import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
+import com.luman.smy.client.shared.dto.data.UserVO;
 
 /**
  * 用户相关
@@ -11,12 +12,12 @@ import com.luman.smy.client.shared.dto.UserRegisterCmd;
  */
 public interface UserManager {
 
-    /**
-     * 注册用户
-     *
-     * @param cmd 用户注册请求
-     * @return Response
-     */
-    UserVO register(UserRegisterCmd cmd);
+	/**
+	 * 注册用户
+	 *
+	 * @param cmd 用户注册请求
+	 * @return Response
+	 */
+	Response<UserVO> register(UserRegisterCmd cmd);
 
 }

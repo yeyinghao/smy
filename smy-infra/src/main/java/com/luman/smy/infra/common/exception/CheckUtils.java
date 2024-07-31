@@ -20,14 +20,14 @@ import java.util.Objects;
  * @date 2023/12/10
  */
 @SuppressWarnings("unused")
-public abstract class SmyAssert {
+public abstract class CheckUtils {
 
 	/**
 	 * 抛出异常
 	 */
 	private static void throwEx(boolean condition, ErrorEnum errorCode, String subMessage) {
 		if (condition) {
-			throw SmyBizExceptionFactory.bizException(errorCode, subMessage);
+			throw ExceptionFactory.bizException(errorCode, subMessage);
 		}
 	}
 

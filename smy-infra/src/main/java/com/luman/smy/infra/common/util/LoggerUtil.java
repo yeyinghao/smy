@@ -6,7 +6,7 @@
 package com.luman.smy.infra.common.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.luman.smy.infra.common.exception.SmyBizException;
+import com.luman.smy.infra.common.exception.BizException;
 import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 
@@ -85,7 +85,7 @@ public class LoggerUtil {
 		logger.error(StrUtil.format(template, messages));
 	}
 
-	public static void info(Logger logger, SmyBizException e) {
+	public static void info(Logger logger, BizException e) {
 		logger.info(e.toString());
 	}
 }

@@ -2,7 +2,7 @@ spring:
   application:
     name: myboot
   profiles:
-    active: frp
+    active: local
   main:
     allow-bean-definition-overriding: true
 

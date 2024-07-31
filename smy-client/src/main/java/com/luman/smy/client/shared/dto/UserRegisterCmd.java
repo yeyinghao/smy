@@ -1,6 +1,6 @@
 package com.luman.smy.client.shared.dto;
 
-import com.alibaba.cola.dto.Command;
+import com.luman.smy.client.dto.Command;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

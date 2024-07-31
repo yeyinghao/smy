@@ -1,9 +1,8 @@
 package com.luman.smy.infra.integration.dal;
 
 
-import com.luman.smy.infra.integration.dal.model.BaseDP;
-import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * @date 2024/04/02
  */
 @SuppressWarnings("unused")
-public interface CoreService<D extends BaseDP, P extends BaseDO> {
+public interface CoreService<D extends BaseDP> {
 
 	/**
 	 * 保存
@@ -80,9 +79,6 @@ public interface CoreService<D extends BaseDP, P extends BaseDO> {
 
 	/**
 	 * 分页查询
-	 *
-	 * @param page 请求
-	 * @return {@link IPage }<{@link D }>
 	 */
-	IPage<D> listByPage(IPage<P> page);
+	IPage<D> listByPage(Long pageSize, Long pageIndex);
 }
