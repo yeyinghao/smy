@@ -1,6 +1,9 @@
 package com.luman.smy.client.shared.api;
 
+import com.luman.smy.client.dto.ListModel;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Response;
+import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
 
@@ -20,4 +23,7 @@ public interface UserManager {
 	 */
 	Response<UserVO> register(UserRegisterCmd cmd);
 
+	Response<ListModel<UserVO>> list();
+
+	Response<PageModel<UserVO>> page(UserPageQueryCmd cmd);
 }

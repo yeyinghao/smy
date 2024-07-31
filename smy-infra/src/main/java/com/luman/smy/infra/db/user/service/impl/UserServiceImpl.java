@@ -1,5 +1,8 @@
 package com.luman.smy.infra.db.user.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.luman.smy.client.dto.Paging;
+import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.db.user.dataobject.UserDO;
 import com.luman.smy.infra.db.user.mapper.UserMapper;
 import com.luman.smy.infra.db.user.model.User;
@@ -38,5 +41,11 @@ public class UserServiceImpl extends CoreServiceImpl<User, UserDO, UserMapper> i
 		user.setExtInfo(userDO.getExtInfo());
 		user.setStatus(userDO.getStatus());
 		return user;
+	}
+
+	@Override
+	public IPage<User> page(Paging paging, String name) {
+		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging.getPageSize(),
+				paging.getPageIndex())).convert(this::convertToDP);
 	}
 }

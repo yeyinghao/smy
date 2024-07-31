@@ -1,8 +1,11 @@
 package com.luman.smy.adapter.web;
 
 import cn.dev33.satoken.annotation.SaIgnore;
+import com.luman.smy.client.dto.ListModel;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.api.UserManager;
+import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,18 @@ public class UserController {
 	@PostMapping(value = "/register")
 	public Response<UserVO> register(@RequestBody UserRegisterCmd cmd) {
 		return userService.register(cmd);
+	}
+
+	@SaIgnore
+	@PostMapping(value = "/list")
+	public Response<ListModel<UserVO>> list() {
+		return userService.list();
+	}
+
+	@SaIgnore
+	@PostMapping(value = "/page")
+	public Response<PageModel<UserVO>> page(@RequestBody UserPageQueryCmd cmd) {
+		return userService.page(cmd);
 	}
 
 }

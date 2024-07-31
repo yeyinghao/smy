@@ -2,6 +2,7 @@ package com.luman.smy.infra.common.helper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.infra.integration.dal.model.BaseDO;
 import lombok.experimental.UtilityClass;
 
@@ -9,5 +10,9 @@ import lombok.experimental.UtilityClass;
 public class PageHelper {
 	public static <P extends BaseDO> IPage<P> buildPage(Long pageSize, Long pageIndex) {
 		return new Page<>(pageIndex, pageSize);
+	}
+
+	public static <R> PageModel<R> buildPage(IPage<R> page) {
+		return new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal(), page.getRecords());
 	}
 }
