@@ -45,7 +45,6 @@ public class UserServiceImpl extends CoreServiceImpl<User, UserDO, UserMapper> i
 
 	@Override
 	public IPage<User> page(Paging paging, String name) {
-		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging.getPageSize(),
-				paging.getPageIndex())).convert(this::convertToDP);
+		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging)).convert(this::convertToDP);
 	}
 }

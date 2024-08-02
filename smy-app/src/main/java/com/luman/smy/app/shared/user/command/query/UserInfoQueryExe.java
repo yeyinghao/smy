@@ -36,7 +36,7 @@ public class UserInfoQueryExe {
         if (Objects.isNull(userEntity)) {
         }
 
-        return RHelper.of(UserAssembler.toValueObject(userEntity));
+        return RHelper.success(UserAssembler.toValueObject(userEntity));
     }
 
     public List<User> list() {

@@ -6,6 +6,7 @@
 package com.luman.smy.infra.common.util;
 
 import cn.hutool.core.util.RandomUtil;
+import lombok.experimental.UtilityClass;
 
 /**
  * 签名工具类
@@ -13,6 +14,7 @@ import cn.hutool.core.util.RandomUtil;
  * @author yeyinghao
  * @date 2023/12/25
  */
+@UtilityClass
 public class CodeUtil {
 
 	/**

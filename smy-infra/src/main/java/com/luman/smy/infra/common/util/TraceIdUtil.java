@@ -8,6 +8,7 @@ package com.luman.smy.infra.common.util;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.luman.smy.infra.common.constant.CommConstant;
+import lombok.experimental.UtilityClass;
 import org.slf4j.MDC;
 
 /**
@@ -16,6 +17,7 @@ import org.slf4j.MDC;
  * @author yeyinghao
  * @date 2023/08/01
  */
+@UtilityClass
 public class TraceIdUtil {
 
 	/**

@@ -1,5 +1,7 @@
 package com.luman.smy.client.dto;
 
+import java.io.Serial;
+
 /**
  * Command request from Client.
  *
@@ -8,6 +10,7 @@ package com.luman.smy.client.dto;
  */
 public abstract class Command extends DTO {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
 }

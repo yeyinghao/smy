@@ -34,7 +34,7 @@ public class SaTokenExceptionHandler {
 	@ExceptionHandler(NotLoginException.class)
 	public Response<Void> notLoginExceptionHandler(NotLoginException e) {
 		LoggerUtil.info(log, e.getMessage());
-		return RHelper.buildFailure(CommErrorEnum.FORBIDDEN, "禁止访问");
+		return RHelper.fail(CommErrorEnum.FORBIDDEN, "禁止访问");
 	}
 
 }

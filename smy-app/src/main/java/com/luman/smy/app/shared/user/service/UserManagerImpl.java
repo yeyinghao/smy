@@ -12,7 +12,7 @@ import com.luman.smy.client.shared.dto.data.UserVO;
 import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.common.template.RTemplate;
 import com.luman.smy.infra.db.user.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,27 +22,28 @@ import org.springframework.stereotype.Service;
  * @date 2021/1/8
  */
 @Service
+@RequiredArgsConstructor
 public class UserManagerImpl implements UserManager {
 
 	/**
 	 * xxxExe 避免 Service 膨胀利器
 	 */
-	@Autowired
-	private UserRegisterCmdExe userRegisterCmdExe;
+	private final UserRegisterCmdExe userRegisterCmdExe;
 
-	@Autowired
-	private UserInfoQueryExe userInfoQueryExe;
+	private final UserInfoQueryExe userInfoQueryExe;
+
+	private final RTemplate rTemplate;
 
 	@Override
 	public Response<UserVO> register(UserRegisterCmd cmd) {
-		return RTemplate.excute(() -> {
+		return rTemplate.single(() -> {
 			return userRegisterCmdExe.execute(cmd);
 		}, cmd);
 	}
 
 	@Override
 	public Response<ListModel<UserVO>> list() {
-		return RTemplate.excute(() -> {
+		return rTemplate.list(() -> {
 			return new ListModel<>(userInfoQueryExe.list().stream().map(this::convertUser).toList());
 		}, null);
 	}
@@ -56,7 +57,7 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public Response<PageModel<UserVO>> page(UserPageQueryCmd cmd) {
-		return RTemplate.excute(() -> {
+		return rTemplate.page(() -> {
 			return PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser));
 		}, cmd);
 	}

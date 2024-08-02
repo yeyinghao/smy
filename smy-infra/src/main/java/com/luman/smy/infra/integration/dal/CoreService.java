@@ -2,6 +2,7 @@ package com.luman.smy.infra.integration.dal;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.luman.smy.client.dto.Paging;
 import com.luman.smy.infra.integration.dal.model.BaseDP;
 
 import java.util.List;
@@ -80,5 +81,5 @@ public interface CoreService<D extends BaseDP> {
 	/**
 	 * 分页查询
 	 */
-	IPage<D> listByPage(Long pageSize, Long pageIndex);
+	IPage<D> listByPage(Paging paging);
 }

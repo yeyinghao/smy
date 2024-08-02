@@ -3,6 +3,7 @@ package com.luman.smy.infra.integration.dal.impl;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.luman.smy.client.dto.Paging;
 import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.integration.dal.CoreService;
 import com.luman.smy.infra.integration.dal.convert.DataConvert;
@@ -70,7 +71,7 @@ public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M exte
 	}
 
 	@Override
-	public IPage<D> listByPage(Long pageSize, Long pageIndex) {
-		return lambdaQuery().page(PageHelper.buildPage(pageSize, pageIndex)).convert(this::convertToDP);
+	public IPage<D> listByPage(Paging paging) {
+		return lambdaQuery().page(PageHelper.buildPage(paging)).convert(this::convertToDP);
 	}
 }

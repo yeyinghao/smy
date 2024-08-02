@@ -1,13 +1,15 @@
 package com.luman.smy.client.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class Paging implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Paging extends DTO {
 
 	private Long pageSize;
 

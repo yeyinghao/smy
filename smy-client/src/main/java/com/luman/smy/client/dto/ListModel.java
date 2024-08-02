@@ -14,4 +14,5 @@ import java.util.Collection;
 public class ListModel<T> extends DTO {
 
 	private Collection<T> listInfo;
+
 }
