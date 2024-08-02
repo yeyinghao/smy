@@ -61,4 +61,8 @@ public class BizException extends RuntimeException {
 				"message=" + getMessage() +
 				'}';
 	}
+
+	public boolean isError() {
+		return HTTP_STATUSES.contains(errorEnum.getCode());
+	}
 }

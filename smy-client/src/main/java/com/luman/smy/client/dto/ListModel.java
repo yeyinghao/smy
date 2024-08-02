@@ -12,5 +12,6 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListModel<T> extends DTO {
+
 	private Collection<T> listInfo;
 }

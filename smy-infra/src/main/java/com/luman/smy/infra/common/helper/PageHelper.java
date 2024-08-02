@@ -13,6 +13,8 @@ public class PageHelper {
 	}
 
 	public static <R> PageModel<R> buildPage(IPage<R> page) {
-		return new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal(), page.getRecords());
+		PageModel<R> pageModel = new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal());
+		pageModel.setListInfo(page.getRecords());
+		return pageModel;
 	}
 }
