@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PageQuery extends Query {
+public abstract class PageQuery extends Query {
 
 	private Paging paging;
 
