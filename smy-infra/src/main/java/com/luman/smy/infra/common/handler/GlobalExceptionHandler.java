@@ -1,5 +1,6 @@
 package com.luman.smy.infra.common.handler;
 
+
 import cn.hutool.core.util.StrUtil;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.infra.common.constant.CommConstant;
@@ -10,10 +11,12 @@ import com.luman.smy.infra.common.util.LoggerUtil;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -30,21 +33,28 @@ import java.util.stream.Collectors;
  */
 @RestControllerAdvice
 @Slf4j
-public class ExceptionHandler {
+public class GlobalExceptionHandler {
 
 	/**
 	 * 拦截Exception异常
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
+	@ExceptionHandler(Exception.class)
 	public Response<Void> exceptionHandler(Exception e) {
 		LoggerUtil.error(log, e);
 		return RHelper.fail(CommErrorEnum.SYSTEM_ERROR);
 	}
 
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public Response<Void> exceptionHandler(HttpMessageNotReadableException e) {
+		LoggerUtil.error(log, e);
+		return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, e.getMessage());
+	}
+
 	/**
 	 * 拦截NoHandlerFoundException异常
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(NoHandlerFoundException.class)
+	@ExceptionHandler(NoHandlerFoundException.class)
 	public Response<Void> noHandlerFoundExceptionHandler(NoHandlerFoundException e) {
 		LoggerUtil.info(log, "message={}, requestUrl={}", e.getMessage(), e.getRequestURL());
 		return RHelper.fail(CommErrorEnum.NOT_FOUND);
@@ -53,7 +63,7 @@ public class ExceptionHandler {
 	/**
 	 * 拦截HttpRequestMethodNotSupportedException异常
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public Response<Void> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException e) {
 		LoggerUtil.info(log, "message={}, exceptMethod={}, actualMethod={}", e.getMessage(), e.getSupportedMethods(), e.getMethod());
 		return RHelper.fail(CommErrorEnum.BIZ_ERROR, "请求方式不支持");
@@ -62,7 +72,7 @@ public class ExceptionHandler {
 	/**
 	 * 拦截 bizException异常
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(BizException.class)
+	@ExceptionHandler(BizException.class)
 	public Response<Void> bizExceptionHandler(BizException e) {
 		LoggerUtil.info(log, e);
 		return RHelper.fail(e.getErrorEnum(), e.getMessage());
@@ -74,7 +84,7 @@ public class ExceptionHandler {
 	 * @param e e
 	 * @return {@link Response}<{@link String}>
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(BindException.class)
+	@ExceptionHandler(BindException.class)
 	public Response<Void> bindExceptionHandler(BindException e) {
 		LoggerUtil.info(log, e);
 		// 拿到@NotNull,@NotBlank和 @NotEmpty等注解上的message值
@@ -96,7 +106,7 @@ public class ExceptionHandler {
 	 * @param e e
 	 * @return {@link Response}<{@link String}>
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(value = ConstraintViolationException.class)
+	@ExceptionHandler(value = ConstraintViolationException.class)
 	public Response<Void> constraintViolationExceptionHandler(ConstraintViolationException e) {
 		LoggerUtil.info(log, e);
 		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
@@ -110,7 +120,7 @@ public class ExceptionHandler {
 	 * @param e e
 	 * @return {@link Response}<{@link String}>
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Response<Void> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
 		LoggerUtil.info(log, e);
 		String message = e.getBindingResult().getFieldErrors().stream().map(item -> item.getField() + CommConstant.COLON + item.getDefaultMessage()).collect(Collectors.joining(CommConstant.SEMICOLON));

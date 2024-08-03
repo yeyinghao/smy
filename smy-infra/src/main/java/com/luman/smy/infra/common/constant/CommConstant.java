@@ -16,12 +16,12 @@ public interface CommConstant extends BaseConstant {
 	/**
 	 * 冒号
 	 */
-	String COLON = ":";
+	String COLON = ": ";
 
 	/**
 	 * 分号
 	 */
-	String SEMICOLON = ";";
+	String SEMICOLON = "; ";
 
 	/**
 	 * 短横
@@ -36,7 +36,7 @@ public interface CommConstant extends BaseConstant {
 	/**
 	 * 分隔符
 	 */
-	String DELIMITER = ",";
+	String DELIMITER = ", ";
 
 	/**
 	 * Y

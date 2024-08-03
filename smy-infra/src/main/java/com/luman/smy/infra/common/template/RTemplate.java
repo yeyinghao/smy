@@ -47,6 +47,6 @@ public class RTemplate extends BaseTemplate {
 		// 获取校验结果
 		BeanValidationResult result = ValidationUtil.warpValidate(request);
 		// 校验失败 抛错误
-		CheckUtils.isTrue(result.isSuccess(), CommErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(";")));
+		CheckUtils.isTrue(result.isSuccess(), CommErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(CommConstant.SEMICOLON)));
 	}
 }
