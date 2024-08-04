@@ -36,7 +36,7 @@ public class WebLogAspect extends LogAspect {
 
 	@Override
 	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.WEB_MONITOR_LOGGER);
+		return LoggerFactory.getLogger(LoggerConstant.WEB_LOG);
 	}
 
 	/**

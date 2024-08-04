@@ -1,4 +1,4 @@
-package com.luman.smy.infra.common.log.sal;
+package com.luman.smy.infra.common.log.rest;
 
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.infra.common.constant.LoggerConstant;
@@ -18,19 +18,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class SalLogAspect extends LogAspect {
+public class FacadeLogAspect extends LogAspect {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, className={}, methodName={}, request={}, response={}";
 
 	@Override
 	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.SAL_MONITOR_LOGGER);
+		return LoggerFactory.getLogger(LoggerConstant.FACADE_LOG);
 	}
 
 	/**
 	 * <a href="https://blog.csdn.net/zhengchao1991/article/details/53391244">The syntax of pointcut </a>
 	 */
-	@Pointcut("@within(SalLog) && execution(public * *(..))")
+	@Pointcut("@within(FacadeLog) && execution(public * *(..))")
 	public void pointcut() {
 	}
 

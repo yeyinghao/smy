@@ -24,7 +24,7 @@ public class DalLogAspect extends LogAspect {
 
 	@Override
 	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.DAL_MONITOR_LOGGER);
+		return LoggerFactory.getLogger(LoggerConstant.DAL_LOG);
 	}
 
 	/**

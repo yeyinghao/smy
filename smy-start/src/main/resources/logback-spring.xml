@@ -21,9 +21,9 @@
 	<!-- 文件日志打印格式 -->
 	<property name="FILE_LOG_PATTERN" value="%d %-5level [%traceId] %logger[%line] - %msg%n"/>
 	<!--引用公共日志-->
-	<include resource="logback/smy-logback.xml"/>
+	<include resource="logback/smy.xml"/>
 	<!--引用监控日志-->
-	<include resource="logback/monitor-logback.xml"/>
+	<include resource="logback/monitor.xml"/>
 
 	<!--关闭无用日志-->
 	<statusListener class="ch.qos.logback.core.status.NopStatusListener" />

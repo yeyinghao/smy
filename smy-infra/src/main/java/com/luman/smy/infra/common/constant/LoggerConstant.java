@@ -11,26 +11,26 @@ public interface LoggerConstant extends BaseConstant {
 	/**
 	 * 缓存日志
 	 */
-	String CAL_MONITOR_LOGGER = "CAL_MONITOR_LOGGER";
+	String CAL_LOG = "CAL_LOG";
 
 	/**
 	 * api调用日志
 	 */
-	String REST_MONITOR_LOGGER = "REST_MONITOR_LOGGER";
+	String FACADE_LOG = "FACADE_LOG";
 
 	/**
 	 * api调用日志
 	 */
-	String WEB_MONITOR_LOGGER = "WEB_MONITOR_LOGGER";
+	String WEB_LOG = "WEB_LOG";
 
 	/**
 	 * api调用日志
 	 */
-	String SAL_MONITOR_LOGGER = "SAL_MONITOR_LOGGER";
+	String CLIENT_LOG = "CLIENT_LOG";
 
 	/**
 	 * 数据库日志
 	 */
-	String DAL_MONITOR_LOGGER = "DAL_MONITOR_LOGGER";
+	String DAL_LOG = "DAL_LOG";
 
 }

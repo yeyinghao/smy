@@ -24,7 +24,7 @@ public class CalLogAspect extends LogAspect {
 
 	@Override
 	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.CAL_MONITOR_LOGGER);
+		return LoggerFactory.getLogger(LoggerConstant.CAL_LOG);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.luman.smy.infra.common.log.rest;
+package com.luman.smy.infra.common.log.sal;
 
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.infra.common.constant.LoggerConstant;
@@ -18,19 +18,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class RestLogAspect extends LogAspect {
+public class ClientLogAspect extends LogAspect {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, className={}, methodName={}, request={}, response={}";
 
 	@Override
 	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.REST_MONITOR_LOGGER);
+		return LoggerFactory.getLogger(LoggerConstant.CLIENT_LOG);
 	}
 
 	/**
 	 * <a href="https://blog.csdn.net/zhengchao1991/article/details/53391244">The syntax of pointcut </a>
 	 */
-	@Pointcut("@within(RestLog) && execution(public * *(..))")
+	@Pointcut("@within(ClientLog) && execution(public * *(..))")
 	public void pointcut() {
 	}
 
