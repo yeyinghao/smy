@@ -58,7 +58,7 @@ public class BizException extends RuntimeException {
 	public String toString() {
 		return "SmyBizException{" +
 				"errorEnum=" + errorEnum +
-				"message=" + getMessage() +
+				", message=" + getMessage() +
 				'}';
 	}
 

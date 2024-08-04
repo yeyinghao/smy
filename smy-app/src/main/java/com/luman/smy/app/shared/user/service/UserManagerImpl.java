@@ -9,8 +9,9 @@ import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.infra.common.helper.ListHelper;
 import com.luman.smy.infra.common.helper.PageHelper;
-import com.luman.smy.infra.common.template.RTemplate;
+import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.db.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,20 +33,14 @@ public class UserManagerImpl implements UserManager {
 
 	private final UserInfoQueryExe userInfoQueryExe;
 
-	private final RTemplate rTemplate;
-
 	@Override
 	public Response<UserVO> register(UserRegisterCmd cmd) {
-		return rTemplate.single(() -> {
-			return userRegisterCmdExe.execute(cmd);
-		}, cmd);
+		return RHelper.success(userRegisterCmdExe.execute(cmd));
 	}
 
 	@Override
 	public Response<ListModel<UserVO>> list() {
-		return rTemplate.list(() -> {
-			return new ListModel<>(userInfoQueryExe.list().stream().map(this::convertUser).toList());
-		}, null);
+		return RHelper.success(ListHelper.build(userInfoQueryExe.list().stream().map(this::convertUser).toList()));
 	}
 
 	private UserVO convertUser(User user) {
@@ -57,8 +52,6 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public Response<PageModel<UserVO>> page(UserPageQueryCmd cmd) {
-		return rTemplate.page(() -> {
-			return PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser));
-		}, cmd);
+		return RHelper.success(PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser)));
 	}
 }

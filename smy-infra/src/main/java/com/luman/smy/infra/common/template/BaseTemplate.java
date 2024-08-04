@@ -12,7 +12,6 @@ public abstract class BaseTemplate {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, request={}, response={}";
 
-
 	public abstract Logger getLogger();
 
 	private final Logger log = getLogger();

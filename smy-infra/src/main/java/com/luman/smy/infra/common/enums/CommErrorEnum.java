@@ -44,7 +44,7 @@ public enum CommErrorEnum implements ErrorEnum {
 	/**
 	 * 服务内部错误
 	 */
-	SYSTEM_ERROR(HttpConstant.INTERNAL_SERVER_ERROR, "系统错误"),
+	SYS_ERROR(HttpConstant.INTERNAL_SERVER_ERROR, "系统错误"),
 
 	/**
 	 * 服务不可用

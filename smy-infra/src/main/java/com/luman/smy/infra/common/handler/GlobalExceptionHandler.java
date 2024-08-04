@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public Response<Void> exceptionHandler(Exception e) {
 		LoggerUtil.error(log, e);
-		return RHelper.fail(CommErrorEnum.SYSTEM_ERROR);
+		return RHelper.fail(CommErrorEnum.SYS_ERROR);
 	}
 
 

@@ -1,11 +1,6 @@
 package com.luman.smy.infra.common.log;
 
-import com.luman.smy.infra.common.exception.BizException;
-import com.luman.smy.infra.common.util.LoggerUtil;
-import com.luman.smy.infra.common.util.TimeUtils;
-import lombok.SneakyThrows;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.slf4j.Logger;
 import org.springframework.aop.support.AopUtils;
 
@@ -15,31 +10,18 @@ public abstract class LogAspect {
 
 	public abstract Logger getLogger();
 
-	private final Logger log = getLogger();
 
-	private final static String LOG_TEMPLATE = "result={}, cost={}ms, className={}, methodName={}, request={}, response={}";
-
-	@Around(value = "pointcut()")
-	@SneakyThrows
-	public Object proceed(ProceedingJoinPoint joinPoint) {
-		long startTime = System.currentTimeMillis();
-		List<Object> params = null;
-		boolean res = false;
-		Object resp = null;
-		String className = null;
-		String methodName = null;
-		try {
-			className = AopUtils.getTargetClass(joinPoint.getTarget()).getName();
-			methodName = joinPoint.getSignature().getName();
-			params = List.of(joinPoint.getArgs());
-			res = true;
-			resp = joinPoint.proceed();
-			return resp;
-		} catch (BizException e) {
-			res = !e.isError();
-			throw e;
-		} finally {
-			LoggerUtil.info(log, LOG_TEMPLATE, res, TimeUtils.getCostTime(startTime), className, methodName, params, resp);
-		}
+	public LogInfo buildLogInfo(ProceedingJoinPoint joinPoint) {
+		LogInfo logInfo = new LogInfo();
+		logInfo.setLog(getLogger());
+		logInfo.setRes(false);
+		logInfo.setStartTime(System.currentTimeMillis());
+		logInfo.setClassName(AopUtils.getTargetClass(joinPoint.getTarget()).getSimpleName());
+		logInfo.setMethodName(joinPoint.getSignature().getName());
+		logInfo.setArgs(List.of(joinPoint.getArgs()));
+		return logInfo;
 	}
+
+	public abstract void printLog(LogInfo logInfo);
+
 }
