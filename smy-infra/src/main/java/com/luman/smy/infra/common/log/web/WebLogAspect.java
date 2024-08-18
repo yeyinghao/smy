@@ -8,7 +8,7 @@ import com.luman.smy.infra.common.constant.CommConstant;
 import com.luman.smy.infra.common.constant.LoggerConstant;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
 import com.luman.smy.infra.common.exception.BizException;
-import com.luman.smy.infra.common.exception.CheckUtils;
+import com.luman.smy.infra.common.exception.Checker;
 import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.common.log.LogAspect;
 import com.luman.smy.infra.common.log.LogInfo;
@@ -87,6 +87,6 @@ public class WebLogAspect extends LogAspect {
 		// 获取校验结果
 		BeanValidationResult result = ValidationUtil.warpValidate(request);
 		// 校验失败 抛错误
-		CheckUtils.isTrue(result.isSuccess(), CommErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(CommConstant.SEMICOLON)));
+		Checker.isTrue(result.isSuccess(), CommErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(CommConstant.SEMICOLON)));
 	}
 }

@@ -20,7 +20,7 @@ import java.util.Objects;
  * @date 2023/12/10
  */
 @SuppressWarnings("unused")
-public abstract class CheckUtils {
+public abstract class Checker {
 
 	/**
 	 * 抛出异常
