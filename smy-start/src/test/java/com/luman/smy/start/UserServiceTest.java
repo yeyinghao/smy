@@ -1,11 +1,9 @@
-package com.amos.think.test;
+package com.luman.smy.start;
 
 import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
-import com.luman.smy.client.shared.dto.data.UserVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -36,7 +33,7 @@ public class UserServiceTest {
 
     @BeforeEach
     public void setUp() {
-        log.info("test username is [" + username + "]");
+        log.info("start username is [" + username + "]");
     }
 
     @Test

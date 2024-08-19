@@ -64,7 +64,7 @@ nacos:
 spring:
   config:
     activate:
-      on-profile: test
+      on-profile: start
 nacos:
   config:
     server-addr: nacos:8848
