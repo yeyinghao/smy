@@ -1,14 +1,24 @@
 package com.luman.smy.infra.config;
 
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+
 /**
- * AppConfig
+ * 应用程序配置
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/11/28
+ * @author yeyinghao
+ * @date 2024/08/19
  */
+@Data
 @Configuration
 public class AppConfig {
+
+	/**
+	 * 应用程序名称
+	 */
+	@Value("${spring.application.name}")
+	private String applicationName;
 
 }

@@ -2,8 +2,9 @@ package com.luman.smy.start;
 
 import cn.hutool.core.util.StrUtil;
 import com.luman.smy.infra.common.util.LoggerUtil;
+import com.luman.smy.infra.config.AppConfig;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba"})
+@RequiredArgsConstructor
 public class Application {
 
 	/**
-	 * 应用程序名称
+	 * 应用程序配置
 	 */
-	@Value("${spring.application.name}")
-	private String applicationName;
+	private final AppConfig appConfig;
 
 	/**
 	 * 程序入口
@@ -47,7 +48,7 @@ public class Application {
 	 */
 	@GetMapping("/")
 	public String index() {
-		return StrUtil.format("{} service started successfully.", applicationName);
+		return StrUtil.format("{} service started successfully.", appConfig.getApplicationName());
 	}
 
 }

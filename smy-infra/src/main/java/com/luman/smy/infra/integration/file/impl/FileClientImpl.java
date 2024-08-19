@@ -8,7 +8,7 @@ package com.luman.smy.infra.integration.file.impl;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.Header;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
-import com.luman.smy.infra.common.exception.Checker;
+import com.luman.smy.infra.common.exception.ValidationUtils;
 import com.luman.smy.infra.integration.file.FileClient;
 import com.luman.smy.infra.integration.file.config.FileConfig;
 import io.minio.*;
@@ -48,7 +48,7 @@ public class FileClientImpl implements FileClient {
 	@Override
 	public void uploadFile(String objectName, String fileName, InputStream inputStream) {
 		try {
-			Checker.notBlank(fileName, CommErrorEnum.BIZ_ERROR, "文件名称不能为空");
+			ValidationUtils.notBlank(fileName, CommErrorEnum.BIZ_ERROR, "文件名称不能为空");
 			// 下载文件时自动添加文件名
 			Map<String, String> headers = new HashMap<>();
 			headers.put(Header.CONTENT_DISPOSITION.getValue(), "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
@@ -96,7 +96,7 @@ public class FileClientImpl implements FileClient {
 			objects.add(new DeleteObject(objectName));
 		}
 		Iterable<Result<DeleteError>> results = minioClient.removeObjects(RemoveObjectsArgs.builder().bucket(minioConfig.getBucketName()).objects(objects).build());
-		Checker.notEmpty(results, CommErrorEnum.BIZ_ERROR, "批量删除失败");
+		ValidationUtils.notEmpty(results, CommErrorEnum.BIZ_ERROR, "批量删除失败");
 	}
 
 	@Override

@@ -10,6 +10,12 @@ import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.util.TraceIdUtil;
 import lombok.experimental.UtilityClass;
 
+/**
+ * 响应
+ *
+ * @author yeyinghao
+ * @date 2024/08/19
+ */
 @UtilityClass
 public class RHelper {
 
@@ -27,6 +33,12 @@ public class RHelper {
 		return response;
 	}
 
+	/**
+	 * 成功
+	 *
+	 * @param data 数据
+	 * @return {@link Response }<{@link ListModel }<{@link T }>>
+	 */
 	public static <T> Response<ListModel<T>> success(ListModel<T> data) {
 		Response<ListModel<T>> response = new Response<>();
 		response.setCode(CommErrorEnum.SUCCESS.getCode());
@@ -36,6 +48,12 @@ public class RHelper {
 		return response;
 	}
 
+	/**
+	 * 成功
+	 *
+	 * @param data 数据
+	 * @return {@link Response }<{@link PageModel }<{@link T }>>
+	 */
 	public static <T> Response<PageModel<T>> success(PageModel<T> data) {
 		Response<PageModel<T>> response = new Response<>();
 		response.setCode(CommErrorEnum.SUCCESS.getCode());
