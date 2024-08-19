@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.apache.ibatis.reflection.MetaObject;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,6 +23,7 @@ import java.time.LocalDateTime;
  * @date 2023/12/31
  */
 @Configuration
+@MapperScan("com.luman.smy.infra.db.**.mapper")
 public class MybatisPlusConfig implements MetaObjectHandler {
 
 	@Override

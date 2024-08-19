@@ -1,28 +1,37 @@
 package com.luman.smy.start;
 
+import cn.hutool.core.util.StrUtil;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
-import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
- * Spring Boot Starter
+ * 应用程序
  *
- * @author Frank Zhang
+ * @author yeyinghao
+ * @date 2024/08/19
  */
-@EnableDubbo
-@EnableScheduling
-@SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba"})
-@MapperScan("com.luman.smy.infra.db.**.mapper")
-@RestController
 @Slf4j
+@RestController
+@SpringBootApplication(scanBasePackages = {"com.luman", "com.alibaba"})
 public class Application {
 
+	/**
+	 * 应用程序名称
+	 */
+	@Value("${spring.application.name}")
+	private String applicationName;
+
+	/**
+	 * 程序入口
+	 *
+	 * @param args arg游戏
+	 */
 	public static void main(String[] args) {
 		try {
 			SpringApplication.run(Application.class, args);
@@ -31,9 +40,14 @@ public class Application {
 		}
 	}
 
+	/**
+	 * 访问首页提示
+	 *
+	 * @return {@link String }
+	 */
 	@GetMapping("/")
-	public String start() {
-		return "Hello, welcome to COLA world!";
+	public String index() {
+		return StrUtil.format("{} service started successfully.", applicationName);
 	}
 
 }
