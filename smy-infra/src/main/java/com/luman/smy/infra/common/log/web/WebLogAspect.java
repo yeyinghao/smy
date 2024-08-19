@@ -53,6 +53,7 @@ public class WebLogAspect extends LogAspect {
 				}
 			}
 			resp = joinPoint.proceed();
+			logInfo.setRes(true);
 			return resp;
 		} catch (BizException e) {
 			LoggerUtil.info(log, e);

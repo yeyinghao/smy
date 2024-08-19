@@ -41,6 +41,7 @@ public class DalLogAspect extends LogAspect {
 			logInfo = buildLogInfo(joinPoint, log.topic());
 			Object resp = joinPoint.proceed();
 			logInfo.setResponse(resp);
+			logInfo.setRes(true);
 			return resp;
 		} catch (BizException e) {
 			logInfo.setRes(!e.isError());
