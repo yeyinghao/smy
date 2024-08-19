@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.aop.support.AopUtils;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 日志切面
@@ -28,8 +28,12 @@ public abstract class LogAspect {
 	public <T extends Annotation> T getAnnotation(ProceedingJoinPoint joinPoint, Class<T> t) {
 		Signature signature = joinPoint.getSignature();
 		MethodSignature methodSignature = (MethodSignature) signature;
-		Method method = methodSignature.getMethod();
-		return method.getAnnotation(t);
+		T annotation = methodSignature.getMethod().getAnnotation(t);
+		// 如果方法有注解取方法的, 没有则使用类上的注解
+		if (Objects.nonNull(annotation)) {
+			return annotation;
+		}
+		return joinPoint.getTarget().getClass().getAnnotation(t);
 	}
 
 

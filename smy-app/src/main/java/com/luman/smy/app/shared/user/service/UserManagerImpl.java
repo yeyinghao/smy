@@ -9,9 +9,11 @@ import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.infra.common.constant.LoggerConstant;
 import com.luman.smy.infra.common.helper.ListHelper;
 import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.common.helper.RHelper;
+import com.luman.smy.infra.common.log.log.Logged;
 import com.luman.smy.infra.db.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
  * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
  * @date 2021/1/8
  */
+@Logged(topic = LoggerConstant.FACADE_LOG)
 @Service
 @RequiredArgsConstructor
 public class UserManagerImpl implements UserManager {
