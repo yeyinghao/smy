@@ -3,13 +3,12 @@ package com.luman.smy.client.dto;
 import java.io.Serial;
 import java.io.Serializable;
 
+
 /**
- * Data Transfer object, including Command, Query and Response,
+ * dto
  *
- * Command and Query is CQRS concept.
- *
- * @author Frank Zhang 2020.11.13
- *
+ * @author yeyinghao
+ * @date 2024/08/19
  */
 public abstract class DTO implements Serializable {
 

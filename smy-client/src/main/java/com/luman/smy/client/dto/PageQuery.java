@@ -4,9 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Page Query Param
+ * 页面查询
  *
- * @author jacky
+ * @author yeyinghao
+ * @date 2024/08/19
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

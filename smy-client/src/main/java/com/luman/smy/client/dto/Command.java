@@ -3,10 +3,10 @@ package com.luman.smy.client.dto;
 import java.io.Serial;
 
 /**
- * Command request from Client.
+ * 命令
  *
- * @author Frank Zhang 2020.11.13
- *
+ * @author yeyinghao
+ * @date 2024/08/19
  */
 public abstract class Command extends DTO {
 

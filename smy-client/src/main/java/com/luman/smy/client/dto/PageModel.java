@@ -5,6 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+/**
+ * 页面模型
+ *
+ * @author yeyinghao
+ * @date 2024/08/19
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor

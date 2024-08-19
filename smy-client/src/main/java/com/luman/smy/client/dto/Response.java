@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * 结果辅助
+ * 响应
  *
  * @author yeyinghao
  * @date 2024/03/29
@@ -22,12 +22,24 @@ public class Response<T> extends DTO {
 	 */
 	private Integer code;
 
+	/**
+	 * 成功
+	 */
 	private boolean success;
 
+	/**
+	 * 错误代码
+	 */
 	private String errCode;
 
+	/**
+	 * 错误消息
+	 */
 	private String errMessage;
 
+	/**
+	 * 数据
+	 */
 	private T data;
 
 	/**
