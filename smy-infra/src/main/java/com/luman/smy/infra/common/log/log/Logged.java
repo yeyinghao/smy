@@ -1,5 +1,4 @@
-package com.luman.smy.infra.common.log.web;
-
+package com.luman.smy.infra.common.log.log;
 
 import com.luman.smy.infra.common.constant.LoggerConstant;
 
@@ -9,20 +8,20 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * web日志
+ * 日志
  *
  * @author yeyinghao
  * @date 2024/08/19
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface WebLog {
+public @interface Logged {
 
 	/**
 	 * 主题
 	 *
 	 * @return {@link String }
 	 */
-	String topic() default LoggerConstant.WEB_LOG;
+	String topic() default LoggerConstant.BIZ_LOG;
 
 }

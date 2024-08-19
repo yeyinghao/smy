@@ -5,7 +5,6 @@ import cn.hutool.extra.validation.ValidationUtil;
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.client.dto.DTO;
 import com.luman.smy.infra.common.constant.CommConstant;
-import com.luman.smy.infra.common.constant.LoggerConstant;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
 import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.exception.Checker;
@@ -20,8 +19,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -33,11 +30,6 @@ import java.util.stream.Collectors;
 public class WebLogAspect extends LogAspect {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, target={}#{}, request={}, response={}";
-
-	@Override
-	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.WEB_LOG);
-	}
 
 	/**
 	 * <a href="https://blog.csdn.net/zhengchao1991/article/details/53391244">The syntax of pointcut </a>
@@ -52,7 +44,8 @@ public class WebLogAspect extends LogAspect {
 		LogInfo logInfo = new LogInfo();
 		Object resp = null;
 		try {
-			logInfo = buildLogInfo(joinPoint);
+			WebLog log = getAnnotation(joinPoint, WebLog.class);
+			logInfo = buildLogInfo(joinPoint, log.topic());
 			Object[] args = joinPoint.getArgs();
 			for (Object arg : args) {
 				if (arg instanceof DTO) {
@@ -80,6 +73,11 @@ public class WebLogAspect extends LogAspect {
 		LoggerUtil.info(logInfo.getLog(), LOG_TEMPLATE, logInfo.getRes(), TimeUtils.getCostTime(logInfo.getStartTime()), logInfo.getClassName(), logInfo.getMethodName(), JSONUtil.toJsonStr(logInfo.getArgs()), JSONUtil.toJsonStr(logInfo.getResponse()));
 	}
 
+	/**
+	 * validate校验
+	 *
+	 * @param request 请求
+	 */
 	private static void preCheck(DTO request) {
 		if (Objects.isNull(request)) {
 			return;

@@ -1,7 +1,6 @@
 package com.luman.smy.infra.common.log.cal;
 
 import cn.hutool.json.JSONUtil;
-import com.luman.smy.infra.common.constant.LoggerConstant;
 import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.log.LogAspect;
 import com.luman.smy.infra.common.log.LogInfo;
@@ -12,20 +11,19 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 缓存日志切面
+ *
+ * @author yeyinghao
+ * @date 2024/08/19
+ */
 @Component
 @Aspect
 public class CalLogAspect extends LogAspect {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, className={}, methodName={}, request={}, response={}";
-
-	@Override
-	public Logger getLogger() {
-		return LoggerFactory.getLogger(LoggerConstant.CAL_LOG);
-	}
 
 	/**
 	 * <a href="https://blog.csdn.net/zhengchao1991/article/details/53391244">The syntax of pointcut </a>
@@ -39,7 +37,8 @@ public class CalLogAspect extends LogAspect {
 	public Object proceed(ProceedingJoinPoint joinPoint) {
 		LogInfo logInfo = new LogInfo();
 		try {
-			logInfo = buildLogInfo(joinPoint);
+			CalLog log = getAnnotation(joinPoint, CalLog.class);
+			logInfo = buildLogInfo(joinPoint, log.topic());
 			Object resp = joinPoint.proceed();
 			logInfo.setResponse(resp);
 			return resp;

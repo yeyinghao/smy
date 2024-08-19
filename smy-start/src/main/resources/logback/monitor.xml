@@ -64,6 +64,33 @@
         <appender-ref ref="CONSOLE_LOGGER_APPENDER"/>
     </logger>
 
+    <!--   biz-日志打印	-->
+    <appender name="BIZ_LOG_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/${MONITOR_LOG}/biz.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/${MONITOR_LOG}/biz.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 如果按天来回滚，则最大保存时间为30天，30天之前的都将被清理掉 这里的值与滚动策略模式有关 -->
+            <maxHistory>${maxHistory}</maxHistory>
+            <!-- 按照日期进行归档，并且对日志文件大小进行限制 -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- 设置文件大于10MB进行压缩归档 -->
+                <maxFileSize>${maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <!-- 格式化输出 -->
+            <pattern>
+                ${FILE_LOG_PATTERN}
+            </pattern>
+            <!-- 设置字符集 -->
+            <charset>${charset}</charset>
+        </encoder>
+    </appender>
+    <logger name="BIZ_LOG" level="info" additivity="false">
+        <appender-ref ref="BIZ_LOG_APPENDER"/>
+        <appender-ref ref="CONSOLE_LOGGER_APPENDER"/>
+    </logger>
+
     <!--   rest-日志打印	-->
     <appender name="FACADE_LOG_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/${MONITOR_LOG}/facade.log</file>
