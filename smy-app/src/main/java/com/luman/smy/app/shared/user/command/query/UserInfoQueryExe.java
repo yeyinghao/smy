@@ -16,11 +16,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
- * 用户信息查询
+ * 用户信息查询exe
  *
- * @author daoyuan
- * @date 2021/2/14 23:27
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @Component
 public class UserInfoQueryExe {

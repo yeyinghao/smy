@@ -4,11 +4,12 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+
 /**
- * User Domain
+ * 用户实体
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @Data
 public class UserEntity {

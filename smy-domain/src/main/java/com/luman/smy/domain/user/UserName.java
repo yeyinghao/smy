@@ -3,11 +3,12 @@ package com.luman.smy.domain.user;
 import jakarta.validation.ValidationException;
 import org.apache.commons.lang3.StringUtils;
 
+
 /**
  * 用户名称
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/11/27
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 public class UserName {
 

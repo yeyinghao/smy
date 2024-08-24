@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+
 /**
- * 新增用户请求
+ * 用户注册命令行
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

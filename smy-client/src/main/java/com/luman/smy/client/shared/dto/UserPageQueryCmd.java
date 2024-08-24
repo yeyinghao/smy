@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 /**
- * 新增用户请求
+ * 查询用户页面命令行
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

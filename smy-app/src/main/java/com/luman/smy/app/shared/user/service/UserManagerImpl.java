@@ -18,11 +18,12 @@ import com.luman.smy.infra.db.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 /**
- * 用户相关
+ * 用户Manager实现
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @Logged(topic = LoggerConstant.FACADE_LOG)
 @Service

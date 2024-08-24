@@ -1,10 +1,10 @@
 package com.luman.smy.app.shared.user.validator;
 
 /**
- * UserValidator
+ * 用户验证器
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/10
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 public class UserValidator {
 

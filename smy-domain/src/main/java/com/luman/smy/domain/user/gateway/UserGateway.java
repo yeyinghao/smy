@@ -2,11 +2,12 @@ package com.luman.smy.domain.user.gateway;
 
 import com.luman.smy.domain.user.UserEntity;
 
+
 /**
- * User Gateway
+ * 用户网关
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 public interface UserGateway {
 

@@ -8,11 +8,12 @@ import com.luman.smy.client.shared.dto.data.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 /**
- * UserAddCmdExe
+ * 用户注册CMD exe
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/10
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 @Component
 public class UserRegisterCmdExe {

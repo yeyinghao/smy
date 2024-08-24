@@ -6,15 +6,21 @@ import com.luman.smy.domain.user.UserPassword;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
 
+
 /**
- * User Application层 转换器
- * 用于DTO与实体之间的互转
+ * 用户汇编
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/11/27
+ * @author yeyinghao
+ * @date 2024/08/25
  */
 public class UserAssembler {
 
+    /**
+     * 实体
+     *
+     * @param co 有限公司
+     * @return {@link UserEntity }
+     */
     public static UserEntity toEntity(UserRegisterCmd co) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(new UserName(co.getUsername()));
@@ -28,6 +34,12 @@ public class UserAssembler {
         return userEntity;
     }
 
+    /**
+     * 来value对象
+     *
+     * @param userEntity 用户实体
+     * @return {@link UserVO }
+     */
     public static UserVO toValueObject(UserEntity userEntity) {
         UserVO userVO = new UserVO();
         userVO.setId(userEntity.getId());

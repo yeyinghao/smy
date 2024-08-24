@@ -13,6 +13,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 任务信息
+ *
+ * @author yeyinghao
+ * @date 2024/08/25
+ */
 @Component
 @Slf4j
 public class TaskInfo extends MultiTaskTemplate<User> {
