@@ -5,7 +5,7 @@
 
 package com.luman.smy.app.shared.cache.impl;
 
-import com.luman.smy.domain.cache.CacheService;
+import com.luman.smy.app.shared.cache.CacheService;
 import com.luman.smy.infra.integration.cache.CacheClient;
 import com.luman.smy.infra.integration.cache.config.CacheConfig;
 import lombok.RequiredArgsConstructor;
