@@ -10,6 +10,12 @@ import com.luman.smy.infra.db.user.service.UserService;
 import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 
+/**
+ * 用户服务实现
+ *
+ * @author yeyinghao
+ * @date 2024/08/26
+ */
 @Service
 public class UserServiceImpl extends CoreServiceImpl<User, UserDO, UserMapper> implements UserService {
 

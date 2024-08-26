@@ -5,7 +5,7 @@ import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.log.LogAspect;
 import com.luman.smy.infra.common.log.LogInfo;
 import com.luman.smy.infra.common.util.LoggerUtil;
-import com.luman.smy.infra.common.util.TimeUtils;
+import com.luman.smy.infra.common.util.TimeUtil;
 import lombok.SneakyThrows;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -53,6 +53,6 @@ public class LoggedAspect extends LogAspect {
 
 	@Override
 	public void printLog(LogInfo logInfo) {
-		LoggerUtil.info(logInfo.getLog(), LOG_TEMPLATE, logInfo.getRes(), TimeUtils.getCostTime(logInfo.getStartTime()), logInfo.getClassName(), logInfo.getMethodName(), JSONUtil.toJsonStr(logInfo.getArgs()), JSONUtil.toJsonStr(logInfo.getResponse()));
+		LoggerUtil.info(logInfo.getLog(), LOG_TEMPLATE, logInfo.getRes(), TimeUtil.getCostTime(logInfo.getStartTime()), logInfo.getClassName(), logInfo.getMethodName(), JSONUtil.toJsonStr(logInfo.getArgs()), JSONUtil.toJsonStr(logInfo.getResponse()));
 	}
 }

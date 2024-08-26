@@ -7,6 +7,12 @@ import com.luman.smy.infra.db.user.service.UserInfoService;
 import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 
+/**
+ * 用户信息服务实现
+ *
+ * @author yeyinghao
+ * @date 2024/08/26
+ */
 @Service
 public class UserInfoServiceImpl extends CoreServiceImpl<UserInfo, UserInfoDO, UserInfoMapper> implements UserInfoService {
 

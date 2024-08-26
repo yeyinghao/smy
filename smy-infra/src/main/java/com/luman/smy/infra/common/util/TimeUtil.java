@@ -9,7 +9,7 @@ import lombok.experimental.UtilityClass;
  * @date 2024/08/02
  */
 @UtilityClass
-public class TimeUtils {
+public class TimeUtil {
 
 	/**
 	 * 获取调用消耗时间

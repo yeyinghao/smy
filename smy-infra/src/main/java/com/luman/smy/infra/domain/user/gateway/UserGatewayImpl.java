@@ -22,7 +22,14 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserGatewayImpl implements UserGateway {
 
+	/**
+	 * 用户服务
+	 */
 	private final UserService userService;
+
+	/**
+	 * 用户信息服务
+	 */
 	private final UserInfoService userInfoService;
 
 	@Override

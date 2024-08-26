@@ -5,6 +5,12 @@ import com.luman.smy.client.dto.Paging;
 import com.luman.smy.infra.db.user.model.User;
 import com.luman.smy.infra.integration.dal.CoreService;
 
+/**
+ * 用户服务
+ *
+ * @author yeyinghao
+ * @date 2024/08/26
+ */
 public interface UserService extends CoreService<User> {
 	IPage<User> page(Paging paging, String name);
 }

@@ -12,7 +12,7 @@ import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.common.log.LogAspect;
 import com.luman.smy.infra.common.log.LogInfo;
 import com.luman.smy.infra.common.util.LoggerUtil;
-import com.luman.smy.infra.common.util.TimeUtils;
+import com.luman.smy.infra.common.util.TimeUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -71,7 +71,7 @@ public class RestLogAspect extends LogAspect {
 
 	@Override
 	public void printLog(LogInfo logInfo) {
-		LoggerUtil.info(logInfo.getLog(), LOG_TEMPLATE, logInfo.getRes(), TimeUtils.getCostTime(logInfo.getStartTime()), logInfo.getClassName(), logInfo.getMethodName(), JSONUtil.toJsonStr(logInfo.getArgs()), JSONUtil.toJsonStr(logInfo.getResponse()));
+		LoggerUtil.info(logInfo.getLog(), LOG_TEMPLATE, logInfo.getRes(), TimeUtil.getCostTime(logInfo.getStartTime()), logInfo.getClassName(), logInfo.getMethodName(), JSONUtil.toJsonStr(logInfo.getArgs()), JSONUtil.toJsonStr(logInfo.getResponse()));
 	}
 
 	/**

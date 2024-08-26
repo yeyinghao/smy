@@ -3,6 +3,7 @@ package com.luman.smy.infra.db.user.dataobject;
 import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
  * @author amos.wang
  * @date 2021/2/5 13:48
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("org_user_info")
 public class UserInfoDO extends BaseDO {
