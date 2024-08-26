@@ -37,7 +37,7 @@ public class HttpStatusCodeAdvice implements ResponseBodyAdvice {
 		if (body instanceof Response) {
 			Integer status = ((Response) body).getCode();
 			HttpStatus httpStatus = HttpStatus.resolve(status);
-			response.setStatusCode(Optional.ofNullable(httpStatus).orElseThrow(() -> ExceptionFactory.bizException(CommErrorEnum.SYS_ERROR)));
+			response.setStatusCode(Optional.ofNullable(httpStatus).orElseThrow(() -> ExceptionFactory.buildBizException(CommErrorEnum.SYS_ERROR)));
 		}
 		return body;
 	}
