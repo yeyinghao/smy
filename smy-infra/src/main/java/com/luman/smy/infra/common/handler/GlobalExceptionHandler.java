@@ -4,7 +4,7 @@ package com.luman.smy.infra.common.handler;
 import cn.hutool.core.util.StrUtil;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.infra.common.constant.CommConstant;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
+import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.common.util.LoggerUtil;
@@ -41,14 +41,14 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public Response<Void> exceptionHandler(Exception e) {
 		LoggerUtil.error(log, e);
-		return RHelper.fail(CommErrorEnum.SYS_ERROR);
+		return RHelper.fail(ErrorEnum.SYS_ERROR);
 	}
 
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public Response<Void> exceptionHandler(HttpMessageNotReadableException e) {
 		LoggerUtil.error(log, e);
-		return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, e.getMessage());
+		return RHelper.fail(ErrorEnum.ILLEGAL_PARAMETER, e.getMessage());
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public Response<Void> noHandlerFoundExceptionHandler(NoHandlerFoundException e) {
 		LoggerUtil.info(log, "message={}, requestUrl={}", e.getMessage(), e.getRequestURL());
-		return RHelper.fail(CommErrorEnum.NOT_FOUND);
+		return RHelper.fail(ErrorEnum.NOT_FOUND);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 	public Response<Void> httpRequestMethodNotSupportedExceptionHandler(HttpRequestMethodNotSupportedException e) {
 		LoggerUtil.info(log, "message={}, exceptMethod={}, actualMethod={}", e.getMessage(), e.getSupportedMethods(), e.getMethod());
-		return RHelper.fail(CommErrorEnum.BIZ_ERROR, "请求方式不支持");
+		return RHelper.fail(ErrorEnum.BIZ_ERROR, "请求方式不支持");
 	}
 
 	/**
@@ -91,13 +91,13 @@ public class GlobalExceptionHandler {
 		String msg = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
 		if (StrUtil.isNotEmpty(msg)) {
 			// 自定义状态返回
-			return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, msg);
+			return RHelper.fail(ErrorEnum.ILLEGAL_PARAMETER, msg);
 		}
 		// 参数类型不匹配检验
 		StringBuilder message = new StringBuilder();
 		List<FieldError> fieldErrors = e.getFieldErrors();
 		fieldErrors.forEach((item) -> message.append("参数:[").append(item.getObjectName()).append(".").append(item.getField()).append("]的传入值:[").append(item.getRejectedValue()).append("]与预期的字段类型不匹配."));
-		return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, message.toString());
+		return RHelper.fail(ErrorEnum.ILLEGAL_PARAMETER, message.toString());
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class GlobalExceptionHandler {
 		LoggerUtil.info(log, e);
 		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 		String message = violations.stream().map(ConstraintViolation::getMessage).collect(Collectors.joining(";"));
-		return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, message);
+		return RHelper.fail(ErrorEnum.ILLEGAL_PARAMETER, message);
 	}
 
 	/**
@@ -124,6 +124,6 @@ public class GlobalExceptionHandler {
 	public Response<Void> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
 		LoggerUtil.info(log, e);
 		String message = e.getBindingResult().getFieldErrors().stream().map(item -> item.getField() + CommConstant.COLON + item.getDefaultMessage()).collect(Collectors.joining(CommConstant.SEMICOLON));
-		return RHelper.fail(CommErrorEnum.ILLEGAL_PARAMETER, message);
+		return RHelper.fail(ErrorEnum.ILLEGAL_PARAMETER, message);
 	}
 }

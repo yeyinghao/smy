@@ -2,7 +2,7 @@ package com.luman.smy.infra.common.exception;
 
 import com.luman.smy.client.enums.ByErrorCode;
 
-public class ExceptionFactory {
+public class BizExceptionFactory {
 
 	/**
 	 * 业务异常

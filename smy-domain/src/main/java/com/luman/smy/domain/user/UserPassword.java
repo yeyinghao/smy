@@ -1,4 +1,4 @@
-package com.luman.smy.domain.user.model;
+package com.luman.smy.domain.user;
 
 import jakarta.validation.ValidationException;
 import org.apache.commons.codec.digest.DigestUtils;

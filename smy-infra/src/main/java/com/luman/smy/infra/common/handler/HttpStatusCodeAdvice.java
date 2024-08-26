@@ -5,8 +5,8 @@
 package com.luman.smy.infra.common.handler;
 
 import com.luman.smy.client.dto.Response;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
-import com.luman.smy.infra.common.exception.ExceptionFactory;
+import com.luman.smy.infra.common.enums.ErrorEnum;
+import com.luman.smy.infra.common.exception.BizExceptionFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,7 +37,7 @@ public class HttpStatusCodeAdvice implements ResponseBodyAdvice {
 		if (body instanceof Response) {
 			Integer status = ((Response) body).getCode();
 			HttpStatus httpStatus = HttpStatus.resolve(status);
-			response.setStatusCode(Optional.ofNullable(httpStatus).orElseThrow(() -> ExceptionFactory.buildBizException(CommErrorEnum.SYS_ERROR)));
+			response.setStatusCode(Optional.ofNullable(httpStatus).orElseThrow(() -> BizExceptionFactory.buildBizException(ErrorEnum.SYS_ERROR)));
 		}
 		return body;
 	}

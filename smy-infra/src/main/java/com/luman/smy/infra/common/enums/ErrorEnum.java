@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @RequiredArgsConstructor
 @ToString
-public enum CommErrorEnum implements ByErrorCode {
+public enum ErrorEnum implements ByErrorCode {
 
 	/**
 	 * 成功

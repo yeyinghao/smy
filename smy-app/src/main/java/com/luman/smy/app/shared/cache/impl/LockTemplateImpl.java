@@ -3,7 +3,7 @@ package com.luman.smy.app.shared.cache.impl;
 import com.luman.smy.app.shared.cache.CacheService;
 import com.luman.smy.app.shared.cache.LockTemplate;
 import com.luman.smy.client.enums.ByStringCode;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
+import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.exception.CheckUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -79,7 +79,7 @@ public class LockTemplateImpl implements LockTemplate {
 	public void tryLockEx(ByStringCode byStringCode, Object bizId, Runnable runnable) {
 		Lock rLock = getLock(byStringCode, bizId);
 		try {
-			CheckUtil.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
+			CheckUtil.isTrue(rLock.tryLock(), ErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			runnable.run();
 		} finally {
 			rLock.unlock();
@@ -90,7 +90,7 @@ public class LockTemplateImpl implements LockTemplate {
 	public <R> R tryLockEx(ByStringCode byStringCode, Object bizId, Supplier<R> supplier) {
 		Lock rLock = getLock(byStringCode, bizId);
 		try {
-			CheckUtil.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
+			CheckUtil.isTrue(rLock.tryLock(), ErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			return supplier.get();
 		} finally {
 			rLock.unlock();

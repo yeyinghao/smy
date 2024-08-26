@@ -5,7 +5,7 @@ import cn.hutool.extra.validation.ValidationUtil;
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.client.dto.DTO;
 import com.luman.smy.infra.common.constant.CommConstant;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
+import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.exception.BizException;
 import com.luman.smy.infra.common.exception.CheckUtil;
 import com.luman.smy.infra.common.helper.RHelper;
@@ -61,7 +61,7 @@ public class RestLogAspect extends LogAspect {
 			resp = RHelper.fail(e.getByErrorCode(), e.getMessage());
 		} catch (Throwable e) {
 			LoggerUtil.error(log, e);
-			resp = RHelper.fail(CommErrorEnum.SYS_ERROR);
+			resp = RHelper.fail(ErrorEnum.SYS_ERROR);
 		} finally {
 			logInfo.setResponse(resp);
 			printLog(logInfo);
@@ -86,6 +86,6 @@ public class RestLogAspect extends LogAspect {
 		// 获取校验结果
 		BeanValidationResult result = ValidationUtil.warpValidate(request);
 		// 校验失败 抛错误
-		CheckUtil.isTrue(result.isSuccess(), CommErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(CommConstant.SEMICOLON)));
+		CheckUtil.isTrue(result.isSuccess(), ErrorEnum.ILLEGAL_PARAMETER, result.getErrorMessages().stream().map(item -> item.getPropertyName() + CommConstant.COLON + item.getMessage()).collect(Collectors.joining(CommConstant.SEMICOLON)));
 	}
 }

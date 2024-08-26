@@ -3,7 +3,7 @@ package com.luman.smy.infra.integration.satoken.handler;
 
 import cn.dev33.satoken.exception.NotLoginException;
 import com.luman.smy.client.dto.Response;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
+import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +34,7 @@ public class SaTokenExceptionHandler {
 	@ExceptionHandler(NotLoginException.class)
 	public Response<Void> notLoginExceptionHandler(NotLoginException e) {
 		LoggerUtil.info(log, e.getMessage());
-		return RHelper.fail(CommErrorEnum.FORBIDDEN, "禁止访问");
+		return RHelper.fail(ErrorEnum.FORBIDDEN, "禁止访问");
 	}
 
 }

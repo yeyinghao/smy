@@ -11,7 +11,7 @@ public class ThrowUtil {
 	 * @param errorEnum 错误枚举
 	 */
 	public static void throwEx(ByErrorCode errorEnum) {
-		throw ExceptionFactory.buildBizException(errorEnum);
+		throw BizExceptionFactory.buildBizException(errorEnum);
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class ThrowUtil {
 	 * @param subMessage 错误消息
 	 */
 	public static void throwEx(ByErrorCode errorEnum, String subMessage) {
-		throw ExceptionFactory.buildBizException(errorEnum, subMessage);
+		throw BizExceptionFactory.buildBizException(errorEnum, subMessage);
 	}
 
 	/**
@@ -31,7 +31,7 @@ public class ThrowUtil {
 	 * @param subMessages 错误消息
 	 */
 	public static void throwEx(ByErrorCode errorEnum, String template, Object... subMessages) {
-		throw ExceptionFactory.buildBizException(errorEnum, StrUtil.format(template, subMessages));
+		throw BizExceptionFactory.buildBizException(errorEnum, StrUtil.format(template, subMessages));
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class ThrowUtil {
 	 * @param errorEnum 错误枚举
 	 */
 	public static void throwEx(ByErrorCode errorEnum, Throwable throwable) {
-		throw ExceptionFactory.buildBizException(errorEnum, throwable);
+		throw BizExceptionFactory.buildBizException(errorEnum, throwable);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class ThrowUtil {
 	 * @param subMessage 错误消息
 	 */
 	public static void throwEx(ByErrorCode errorEnum, Throwable throwable, String subMessage) {
-		throw ExceptionFactory.buildBizException(errorEnum, throwable, subMessage);
+		throw BizExceptionFactory.buildBizException(errorEnum, throwable, subMessage);
 	}
 
 	/**
@@ -60,6 +60,6 @@ public class ThrowUtil {
 	 * @param subMessages 错误消息
 	 */
 	public static void throwEx(ByErrorCode errorEnum, Throwable throwable, String template, Object... subMessages) {
-		throw ExceptionFactory.buildBizException(errorEnum, throwable, StrUtil.format(template, subMessages));
+		throw BizExceptionFactory.buildBizException(errorEnum, throwable, StrUtil.format(template, subMessages));
 	}
 }

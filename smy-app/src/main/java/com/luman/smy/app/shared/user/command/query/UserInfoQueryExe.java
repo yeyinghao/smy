@@ -5,7 +5,7 @@ import com.luman.smy.app.shared.user.assembler.UserAssembler;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
-import com.luman.smy.domain.user.model.UserEntity;
+import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
 import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.db.user.model.User;

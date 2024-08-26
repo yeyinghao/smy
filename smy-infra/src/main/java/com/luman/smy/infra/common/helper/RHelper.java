@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.enums.ByErrorCode;
-import com.luman.smy.infra.common.enums.CommErrorEnum;
+import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.util.TraceIdUtil;
 import lombok.experimental.UtilityClass;
 
@@ -24,22 +24,7 @@ public class RHelper {
 	 */
 	public static <T> Response<T> success(T data) {
 		Response<T> response = new Response<>();
-		response.setCode(CommErrorEnum.SUCCESS.getHttpCode());
-		response.setSuccess(Boolean.TRUE);
-		response.setData(data);
-		response.setTraceId(TraceIdUtil.getThreadTraceId());
-		return response;
-	}
-
-	/**
-	 * 成功
-	 *
-	 * @param data 数据
-	 * @return {@link Response }<{@link PageModel }<{@link T }>>
-	 */
-	public static <T> Response<PageModel<T>> success(PageModel<T> data) {
-		Response<PageModel<T>> response = new Response<>();
-		response.setCode(CommErrorEnum.SUCCESS.getHttpCode());
+		response.setCode(ErrorEnum.SUCCESS.getHttpCode());
 		response.setSuccess(Boolean.TRUE);
 		response.setData(data);
 		response.setTraceId(TraceIdUtil.getThreadTraceId());
