@@ -3,10 +3,10 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.domain.file;
+package com.luman.smy.app.shared.file;
 
 
-import com.luman.smy.domain.file.model.FileStatInfo;
+import com.luman.smy.domain.file.FileStatInfo;
 
 import java.io.InputStream;
 import java.util.List;

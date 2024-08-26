@@ -3,12 +3,12 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.infra.domain.file;
+package com.luman.smy.app.shared.file.impl;
 
+import com.luman.smy.app.shared.file.FileService;
+import com.luman.smy.domain.file.FileStatInfo;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import com.luman.smy.infra.integration.file.FileClient;
-import com.luman.smy.domain.file.FileService;
-import com.luman.smy.domain.file.model.FileStatInfo;
 import io.minio.StatObjectResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

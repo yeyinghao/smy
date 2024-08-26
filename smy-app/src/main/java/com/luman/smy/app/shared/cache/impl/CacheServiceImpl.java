@@ -3,7 +3,7 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.infra.domain.cache;
+package com.luman.smy.app.shared.cache.impl;
 
 import com.luman.smy.domain.cache.CacheService;
 import com.luman.smy.infra.integration.cache.CacheClient;
