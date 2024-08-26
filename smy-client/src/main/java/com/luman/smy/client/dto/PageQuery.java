@@ -3,6 +3,8 @@ package com.luman.smy.client.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serial;
+
 /**
  * 页面查询
  *
@@ -13,6 +15,15 @@ import lombok.EqualsAndHashCode;
 @Data
 public abstract class PageQuery extends Query {
 
+	/**
+	 * 串口版本uid
+	 */
+	@Serial
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 分页
+	 */
 	private Paging paging;
 
 }

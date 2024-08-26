@@ -10,6 +10,9 @@ import java.io.Serial;
  */
 public abstract class Query extends Command {
 
+    /**
+     * 串口版本uid
+     */
     @Serial
     private static final long serialVersionUID = 1L;
 

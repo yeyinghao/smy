@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serial;
+
 /**
  * 响应
  *
@@ -16,6 +18,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Response<T> extends DTO {
+
+	/**
+	 * 串口版本uid
+	 */
+	@Serial
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * http响应状态

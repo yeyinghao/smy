@@ -12,6 +12,9 @@ import java.io.Serializable;
  */
 public abstract class DTO implements Serializable {
 
+    /**
+     * 串口版本uid
+     */
     @Serial
     private static final long serialVersionUID = 1L;
 
