@@ -1,5 +1,7 @@
 package com.luman.smy.client.enums;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.Objects;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Objects;
  * @author yeyinghao
  * @date 2024/08/26
  */
+@UtilityClass
 public class EnumUtil {
 
 	/**
@@ -36,7 +39,7 @@ public class EnumUtil {
 	 * @param baseEnum 基础枚举
 	 * @return {@link T }
 	 */
-	public  static <M extends ByCode<T>, T> T getName(M baseEnum) {
+	public static <M extends ByCode<T>, T> T getName(M baseEnum) {
 		return Objects.isNull(baseEnum) ? null : baseEnum.getCode();
 	}
 

@@ -1,4 +1,4 @@
-package com.luman.smy.infra.integration.cache;
+package com.luman.smy.domain.cache;
 
 
 import com.luman.smy.client.enums.ByStringCode;

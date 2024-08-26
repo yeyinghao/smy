@@ -1,1 +1,0 @@
-package com.luman.smy.domain.demo;

@@ -3,9 +3,13 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.infra.integration.cache;
+package com.luman.smy.domain.cache;
 
-import org.redisson.api.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.locks.Lock;
 
 /**
  * 缓存服务
@@ -78,49 +82,49 @@ public interface CacheService {
 	 * 获取redis列表
 	 *
 	 * @param key 关键
-	 * @return {@link RList}<{@link T}>
+	 * @return {@link List }<{@link T }>
 	 */
-	<T> RList<T> getList(String key);
+	<T> List<T> getList(String key);
 
 	/**
 	 * 获取redis映射缓存
 	 *
 	 * @param key 关键
-	 * @return {@link RMapCache}<{@link K}, {@link V}>
+	 * @return {@link Map }<{@link K }, {@link V }>
 	 */
-	<K, V> RMapCache<K, V> getMapCache(String key);
+	<K, V> Map<K, V> getMapCache(String key);
 
 	/**
 	 * 获取redis地图
 	 *
 	 * @param key 关键
-	 * @return {@link RMap}<{@link K}, {@link V}>
+	 * @return {@link Map}<{@link K}, {@link V}>
 	 */
-	<K, V> RMap<K, V> getMap(String key);
+	<K, V> Map<K, V> getMap(String key);
 
 	/**
 	 * 设置redis
 	 *
 	 * @param key 关键
-	 * @return {@link RSet}<{@link T}>
+	 * @return {@link Set }<{@link T }>
 	 */
-	<T> RSet<T> getSet(String key);
+	<T> Set<T> getSet(String key);
 
 	/**
 	 * 得到redis评分排序集
 	 *
 	 * @param key 关键
-	 * @return {@link RScoredSortedSet}<{@link T}>
+	 * @return {@link Iterable }<{@link T }>
 	 */
-	<T> RScoredSortedSet<T> getScoredSortedSet(String key);
+	<T> Iterable<T> getScoredSortedSet(String key);
 
 	/**
 	 * 获取redis锁
 	 *
 	 * @param key 关键
-	 * @return {@link RLock}
+	 * @return {@link Lock }
 	 */
-	RLock getLock(String key);
+	Lock getLock(String key);
 
 	/**
 	 * 获取key过期时间(秒)

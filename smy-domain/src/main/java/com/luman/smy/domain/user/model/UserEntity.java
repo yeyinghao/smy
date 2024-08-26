@@ -1,4 +1,4 @@
-package com.luman.smy.domain.user;
+package com.luman.smy.domain.user.model;
 
 import lombok.Data;
 

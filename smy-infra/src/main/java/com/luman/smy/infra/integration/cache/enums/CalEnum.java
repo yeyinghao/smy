@@ -5,7 +5,7 @@
 
 package com.luman.smy.infra.integration.cache.enums;
 
-import com.luman.smy.client.enums.ByCode;
+import com.luman.smy.client.enums.ByStringCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @RequiredArgsConstructor
 @ToString
-public enum CalEnum implements ByCode {
+public enum CalEnum implements ByStringCode {
 
 	/**
 	 * 获取对象

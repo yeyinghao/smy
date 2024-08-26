@@ -3,10 +3,10 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.infra.integration.file;
+package com.luman.smy.domain.file;
 
-import com.luman.smy.infra.integration.file.model.FileStatInfo;
-import io.minio.StatObjectResponse;
+
+import com.luman.smy.domain.file.model.FileStatInfo;
 
 import java.io.InputStream;
 import java.util.List;
@@ -57,7 +57,7 @@ public interface FileService {
 	 * 统计对象
 	 *
 	 * @param fileKey 对象名称
-	 * @return {@link StatObjectResponse}
+	 * @return {@link FileStatInfo }
 	 */
 	FileStatInfo statObject(String fileKey);
 

@@ -1,6 +1,6 @@
 package com.luman.smy.domain.user.gateway;
 
-import com.luman.smy.domain.user.UserEntity;
+import com.luman.smy.domain.user.model.UserEntity;
 
 
 /**

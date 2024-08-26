@@ -1,6 +1,6 @@
 package com.luman.smy.app.shared.user.command;
 
-import com.luman.smy.domain.user.UserEntity;
+import com.luman.smy.domain.user.model.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
 import com.luman.smy.app.shared.user.assembler.UserAssembler;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
