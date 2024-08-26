@@ -118,7 +118,7 @@
         <appender-ref ref="CONSOLE_LOGGER_APPENDER"/>
     </logger>
 
-    <!--   web-日志打印	-->
+    <!--   rest-日志打印	-->
     <appender name="WEB_LOG_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/${MONITOR_LOG}/web.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">

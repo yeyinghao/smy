@@ -2,20 +2,20 @@
  * QQ: 1113531030 WX: missyeyh Phone: 17689397484 Copyright (c) Ye Yinghao 2022.1 - 2023.2
  */
 
-package com.luman.smy.infra.common.enums;
+package com.luman.smy.client.enums;
 
 /**
- * 错误枚举
+ * 通过错误代码
  *
  * @author yeyinghao
- * @date 2023/08/13
+ * @date 2024/08/26
  */
-public interface ErrorEnum extends BaseEnum {
+public interface ByErrorCode extends ByStringCode {
 
 	/**
 	 * 获得状态码
 	 *
 	 * @return {@link Integer}
 	 */
-	Integer getCode();
+	Integer getHttpCode();
 }

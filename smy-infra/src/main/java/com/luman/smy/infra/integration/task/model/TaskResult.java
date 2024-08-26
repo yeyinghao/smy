@@ -5,7 +5,7 @@
 
 package com.luman.smy.infra.integration.task.model;
 
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +28,7 @@ public class TaskResult {
 	/**
 	 * 任务枚举
 	 */
-	private BaseEnum taskEnum;
+	private ByCode taskEnum;
 
 	/**
 	 * 总num
@@ -71,7 +71,7 @@ public class TaskResult {
 	 *
 	 * @return {@link TaskResult}
 	 */
-	public static TaskResult init(BaseEnum taskEnum) {
+	public static TaskResult init(ByCode taskEnum) {
 		return TaskResult.builder().taskEnum(taskEnum).totalNum(0).succNum(0).failNum(0).build();
 	}
 }

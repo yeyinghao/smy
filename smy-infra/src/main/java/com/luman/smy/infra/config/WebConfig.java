@@ -13,8 +13,10 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.luman.smy.client.enums.ByCode;
+import com.luman.smy.client.enums.ByStringCode;
+import com.luman.smy.client.enums.EnumUtil;
 import com.luman.smy.infra.common.constant.CommConstant;
-import com.luman.smy.infra.common.enums.BaseEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.context.annotation.Configuration;
@@ -84,8 +86,8 @@ public class WebConfig implements WebMvcConfigurer {
 			module.addSerializer(Long.class, longJsonSerializer());
 			module.addSerializer(Long.TYPE, longJsonSerializer());
 			// 处理BaseEnum枚举
-			module.addSerializer(BaseEnum.class, baseEnumJsonSerializer());
-			module.addDeserializer(BaseEnum.class, baseEnumJsonDeserializer());
+			module.addSerializer(ByStringCode.class, baseEnumJsonSerializer());
+			module.addDeserializer(ByStringCode.class, baseEnumJsonDeserializer());
 			// 处理BaseEnum枚举
 			module.addSerializer(Money.class, moneyJsonSerializer());
 			module.addDeserializer(Money.class, moneyJsonDeserializer());
@@ -118,18 +120,18 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json序列化器
 	 *
-	 * @return {@link JsonSerializer}<{@link BaseEnum}>
+	 * @return {@link JsonSerializer}<{@link ByStringCode}>
 	 */
-	private static JsonSerializer<BaseEnum> baseEnumJsonSerializer() {
+	private static JsonSerializer<ByStringCode> baseEnumJsonSerializer() {
 		return new JsonSerializer<>() {
 			@Override
-			public void serialize(BaseEnum baseEnum, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException {
+			public void serialize(ByStringCode baseEnum, JsonGenerator jsonGenerator, SerializerProvider serializers) throws IOException {
 				String name = null;
 				String description = null;
 				if (Objects.nonNull(baseEnum)) {
-					name = baseEnum.name();
+					name = baseEnum.getCode();
 					// 增加一个字段，格式为【枚举类名称+Text】，存储枚举的name
-					description = baseEnum.getDescription();
+					description = baseEnum.getDesc();
 				}
 				jsonGenerator.writeString(name);
 				// 增加一个字段，格式为【枚举类名称+Text】，存储枚举的name
@@ -141,18 +143,18 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json反序列化器
 	 *
-	 * @return {@link JsonDeserializer}<{@link BaseEnum}>
+	 * @return {@link JsonDeserializer}<{@link ByCode}>
 	 */
 	@SuppressWarnings("unchecked")
-	private static JsonDeserializer<BaseEnum> baseEnumJsonDeserializer() {
+	private static JsonDeserializer<ByStringCode> baseEnumJsonDeserializer() {
 		return new JsonDeserializer<>() {
 			@Override
-			public BaseEnum deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+			public ByStringCode deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
 				JsonNode node = p.getCodec().readTree(p);
 				String currentName = p.currentName();
 				Object currentValue = p.getCurrentValue();
-				Class<BaseEnum> findPropertyType = (Class<BaseEnum>) BeanUtils.findPropertyType(currentName, currentValue.getClass());
-				return BaseEnum.getEnumByNameOrDesc(findPropertyType, node.asText());
+				Class<ByStringCode> findPropertyType = (Class<ByStringCode>) BeanUtils.findPropertyType(currentName, currentValue.getClass());
+				return EnumUtil.getEnumByCode(findPropertyType, node.asText());
 			}
 		};
 	}
@@ -161,7 +163,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json序列化器
 	 *
-	 * @return {@link JsonSerializer}<{@link BaseEnum}>
+	 * @return {@link JsonSerializer}<{@link ByCode}>
 	 */
 	private static JsonSerializer<Money> moneyJsonSerializer() {
 		return new JsonSerializer<>() {
@@ -179,7 +181,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json反序列化器
 	 *
-	 * @return {@link JsonDeserializer}<{@link BaseEnum}>
+	 * @return {@link JsonDeserializer}<{@link ByCode}>
 	 */
 	private static JsonDeserializer<Money> moneyJsonDeserializer() {
 		return new JsonDeserializer<>() {
@@ -197,7 +199,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json序列化器
 	 *
-	 * @return {@link JsonSerializer}<{@link BaseEnum}>
+	 * @return {@link JsonSerializer}<{@link ByCode}>
 	 */
 	private static JsonSerializer<LocalDate> localDateJsonSerializer() {
 		return new JsonSerializer<>() {
@@ -214,7 +216,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json反序列化器
 	 *
-	 * @return {@link JsonDeserializer}<{@link BaseEnum}>
+	 * @return {@link JsonDeserializer}<{@link ByCode}>
 	 */
 	private static JsonDeserializer<LocalDate> localDateJsonDeserializer() {
 		return new JsonDeserializer<>() {
@@ -233,7 +235,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json序列化器
 	 *
-	 * @return {@link JsonSerializer}<{@link BaseEnum}>
+	 * @return {@link JsonSerializer}<{@link ByCode}>
 	 */
 	private static JsonSerializer<LocalDateTime> localDateTimeJsonSerializer() {
 		return new JsonSerializer<>() {
@@ -250,7 +252,7 @@ public class WebConfig implements WebMvcConfigurer {
 	/**
 	 * 获取基础枚举json反序列化器
 	 *
-	 * @return {@link JsonDeserializer}<{@link BaseEnum}>
+	 * @return {@link JsonDeserializer}<{@link ByCode}>
 	 */
 	private static JsonDeserializer<LocalDateTime> localDateTimeJsonDeserializer() {
 		return new JsonDeserializer<>() {

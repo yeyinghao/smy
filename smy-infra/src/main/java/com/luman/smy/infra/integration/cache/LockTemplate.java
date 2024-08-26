@@ -1,7 +1,7 @@
 package com.luman.smy.infra.integration.cache;
 
 
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByStringCode;
 
 import java.util.function.Supplier;
 
@@ -16,58 +16,58 @@ public interface LockTemplate {
 	/**
 	 * 锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param runnable 可运行
 	 */
-	void lock(BaseEnum baseEnum, Object bizId, Runnable runnable);
+	void lock(ByStringCode byStringCode, Object bizId, Runnable runnable);
 
 	/**
 	 * 锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param supplier 供应商
 	 * @return {@link R}
 	 */
-	<R> R lock(BaseEnum baseEnum, Object bizId, Supplier<R> supplier);
+	<R> R lock(ByStringCode byStringCode, Object bizId, Supplier<R> supplier);
 
 	/**
 	 * 试着锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param runnable 可运行
 	 */
-	void tryLock(BaseEnum baseEnum, Object bizId, Runnable runnable);
+	void tryLock(ByStringCode byStringCode, Object bizId, Runnable runnable);
 
 	/**
 	 * 试着锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param supplier 供应商
 	 * @return {@link R}
 	 */
-	<R> R tryLock(BaseEnum baseEnum, Object bizId, Supplier<R> supplier);
+	<R> R tryLock(ByStringCode byStringCode, Object bizId, Supplier<R> supplier);
 
 	/**
 	 * 试锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param runnable 可运行
 	 */
-	void tryLockEx(BaseEnum baseEnum, Object bizId, Runnable runnable);
+	void tryLockEx(ByStringCode byStringCode, Object bizId, Runnable runnable);
 
 	/**
 	 * 试锁
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @param supplier 供应商
 	 * @return {@link R}
 	 */
-	<R> R tryLockEx(BaseEnum baseEnum, Object bizId, Supplier<R> supplier);
+	<R> R tryLockEx(ByStringCode byStringCode, Object bizId, Supplier<R> supplier);
 
 }

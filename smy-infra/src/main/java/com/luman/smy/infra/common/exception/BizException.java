@@ -1,7 +1,7 @@
 package com.luman.smy.infra.common.exception;
 
 import com.luman.smy.infra.common.constant.HttpConstant;
-import com.luman.smy.infra.common.enums.ErrorEnum;
+import com.luman.smy.client.enums.ByErrorCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -27,56 +27,56 @@ public class BizException extends RuntimeException {
 	/**
 	 * 基本枚举
 	 */
-	private final ErrorEnum errorEnum;
+	private final ByErrorCode byErrorCode;
 
 	/**
 	 * 业务异常
 	 *
-	 * @param errorEnum 错误枚举
+	 * @param byErrorCode 错误枚举
 	 */
-	public BizException(ErrorEnum errorEnum) {
-		super(errorEnum.getDescription());
-		this.errorEnum = errorEnum;
+	public BizException(ByErrorCode byErrorCode) {
+		super(byErrorCode.getDesc());
+		this.byErrorCode = byErrorCode;
 	}
 
 	/**
 	 * 业务异常
 	 *
-	 * @param errorEnum 基本枚举
+	 * @param byErrorCode 基本枚举
 	 * @param message   子消息
 	 */
-	public BizException(ErrorEnum errorEnum, String message) {
+	public BizException(ByErrorCode byErrorCode, String message) {
 		super(message);
-		this.errorEnum = errorEnum;
+		this.byErrorCode = byErrorCode;
 	}
 
 	/**
 	 * 业务异常
 	 *
-	 * @param errorEnum 错误枚举
+	 * @param byErrorCode 错误枚举
 	 * @param ex        异常
 	 */
-	public BizException(ErrorEnum errorEnum, Throwable ex) {
-		super(errorEnum.getDescription(), ex);
-		this.errorEnum = errorEnum;
+	public BizException(ByErrorCode byErrorCode, Throwable ex) {
+		super(byErrorCode.getDesc(), ex);
+		this.byErrorCode = byErrorCode;
 	}
 
 	/**
 	 * 业务异常
 	 *
-	 * @param errorEnum 错误枚举
+	 * @param byErrorCode 错误枚举
 	 * @param message   消息
 	 * @param ex        异常
 	 */
-	public BizException(ErrorEnum errorEnum, String message, Throwable ex) {
+	public BizException(ByErrorCode byErrorCode, String message, Throwable ex) {
 		super(message, ex);
-		this.errorEnum = errorEnum;
+		this.byErrorCode = byErrorCode;
 	}
 
 	@Override
 	public String toString() {
 		return "SmyBizException{" +
-				"errorEnum=" + errorEnum +
+				"byErrorCode=" + byErrorCode +
 				", message=" + getMessage() +
 				'}';
 	}
@@ -87,6 +87,6 @@ public class BizException extends RuntimeException {
 	 * @return boolean
 	 */
 	public boolean isError() {
-		return HTTP_STATUSES.contains(errorEnum.getCode());
+		return HTTP_STATUSES.contains(byErrorCode.getCode());
 	}
 }

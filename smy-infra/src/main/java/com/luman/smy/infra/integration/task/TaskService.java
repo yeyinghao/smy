@@ -1,6 +1,6 @@
 package com.luman.smy.infra.integration.task;
 
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByCode;
 import org.springframework.boot.ApplicationRunner;
 
 /**
@@ -28,5 +28,5 @@ public interface TaskService<T> extends ApplicationRunner {
 	 */
 	void handle(T t);
 
-	BaseEnum taskEnum();
+	ByCode taskEnum();
 }

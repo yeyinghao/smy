@@ -1,12 +1,10 @@
 package com.luman.smy.infra.common.helper;
 
 import cn.hutool.core.util.StrUtil;
-import com.luman.smy.client.dto.ListModel;
 import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Response;
-import com.luman.smy.infra.common.constant.CommConstant;
+import com.luman.smy.client.enums.ByErrorCode;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
-import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.util.TraceIdUtil;
 import lombok.experimental.UtilityClass;
 
@@ -26,22 +24,7 @@ public class RHelper {
 	 */
 	public static <T> Response<T> success(T data) {
 		Response<T> response = new Response<>();
-		response.setCode(CommErrorEnum.SUCCESS.getCode());
-		response.setSuccess(Boolean.TRUE);
-		response.setData(data);
-		response.setTraceId(TraceIdUtil.getThreadTraceId());
-		return response;
-	}
-
-	/**
-	 * 成功
-	 *
-	 * @param data 数据
-	 * @return {@link Response }<{@link ListModel }<{@link T }>>
-	 */
-	public static <T> Response<ListModel<T>> success(ListModel<T> data) {
-		Response<ListModel<T>> response = new Response<>();
-		response.setCode(CommErrorEnum.SUCCESS.getCode());
+		response.setCode(CommErrorEnum.SUCCESS.getHttpCode());
 		response.setSuccess(Boolean.TRUE);
 		response.setData(data);
 		response.setTraceId(TraceIdUtil.getThreadTraceId());
@@ -56,7 +39,7 @@ public class RHelper {
 	 */
 	public static <T> Response<PageModel<T>> success(PageModel<T> data) {
 		Response<PageModel<T>> response = new Response<>();
-		response.setCode(CommErrorEnum.SUCCESS.getCode());
+		response.setCode(CommErrorEnum.SUCCESS.getHttpCode());
 		response.setSuccess(Boolean.TRUE);
 		response.setData(data);
 		response.setTraceId(TraceIdUtil.getThreadTraceId());
@@ -66,19 +49,19 @@ public class RHelper {
 	/**
 	 * 失败
 	 *
-	 * @param errorEnum 错误枚举
+	 * @param byErrorCode 错误枚举
 	 * @param message   子的错误消息
 	 * @return {@link Response }
 	 */
-	public static <T> Response<T> fail(ErrorEnum errorEnum, String message) {
+	public static <T> Response<T> fail(ByErrorCode byErrorCode, String message) {
 		Response<T> response = new Response<>();
-		response.setCode(errorEnum.getCode());
+		response.setCode(byErrorCode.getHttpCode());
 		response.setSuccess(Boolean.FALSE);
-		StringBuilder msg = new StringBuilder(errorEnum.getDescription());
+		StringBuilder msg = new StringBuilder();
 		if (StrUtil.isNotBlank(message)) {
-			msg.append(CommConstant.DELIMITER).append(message);
+			msg.append(message);
 		}
-		response.setErrCode(errorEnum.name());
+		response.setErrCode(byErrorCode.getCode());
 		response.setErrMessage(msg.toString());
 		response.setTraceId(TraceIdUtil.getThreadTraceId());
 		return response;
@@ -87,15 +70,15 @@ public class RHelper {
 	/**
 	 * 失败
 	 *
-	 * @param errorEnum 错误枚举
+	 * @param byErrorCode 错误枚举
 	 * @return {@link Response }
 	 */
-	public static <T> Response<T> fail(ErrorEnum errorEnum) {
+	public static <T> Response<T> fail(ByErrorCode byErrorCode) {
 		Response<T> response = new Response<>();
-		response.setCode(errorEnum.getCode());
+		response.setCode(byErrorCode.getHttpCode());
 		response.setSuccess(Boolean.FALSE);
-		response.setErrCode(errorEnum.name());
-		response.setErrMessage(errorEnum.getDescription());
+		response.setErrCode(byErrorCode.getCode());
+		response.setErrMessage(byErrorCode.getDesc());
 		response.setTraceId(TraceIdUtil.getThreadTraceId());
 		return response;
 	}

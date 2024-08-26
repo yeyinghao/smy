@@ -35,7 +35,7 @@ public abstract class MultiTaskTemplate<T> extends IJobHandler implements TaskSe
 					taskResultDP.addSussNum();
 					return;
 				} catch (BizException e) {
-					XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getErrorEnum(), e.getMessage());
+					XxlJobHelper.log(ERROR_ENUM_APPEND_LOG_PATTERN, e.getByErrorCode(), e.getMessage());
 				} catch (Throwable e) {
 					XxlJobHelper.log(e);
 				}

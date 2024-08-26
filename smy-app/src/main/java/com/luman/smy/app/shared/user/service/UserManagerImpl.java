@@ -2,21 +2,19 @@ package com.luman.smy.app.shared.user.service;
 
 import com.luman.smy.app.shared.user.command.UserRegisterCmdExe;
 import com.luman.smy.app.shared.user.command.query.UserInfoQueryExe;
-import com.luman.smy.client.dto.ListModel;
 import com.luman.smy.client.dto.PageModel;
-import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
 import com.luman.smy.infra.common.constant.LoggerConstant;
-import com.luman.smy.infra.common.helper.ListHelper;
 import com.luman.smy.infra.common.helper.PageHelper;
-import com.luman.smy.infra.common.helper.RHelper;
 import com.luman.smy.infra.common.log.log.Logged;
 import com.luman.smy.infra.db.user.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -38,13 +36,13 @@ public class UserManagerImpl implements UserManager {
 	private final UserInfoQueryExe userInfoQueryExe;
 
 	@Override
-	public Response<UserVO> register(UserRegisterCmd cmd) {
-		return RHelper.success(userRegisterCmdExe.execute(cmd));
+	public UserVO register(UserRegisterCmd cmd) {
+		return userRegisterCmdExe.execute(cmd);
 	}
 
 	@Override
-	public Response<ListModel<UserVO>> list() {
-		return RHelper.success(ListHelper.build(userInfoQueryExe.list().stream().map(this::convertUser).toList()));
+	public List<UserVO> list() {
+		return userInfoQueryExe.list().stream().map(this::convertUser).toList();
 	}
 
 	private UserVO convertUser(User user) {
@@ -55,7 +53,7 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	@Override
-	public Response<PageModel<UserVO>> page(UserPageQueryCmd cmd) {
-		return RHelper.success(PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser)));
+	public PageModel<UserVO> page(UserPageQueryCmd cmd) {
+		return PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser));
 	}
 }

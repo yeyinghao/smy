@@ -1,6 +1,6 @@
 package com.luman.smy.infra.common.exception;
 
-import com.luman.smy.infra.common.enums.ErrorEnum;
+import com.luman.smy.client.enums.ByErrorCode;
 
 public class ExceptionFactory {
 
@@ -10,7 +10,7 @@ public class ExceptionFactory {
 	 * @param errorEnum 错误枚举
 	 * @return {@link BizException }
 	 */
-	public static BizException buildBizException(ErrorEnum errorEnum) {
+	public static BizException buildBizException(ByErrorCode errorEnum) {
 		return new BizException(errorEnum);
 	}
 
@@ -21,7 +21,7 @@ public class ExceptionFactory {
 	 * @param errorMessage 错误消息
 	 * @return {@link BizException }
 	 */
-	public static BizException buildBizException(ErrorEnum errorEnum, String errorMessage) {
+	public static BizException buildBizException(ByErrorCode errorEnum, String errorMessage) {
 		return new BizException(errorEnum, errorMessage);
 	}
 
@@ -32,7 +32,7 @@ public class ExceptionFactory {
 	 * @param throwable throwable
 	 * @return {@link BizException }
 	 */
-	public static BizException buildBizException(ErrorEnum errorEnum, Throwable throwable) {
+	public static BizException buildBizException(ByErrorCode errorEnum, Throwable throwable) {
 		return new BizException(errorEnum, throwable);
 	}
 
@@ -44,7 +44,7 @@ public class ExceptionFactory {
 	 * @param errorMessage 错误消息
 	 * @return {@link BizException }
 	 */
-	public static BizException buildBizException(ErrorEnum errorEnum, Throwable throwable, String errorMessage) {
+	public static BizException buildBizException(ByErrorCode errorEnum, Throwable throwable, String errorMessage) {
 		return new BizException(errorEnum, errorMessage, throwable);
 	}
 

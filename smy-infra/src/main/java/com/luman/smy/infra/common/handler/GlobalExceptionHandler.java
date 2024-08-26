@@ -75,7 +75,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(BizException.class)
 	public Response<Void> bizExceptionHandler(BizException e) {
 		LoggerUtil.info(log, e);
-		return RHelper.fail(e.getErrorEnum(), e.getMessage());
+		return RHelper.fail(e.getByErrorCode(), e.getMessage());
 	}
 
 	/**

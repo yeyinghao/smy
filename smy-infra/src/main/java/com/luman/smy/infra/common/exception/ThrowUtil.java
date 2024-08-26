@@ -1,7 +1,7 @@
 package com.luman.smy.infra.common.exception;
 
 import cn.hutool.core.util.StrUtil;
-import com.luman.smy.infra.common.enums.ErrorEnum;
+import com.luman.smy.client.enums.ByErrorCode;
 
 public class ThrowUtil {
 
@@ -10,7 +10,7 @@ public class ThrowUtil {
 	 *
 	 * @param errorEnum 错误枚举
 	 */
-	public static void throwEx(ErrorEnum errorEnum) {
+	public static void throwEx(ByErrorCode errorEnum) {
 		throw ExceptionFactory.buildBizException(errorEnum);
 	}
 
@@ -20,7 +20,7 @@ public class ThrowUtil {
 	 * @param errorEnum  错误枚举
 	 * @param subMessage 错误消息
 	 */
-	public static void throwEx(ErrorEnum errorEnum, String subMessage) {
+	public static void throwEx(ByErrorCode errorEnum, String subMessage) {
 		throw ExceptionFactory.buildBizException(errorEnum, subMessage);
 	}
 
@@ -30,7 +30,7 @@ public class ThrowUtil {
 	 * @param errorEnum   错误枚举
 	 * @param subMessages 错误消息
 	 */
-	public static void throwEx(ErrorEnum errorEnum, String template, Object... subMessages) {
+	public static void throwEx(ByErrorCode errorEnum, String template, Object... subMessages) {
 		throw ExceptionFactory.buildBizException(errorEnum, StrUtil.format(template, subMessages));
 	}
 
@@ -39,7 +39,7 @@ public class ThrowUtil {
 	 *
 	 * @param errorEnum 错误枚举
 	 */
-	public static void throwEx(ErrorEnum errorEnum, Throwable throwable) {
+	public static void throwEx(ByErrorCode errorEnum, Throwable throwable) {
 		throw ExceptionFactory.buildBizException(errorEnum, throwable);
 	}
 
@@ -49,7 +49,7 @@ public class ThrowUtil {
 	 * @param errorEnum  错误枚举
 	 * @param subMessage 错误消息
 	 */
-	public static void throwEx(ErrorEnum errorEnum, Throwable throwable, String subMessage) {
+	public static void throwEx(ByErrorCode errorEnum, Throwable throwable, String subMessage) {
 		throw ExceptionFactory.buildBizException(errorEnum, throwable, subMessage);
 	}
 
@@ -59,7 +59,7 @@ public class ThrowUtil {
 	 * @param errorEnum   错误枚举
 	 * @param subMessages 错误消息
 	 */
-	public static void throwEx(ErrorEnum errorEnum, Throwable throwable, String template, Object... subMessages) {
+	public static void throwEx(ByErrorCode errorEnum, Throwable throwable, String template, Object... subMessages) {
 		throw ExceptionFactory.buildBizException(errorEnum, throwable, StrUtil.format(template, subMessages));
 	}
 }

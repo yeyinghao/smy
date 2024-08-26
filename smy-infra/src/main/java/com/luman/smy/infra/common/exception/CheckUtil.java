@@ -8,7 +8,7 @@ package com.luman.smy.infra.common.exception;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
-import com.luman.smy.infra.common.enums.ErrorEnum;
+import com.luman.smy.client.enums.ByErrorCode;
 
 import java.util.Map;
 import java.util.Objects;
@@ -28,7 +28,7 @@ public abstract class CheckUtil {
 	 * @param condition 条件
 	 * @param errorCode 错误代码
 	 */
-	public static void isTrue(boolean condition, ErrorEnum errorCode) {
+	public static void isTrue(boolean condition, ByErrorCode errorCode) {
 		if (!condition) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Must be true");
 		}
@@ -41,7 +41,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isTrue(boolean condition, ErrorEnum errorCode, String subMessage) {
+	public static void isTrue(boolean condition, ByErrorCode errorCode, String subMessage) {
 		if (!condition) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -55,7 +55,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void isTrue(boolean condition, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void isTrue(boolean condition, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (!condition) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -67,7 +67,7 @@ public abstract class CheckUtil {
 	 * @param condition 条件
 	 * @param errorCode 错误代码
 	 */
-	public static void isFalse(boolean condition, ErrorEnum errorCode) {
+	public static void isFalse(boolean condition, ByErrorCode errorCode) {
 		if (condition) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Must be false");
 		}
@@ -80,7 +80,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isFalse(boolean condition, ErrorEnum errorCode, String subMessage) {
+	public static void isFalse(boolean condition, ByErrorCode errorCode, String subMessage) {
 		if (condition) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -94,7 +94,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void isFalse(boolean condition, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void isFalse(boolean condition, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (condition) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -106,7 +106,7 @@ public abstract class CheckUtil {
 	 * @param obj       obj
 	 * @param errorCode 错误代码
 	 */
-	public static void notNull(Object obj, ErrorEnum errorCode) {
+	public static void notNull(Object obj, ByErrorCode errorCode) {
 		if (Objects.isNull(obj)) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Must not null");
 		}
@@ -119,7 +119,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notNull(Object obj, ErrorEnum errorCode, String subMessage) {
+	public static void notNull(Object obj, ByErrorCode errorCode, String subMessage) {
 		if (Objects.isNull(obj)) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -133,7 +133,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void notNull(Object obj, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void notNull(Object obj, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (Objects.isNull(obj)) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -145,7 +145,7 @@ public abstract class CheckUtil {
 	 * @param obj       obj
 	 * @param errorCode 错误代码
 	 */
-	public static void isNull(Object obj, ErrorEnum errorCode) {
+	public static void isNull(Object obj, ByErrorCode errorCode) {
 		if (Objects.nonNull(obj)) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Must be null");
 		}
@@ -158,7 +158,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void isNull(Object obj, ErrorEnum errorCode, String subMessage) {
+	public static void isNull(Object obj, ByErrorCode errorCode, String subMessage) {
 		if (Objects.nonNull(obj)) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -172,7 +172,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void isNull(Object obj, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void isNull(Object obj, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (Objects.nonNull(obj)) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -184,7 +184,7 @@ public abstract class CheckUtil {
 	 * @param obj       obj
 	 * @param errorCode 错误代码
 	 */
-	public static void notBlank(String obj, ErrorEnum errorCode) {
+	public static void notBlank(String obj, ByErrorCode errorCode) {
 		if (Objects.nonNull(obj)) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Must not blank");
 		}
@@ -197,7 +197,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notBlank(String obj, ErrorEnum errorCode, String subMessage) {
+	public static void notBlank(String obj, ByErrorCode errorCode, String subMessage) {
 		if (StrUtil.isBlank(obj)) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -211,7 +211,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void notBlank(String obj, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void notBlank(String obj, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (StrUtil.isBlank(obj)) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -223,7 +223,7 @@ public abstract class CheckUtil {
 	 * @param collection 集合
 	 * @param errorCode  错误代码
 	 */
-	public static void notEmpty(Iterable<?> collection, ErrorEnum errorCode) {
+	public static void notEmpty(Iterable<?> collection, ByErrorCode errorCode) {
 		if (CollUtil.isEmpty(collection)) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Collection must not be empty: it must contain at least 1 element");
 		}
@@ -236,7 +236,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notEmpty(Iterable<?> collection, ErrorEnum errorCode, String subMessage) {
+	public static void notEmpty(Iterable<?> collection, ByErrorCode errorCode, String subMessage) {
 		if (CollUtil.isEmpty(collection)) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -250,7 +250,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void notEmpty(Iterable<?> collection, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void notEmpty(Iterable<?> collection, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (CollUtil.isEmpty(collection)) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}
@@ -262,7 +262,7 @@ public abstract class CheckUtil {
 	 * @param map       map集合
 	 * @param errorCode 错误代码
 	 */
-	public static void notEmpty(Map<?, ?> map, ErrorEnum errorCode) {
+	public static void notEmpty(Map<?, ?> map, ByErrorCode errorCode) {
 		if (MapUtil.isEmpty(map)) {
 			ThrowUtil.throwEx(errorCode, "[Assertion failed] Map must not be empty: it must contain at least one entry");
 		}
@@ -275,7 +275,7 @@ public abstract class CheckUtil {
 	 * @param errorCode  错误代码
 	 * @param subMessage 子消息
 	 */
-	public static void notEmpty(Map<?, ?> map, ErrorEnum errorCode, String subMessage) {
+	public static void notEmpty(Map<?, ?> map, ByErrorCode errorCode, String subMessage) {
 		if (MapUtil.isEmpty(map)) {
 			ThrowUtil.throwEx(errorCode, subMessage);
 		}
@@ -289,7 +289,7 @@ public abstract class CheckUtil {
 	 * @param template    模板
 	 * @param subMessages 子消息
 	 */
-	public static void notEmpty(Map<?, ?> map, ErrorEnum errorCode, String template, Object... subMessages) {
+	public static void notEmpty(Map<?, ?> map, ByErrorCode errorCode, String template, Object... subMessages) {
 		if (MapUtil.isEmpty(map)) {
 			ThrowUtil.throwEx(errorCode, StrUtil.format(template, subMessages));
 		}

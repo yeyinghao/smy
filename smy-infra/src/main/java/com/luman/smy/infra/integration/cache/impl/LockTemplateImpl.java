@@ -1,6 +1,6 @@
 package com.luman.smy.infra.integration.cache.impl;
 
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByStringCode;
 import com.luman.smy.infra.common.enums.CommErrorEnum;
 import com.luman.smy.infra.common.exception.CheckUtil;
 import com.luman.smy.infra.integration.cache.CacheService;
@@ -28,8 +28,8 @@ public class LockTemplateImpl implements LockTemplate {
 	private final CacheService cacheService;
 
 	@Override
-	public void lock(BaseEnum baseEnum, Object bizId, Runnable runnable) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public void lock(ByStringCode byStringCode, Object bizId, Runnable runnable) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			rLock.lock();
 			runnable.run();
@@ -39,8 +39,8 @@ public class LockTemplateImpl implements LockTemplate {
 	}
 
 	@Override
-	public <R> R lock(BaseEnum baseEnum, Object bizId, Supplier<R> supplier) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public <R> R lock(ByStringCode byStringCode, Object bizId, Supplier<R> supplier) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			rLock.lock();
 			return supplier.get();
@@ -50,8 +50,8 @@ public class LockTemplateImpl implements LockTemplate {
 	}
 
 	@Override
-	public void tryLock(BaseEnum baseEnum, Object bizId, Runnable runnable) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public void tryLock(ByStringCode byStringCode, Object bizId, Runnable runnable) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			if (!rLock.tryLock()) {
 				return;
@@ -63,8 +63,8 @@ public class LockTemplateImpl implements LockTemplate {
 	}
 
 	@Override
-	public <R> R tryLock(BaseEnum baseEnum, Object bizId, Supplier<R> supplier) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public <R> R tryLock(ByStringCode byStringCode, Object bizId, Supplier<R> supplier) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			if (!rLock.tryLock()) {
 				return null;
@@ -76,8 +76,8 @@ public class LockTemplateImpl implements LockTemplate {
 	}
 
 	@Override
-	public void tryLockEx(BaseEnum baseEnum, Object bizId, Runnable runnable) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public void tryLockEx(ByStringCode byStringCode, Object bizId, Runnable runnable) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			CheckUtil.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			runnable.run();
@@ -87,8 +87,8 @@ public class LockTemplateImpl implements LockTemplate {
 	}
 
 	@Override
-	public <R> R tryLockEx(BaseEnum baseEnum, Object bizId, Supplier<R> supplier) {
-		RLock rLock = getRLock(baseEnum, bizId);
+	public <R> R tryLockEx(ByStringCode byStringCode, Object bizId, Supplier<R> supplier) {
+		RLock rLock = getRLock(byStringCode, bizId);
 		try {
 			CheckUtil.isTrue(rLock.tryLock(), CommErrorEnum.BIZ_ERROR, "获取分布式锁失败");
 			return supplier.get();
@@ -100,14 +100,14 @@ public class LockTemplateImpl implements LockTemplate {
 	/**
 	 * 获取rlock
 	 *
-	 * @param baseEnum 基础枚举
+	 * @param byStringCode 基础枚举
 	 * @param bizId    业务id
 	 * @return {@link RLock}
 	 */
-	private RLock getRLock(BaseEnum baseEnum, Object bizId) {
+	private RLock getRLock(ByStringCode byStringCode, Object bizId) {
 		if (Objects.isNull(bizId)) {
-			return cacheService.getLock(baseEnum.name());
+			return cacheService.getLock(byStringCode.getCode());
 		}
-		return cacheService.getLock(baseEnum.name() + bizId);
+		return cacheService.getLock(byStringCode.getCode() + bizId);
 	}
 }

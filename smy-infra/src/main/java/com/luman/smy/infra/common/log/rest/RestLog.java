@@ -1,4 +1,4 @@
-package com.luman.smy.infra.common.log.web;
+package com.luman.smy.infra.common.log.rest;
 
 
 import com.luman.smy.infra.common.constant.LoggerConstant;
@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface WebLog {
+public @interface RestLog {
 
 	/**
 	 * 主题

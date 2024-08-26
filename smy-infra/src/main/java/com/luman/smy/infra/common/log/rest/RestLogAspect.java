@@ -1,4 +1,4 @@
-package com.luman.smy.infra.common.log.web;
+package com.luman.smy.infra.common.log.rest;
 
 import cn.hutool.extra.validation.BeanValidationResult;
 import cn.hutool.extra.validation.ValidationUtil;
@@ -27,14 +27,14 @@ import java.util.stream.Collectors;
 @Component
 @Aspect
 @Slf4j
-public class WebLogAspect extends LogAspect {
+public class RestLogAspect extends LogAspect {
 
 	private final static String LOG_TEMPLATE = "result={}, cost={}ms, target={}#{}, request={}, response={}";
 
 	/**
 	 * <a href="https://blog.csdn.net/zhengchao1991/article/details/53391244">The syntax of pointcut </a>
 	 */
-	@Pointcut("@within(WebLog) && execution(public * *(..))")
+	@Pointcut("@within(RestLog) && execution(public * *(..))")
 	public void pointcut() {
 	}
 
@@ -44,7 +44,7 @@ public class WebLogAspect extends LogAspect {
 		LogInfo logInfo = new LogInfo();
 		Object resp = null;
 		try {
-			WebLog log = getAnnotation(joinPoint, WebLog.class);
+			RestLog log = getAnnotation(joinPoint, RestLog.class);
 			logInfo = buildLogInfo(joinPoint, log.topic());
 			Object[] args = joinPoint.getArgs();
 			for (Object arg : args) {
@@ -58,7 +58,7 @@ public class WebLogAspect extends LogAspect {
 		} catch (BizException e) {
 			LoggerUtil.info(log, e);
 			logInfo.setRes(!e.isError());
-			resp = RHelper.fail(e.getErrorEnum(), e.getMessage());
+			resp = RHelper.fail(e.getByErrorCode(), e.getMessage());
 		} catch (Throwable e) {
 			LoggerUtil.error(log, e);
 			resp = RHelper.fail(CommErrorEnum.SYS_ERROR);

@@ -5,7 +5,7 @@
 
 package com.luman.smy.infra.integration.file.enums;
 
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByStringCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -19,29 +19,34 @@ import lombok.ToString;
 @Getter
 @RequiredArgsConstructor
 @ToString
-public enum FileTypeEnum implements BaseEnum {
+public enum FileTypeEnum implements ByStringCode {
 
 	/**
 	 * 其他文件
 	 */
-	OTHER("other/", "其他文件"),
+	OTHER("OTHER", "other/", "其他文件"),
 
 	/**
 	 * 临时文件
 	 */
-	TEMPORARY("temporary/", "临时文件"),
+	TEMPORARY("TEMPORARY", "temporary/", "临时文件"),
 
 	/**
 	 * 业务文件
 	 */
-	BIZ("biz/", "业务文件"),
+	BIZ("BIZ", "biz/", "业务文件"),
 
 	/**
 	 * 模板文件
 	 */
-	TEMPLATE("template/", "模板文件"),
+	TEMPLATE("TEMPLATE", "template/", "模板文件"),
 
 	;
+
+	/**
+	 * 路径
+	 */
+	private final String code;
 
 	/**
 	 * 路径
@@ -51,6 +56,6 @@ public enum FileTypeEnum implements BaseEnum {
 	/**
 	 * 响应业务码的描述
 	 */
-	private final String description;
+	private final String desc;
 
 }

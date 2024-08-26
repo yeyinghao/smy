@@ -35,9 +35,7 @@ public class PageHelper {
 	 * @return {@link PageModel }<{@link R }>
 	 */
 	public static <R> PageModel<R> buildPage(IPage<R> page) {
-		PageModel<R> pageModel = new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal());
-		pageModel.setListInfo(page.getRecords());
-		return pageModel;
+		return new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal(), page.getRecords());
 	}
 
 	/**

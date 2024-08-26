@@ -1,7 +1,7 @@
 package com.luman.smy.app.task;
 
 import cn.hutool.json.JSONUtil;
-import com.luman.smy.infra.common.enums.BaseEnum;
+import com.luman.smy.client.enums.ByCode;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import com.luman.smy.infra.db.user.model.User;
 import com.luman.smy.infra.integration.cache.enums.CalEnum;
@@ -34,7 +34,7 @@ public class TaskInfo extends MultiTaskTemplate<User> {
 	}
 
 	@Override
-	public BaseEnum taskEnum() {
+	public ByCode taskEnum() {
 		return CalEnum.GET;
 	}
 
