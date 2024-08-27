@@ -1,0 +1,1 @@
+package com.luman.smy.infra.domain.cache.model;

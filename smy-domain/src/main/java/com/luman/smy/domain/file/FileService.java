@@ -6,7 +6,7 @@
 package com.luman.smy.domain.file;
 
 
-import com.luman.smy.domain.file.FileStatInfo;
+import com.luman.smy.domain.file.model.FileStatInfo;
 
 import java.io.InputStream;
 import java.util.List;

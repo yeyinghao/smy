@@ -6,7 +6,7 @@
 package com.luman.smy.infra.domain.file.impl;
 
 import com.luman.smy.domain.file.FileService;
-import com.luman.smy.domain.file.FileStatInfo;
+import com.luman.smy.domain.file.model.FileStatInfo;
 import com.luman.smy.infra.common.util.LoggerUtil;
 import com.luman.smy.infra.integration.file.FileClient;
 import io.minio.StatObjectResponse;
