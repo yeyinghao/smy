@@ -1,12 +1,12 @@
-package com.luman.smy.infra.db.user.service.impl;
+package com.luman.smy.infra.domain.user.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.luman.smy.client.dto.Paging;
 import com.luman.smy.infra.common.helper.PageHelper;
-import com.luman.smy.infra.db.user.dataobject.UserDO;
-import com.luman.smy.infra.db.user.mapper.UserMapper;
-import com.luman.smy.infra.db.user.model.User;
-import com.luman.smy.infra.db.user.service.UserService;
+import com.luman.smy.infra.domain.user.mapper.dataobject.UserDO;
+import com.luman.smy.infra.domain.user.mapper.UserMapper;
+import com.luman.smy.infra.domain.user.mapper.model.User;
+import com.luman.smy.infra.domain.user.service.UserService;
 import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 

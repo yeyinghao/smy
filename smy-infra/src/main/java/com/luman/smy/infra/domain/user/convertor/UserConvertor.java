@@ -2,8 +2,8 @@ package com.luman.smy.infra.domain.user.convertor;
 
 import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.UserName;
-import com.luman.smy.infra.db.user.model.User;
-import com.luman.smy.infra.db.user.model.UserInfo;
+import com.luman.smy.infra.domain.user.mapper.model.User;
+import com.luman.smy.infra.domain.user.mapper.model.UserInfo;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
 /**

@@ -1,20 +1,19 @@
-package com.luman.smy.infra.db.user.dataobject;
+package com.luman.smy.infra.domain.user.mapper.model;
 
-import com.luman.smy.infra.integration.dal.model.BaseDO;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.luman.smy.infra.integration.dal.model.BaseDP;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+
 /**
- * UserDO
+ * 用户
  *
- * @author <a href="mailto:daoyuan0626@gmail.com">amos.wang</a>
- * @date 2021/1/8
+ * @author yeyinghao
+ * @date 2024/08/26
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("org_user")
-public class UserDO extends BaseDO {
+public class User extends BaseDP {
 
     /**
      * 用户名

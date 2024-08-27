@@ -3,7 +3,7 @@ package com.luman.smy.app.task;
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.client.enums.ByStringCode;
 import com.luman.smy.infra.common.util.LoggerUtil;
-import com.luman.smy.infra.db.user.model.User;
+import com.luman.smy.infra.domain.user.mapper.model.User;
 import com.luman.smy.infra.integration.cache.enums.CalEnum;
 import com.luman.smy.infra.integration.task.template.MultiTaskTemplate;
 import com.xxl.job.core.executor.XxlJobExecutor;

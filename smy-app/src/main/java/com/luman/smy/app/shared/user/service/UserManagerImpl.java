@@ -10,7 +10,7 @@ import com.luman.smy.client.shared.dto.data.UserVO;
 import com.luman.smy.infra.common.constant.LoggerConstant;
 import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.common.log.log.Logged;
-import com.luman.smy.infra.db.user.model.User;
+import com.luman.smy.infra.domain.user.mapper.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -3,9 +3,9 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.app.shared.cache.impl;
+package com.luman.smy.infra.domain.cache.impl;
 
-import com.luman.smy.app.shared.cache.CacheService;
+import com.luman.smy.domain.cache.CacheService;
 import com.luman.smy.infra.integration.cache.CacheClient;
 import com.luman.smy.infra.integration.cache.config.CacheConfig;
 import lombok.RequiredArgsConstructor;

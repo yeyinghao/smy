@@ -1,4 +1,4 @@
-package com.luman.smy.infra.db.user.dataobject;
+package com.luman.smy.infra.domain.user.mapper.dataobject;
 
 import com.luman.smy.infra.integration.dal.model.BaseDO;
 import com.baomidou.mybatisplus.annotation.TableName;

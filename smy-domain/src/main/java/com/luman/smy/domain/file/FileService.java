@@ -3,7 +3,7 @@
  * 2022.1 - 2023.10
  */
 
-package com.luman.smy.app.shared.file;
+package com.luman.smy.domain.file;
 
 
 import com.luman.smy.domain.file.FileStatInfo;

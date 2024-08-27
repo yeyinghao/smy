@@ -1,7 +1,7 @@
-package com.luman.smy.app.shared.cache.impl;
+package com.luman.smy.infra.domain.cache.impl;
 
-import com.luman.smy.app.shared.cache.CacheService;
-import com.luman.smy.app.shared.cache.LockTemplate;
+import com.luman.smy.domain.cache.CacheService;
+import com.luman.smy.domain.cache.LockTemplate;
 import com.luman.smy.client.enums.ByStringCode;
 import com.luman.smy.infra.common.enums.ErrorEnum;
 import com.luman.smy.infra.common.exception.CheckUtil;

@@ -1,9 +1,9 @@
-package com.luman.smy.infra.db.user.service.impl;
+package com.luman.smy.infra.domain.user.service.impl;
 
-import com.luman.smy.infra.db.user.dataobject.UserInfoDO;
-import com.luman.smy.infra.db.user.mapper.UserInfoMapper;
-import com.luman.smy.infra.db.user.model.UserInfo;
-import com.luman.smy.infra.db.user.service.UserInfoService;
+import com.luman.smy.infra.domain.user.mapper.dataobject.UserInfoDO;
+import com.luman.smy.infra.domain.user.mapper.UserInfoMapper;
+import com.luman.smy.infra.domain.user.mapper.model.UserInfo;
+import com.luman.smy.infra.domain.user.service.UserInfoService;
 import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 

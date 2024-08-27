@@ -1,6 +1,6 @@
-package com.luman.smy.infra.db.user.mapper;
+package com.luman.smy.infra.domain.user.mapper;
 
-import com.luman.smy.infra.db.user.dataobject.UserInfoDO;
+import com.luman.smy.infra.domain.user.mapper.dataobject.UserInfoDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 

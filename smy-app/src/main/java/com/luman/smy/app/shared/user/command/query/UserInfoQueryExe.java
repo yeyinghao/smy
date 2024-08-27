@@ -8,8 +8,8 @@ import com.luman.smy.client.shared.dto.data.UserVO;
 import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
 import com.luman.smy.infra.common.helper.RHelper;
-import com.luman.smy.infra.db.user.model.User;
-import com.luman.smy.infra.db.user.service.UserService;
+import com.luman.smy.infra.domain.user.mapper.model.User;
+import com.luman.smy.infra.domain.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

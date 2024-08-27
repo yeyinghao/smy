@@ -1,6 +1,6 @@
-package com.luman.smy.infra.db.user.service;
+package com.luman.smy.infra.domain.user.service;
 
-import com.luman.smy.infra.db.user.model.UserInfo;
+import com.luman.smy.infra.domain.user.mapper.model.UserInfo;
 import com.luman.smy.infra.integration.dal.CoreService;
 
 /**

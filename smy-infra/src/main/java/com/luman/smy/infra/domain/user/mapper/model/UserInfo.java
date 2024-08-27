@@ -1,4 +1,4 @@
-package com.luman.smy.infra.db.user.model;
+package com.luman.smy.infra.domain.user.mapper.model;
 
 import com.luman.smy.infra.integration.dal.model.BaseDP;
 import lombok.Data;
