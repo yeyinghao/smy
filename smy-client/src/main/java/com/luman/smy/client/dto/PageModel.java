@@ -45,5 +45,4 @@ public class PageModel<T> extends DTO {
 	 * 集合
 	 */
 	private Collection<T> collection;
-
 }

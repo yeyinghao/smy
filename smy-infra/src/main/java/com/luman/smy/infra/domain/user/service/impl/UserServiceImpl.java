@@ -5,8 +5,8 @@ import com.luman.smy.client.dto.Paging;
 import com.luman.smy.domain.user.model.User;
 import com.luman.smy.domain.user.service.UserService;
 import com.luman.smy.infra.domain.dal.impl.CoreServiceImpl;
-import com.luman.smy.infra.domain.user.mapper.UserMapper;
 import com.luman.smy.infra.domain.user.dataobject.UserDO;
+import com.luman.smy.infra.domain.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -50,7 +50,9 @@ public class UserServiceImpl extends CoreServiceImpl<User, UserDO, UserMapper> i
 
 	@Override
 	public PageModel<User> page(Paging paging, String name) {
-//		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging)).convert(this::convertToDP);\
-		return null;
+		return buildPage(lambdaQuery()
+				.like(UserDO::getName, name)
+				.page(buildPage(paging))
+				.convert(this::convertToDP));
 	}
 }

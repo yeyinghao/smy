@@ -71,7 +71,6 @@ public abstract class CoreServiceImpl<D extends DP, P extends DO, M extends Base
 
 	@Override
 	public PageModel<D> listByPage(Paging paging) {
-//		return lambdaQuery().page(PageHelper.buildPage(paging)).convert(this::convertToDP);
-		return null;
+		return buildPage(lambdaQuery().page(buildPage(paging)).convert(this::convertToDP));
 	}
 }
