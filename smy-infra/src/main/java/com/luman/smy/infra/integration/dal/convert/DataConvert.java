@@ -1,13 +1,13 @@
 package com.luman.smy.infra.integration.dal.convert;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.luman.smy.infra.integration.dal.model.BaseDP;
-import com.luman.smy.infra.integration.dal.model.BaseDO;
+import com.luman.smy.domain.dal.model.DP;
+import com.luman.smy.infra.domain.dal.model.DO;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface DataConvert<P extends BaseDO, D extends BaseDP> {
+public interface DataConvert<P extends DO, D extends DP> {
 
 	/**
 	 * 转换成Po

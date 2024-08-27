@@ -1,12 +1,12 @@
 package com.luman.smy.infra.domain.user.gateway;
 
-import com.luman.smy.domain.user.UserEntity;
-import com.luman.smy.infra.domain.user.convertor.UserConvertor;
+import com.luman.smy.domain.user.model.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
-import com.luman.smy.infra.domain.user.mapper.model.User;
-import com.luman.smy.infra.domain.user.mapper.model.UserInfo;
-import com.luman.smy.infra.domain.user.service.UserInfoService;
-import com.luman.smy.infra.domain.user.service.UserService;
+import com.luman.smy.domain.user.model.User;
+import com.luman.smy.domain.user.model.UserInfo;
+import com.luman.smy.infra.domain.user.convertor.UserConvertor;
+import com.luman.smy.domain.user.service.UserInfoService;
+import com.luman.smy.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Component;

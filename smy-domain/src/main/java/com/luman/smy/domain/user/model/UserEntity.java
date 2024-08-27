@@ -1,29 +1,37 @@
-package com.luman.smy.infra.domain.user.mapper.model;
+package com.luman.smy.domain.user.model;
 
-import com.luman.smy.infra.integration.dal.model.BaseDP;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
 
 /**
- * 用户信息
+ * 用户实体
  *
  * @author yeyinghao
- * @date 2024/08/26
+ * @date 2024/08/25
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class UserInfo extends BaseDP {
+public class UserEntity {
 
-    /**
-     * id
-     */
     private Long id;
 
     /**
-     * 电话
+     * 用户名
+     */
+    private UserName username;
+    /**
+     * 密码
+     */
+    private UserPassword password;
+
+    /**
+     * 姓名
+     */
+    private String name;
+
+    /**
+     * 手机号
      */
     private String phoneNo;
 
@@ -41,5 +49,4 @@ public class UserInfo extends BaseDP {
      * 描述
      */
     private String description;
-
 }

@@ -1,15 +1,15 @@
 package com.luman.smy.app.shared.user.command.query;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.luman.smy.app.shared.user.assembler.UserAssembler;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Response;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
-import com.luman.smy.domain.user.UserEntity;
 import com.luman.smy.domain.user.gateway.UserGateway;
+import com.luman.smy.domain.user.model.User;
+import com.luman.smy.domain.user.model.UserEntity;
+import com.luman.smy.domain.user.service.UserService;
 import com.luman.smy.infra.common.helper.RHelper;
-import com.luman.smy.infra.domain.user.mapper.model.User;
-import com.luman.smy.infra.domain.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -45,7 +45,7 @@ public class UserInfoQueryExe {
     }
 
 
-    public IPage<User>  page(UserPageQueryCmd cmd) {
+    public PageModel<User> page(UserPageQueryCmd cmd) {
         return userService.page(cmd.getPaging(), cmd.getName());
     }
 }

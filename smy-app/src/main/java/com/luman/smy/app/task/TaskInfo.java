@@ -2,8 +2,8 @@ package com.luman.smy.app.task;
 
 import cn.hutool.json.JSONUtil;
 import com.luman.smy.client.enums.ByStringCode;
+import com.luman.smy.domain.user.model.User;
 import com.luman.smy.infra.common.util.LoggerUtil;
-import com.luman.smy.infra.domain.user.mapper.model.User;
 import com.luman.smy.infra.integration.cache.enums.CalEnum;
 import com.luman.smy.infra.integration.task.template.MultiTaskTemplate;
 import com.xxl.job.core.executor.XxlJobExecutor;
@@ -39,7 +39,7 @@ public class TaskInfo extends MultiTaskTemplate<User> {
 	}
 
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 		XxlJobExecutor.registJobHandler("testJobHandler", new TaskInfo());
 	}
 }

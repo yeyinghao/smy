@@ -7,10 +7,9 @@ import com.luman.smy.client.shared.api.UserManager;
 import com.luman.smy.client.shared.dto.UserPageQueryCmd;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
+import com.luman.smy.domain.user.model.User;
 import com.luman.smy.infra.common.constant.LoggerConstant;
-import com.luman.smy.infra.common.helper.PageHelper;
 import com.luman.smy.infra.common.log.log.Logged;
-import com.luman.smy.infra.domain.user.mapper.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +53,7 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public PageModel<UserVO> page(UserPageQueryCmd cmd) {
-		return PageHelper.buildPage(userInfoQueryExe.page(cmd).convert(this::convertUser));
+//		return userInfoQueryExe.page(cmd).convert(this::convertUser);
+	return null;
 	}
 }

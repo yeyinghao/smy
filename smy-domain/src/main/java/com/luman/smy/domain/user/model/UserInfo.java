@@ -1,37 +1,29 @@
-package com.luman.smy.domain.user;
+package com.luman.smy.domain.user.model;
 
+import com.luman.smy.domain.dal.model.DP;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
 
 /**
- * 用户实体
+ * 用户信息
  *
  * @author yeyinghao
- * @date 2024/08/25
+ * @date 2024/08/26
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class UserEntity {
+public class UserInfo extends DP {
 
+    /**
+     * id
+     */
     private Long id;
 
     /**
-     * 用户名
-     */
-    private UserName username;
-    /**
-     * 密码
-     */
-    private UserPassword password;
-
-    /**
-     * 姓名
-     */
-    private String name;
-
-    /**
-     * 手机号
+     * 电话
      */
     private String phoneNo;
 
@@ -49,4 +41,5 @@ public class UserEntity {
      * 描述
      */
     private String description;
+
 }

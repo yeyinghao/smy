@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Paging;
-import com.luman.smy.infra.integration.dal.model.BaseDO;
+import com.luman.smy.infra.domain.dal.model.DO;
 import lombok.experimental.UtilityClass;
 
 import java.util.Objects;
@@ -44,7 +44,7 @@ public class PageHelper {
 	 * @param paging 分页
 	 * @return {@link IPage }<{@link P }>
 	 */
-	public static <P extends BaseDO> IPage<P> buildPage(Paging paging) {
+	public static <P extends DO> IPage<P> buildPage(Paging paging) {
 		if (Objects.isNull(paging) || Objects.isNull(paging.getPageIndex()) || Objects.isNull(paging.getPageSize())) {
 			return new Page<>(DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE);
 		}

@@ -1,6 +1,6 @@
-package com.luman.smy.infra.domain.user.mapper.model;
+package com.luman.smy.domain.user.model;
 
-import com.luman.smy.infra.integration.dal.model.BaseDP;
+import com.luman.smy.domain.dal.model.DP;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class User extends BaseDP {
+public class User extends DP {
 
     /**
      * 用户名

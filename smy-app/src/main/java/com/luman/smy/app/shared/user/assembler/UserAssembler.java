@@ -1,8 +1,8 @@
 package com.luman.smy.app.shared.user.assembler;
 
-import com.luman.smy.domain.user.UserEntity;
-import com.luman.smy.domain.user.UserName;
-import com.luman.smy.domain.user.UserPassword;
+import com.luman.smy.domain.user.model.UserEntity;
+import com.luman.smy.domain.user.model.UserName;
+import com.luman.smy.domain.user.model.UserPassword;
 import com.luman.smy.client.shared.dto.UserRegisterCmd;
 import com.luman.smy.client.shared.dto.data.UserVO;
 

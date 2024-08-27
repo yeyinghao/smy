@@ -1,10 +1,10 @@
 package com.luman.smy.infra.domain.user.service.impl;
 
-import com.luman.smy.infra.domain.user.mapper.dataobject.UserInfoDO;
+import com.luman.smy.domain.user.model.UserInfo;
 import com.luman.smy.infra.domain.user.mapper.UserInfoMapper;
-import com.luman.smy.infra.domain.user.mapper.model.UserInfo;
-import com.luman.smy.infra.domain.user.service.UserInfoService;
-import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
+import com.luman.smy.infra.domain.user.dataobject.UserInfoDO;
+import com.luman.smy.domain.user.service.UserInfoService;
+import com.luman.smy.infra.domain.dal.impl.CoreServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

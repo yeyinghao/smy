@@ -3,13 +3,12 @@
  * 2022.1 - 2023.9
  */
 
-package com.luman.smy.infra.integration.dal.model;
+package com.luman.smy.infra.domain.dal.model;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -20,7 +19,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ToString
-public class BaseDO implements Serializable {
+public class DO {
 
 	/**
 	 * id
@@ -45,9 +44,6 @@ public class BaseDO implements Serializable {
 	 */
 	private String extInfo;
 
-	/**
-	 * 状态
-	 */
 	/**
 	 * 是否删除
 	 */

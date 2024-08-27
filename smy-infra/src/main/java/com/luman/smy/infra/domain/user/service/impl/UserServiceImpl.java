@@ -1,13 +1,12 @@
 package com.luman.smy.infra.domain.user.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Paging;
-import com.luman.smy.infra.common.helper.PageHelper;
-import com.luman.smy.infra.domain.user.mapper.dataobject.UserDO;
+import com.luman.smy.domain.user.model.User;
+import com.luman.smy.domain.user.service.UserService;
+import com.luman.smy.infra.domain.dal.impl.CoreServiceImpl;
 import com.luman.smy.infra.domain.user.mapper.UserMapper;
-import com.luman.smy.infra.domain.user.mapper.model.User;
-import com.luman.smy.infra.domain.user.service.UserService;
-import com.luman.smy.infra.integration.dal.impl.CoreServiceImpl;
+import com.luman.smy.infra.domain.user.dataobject.UserDO;
 import org.springframework.stereotype.Service;
 
 /**
@@ -50,7 +49,8 @@ public class UserServiceImpl extends CoreServiceImpl<User, UserDO, UserMapper> i
 	}
 
 	@Override
-	public IPage<User> page(Paging paging, String name) {
-		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging)).convert(this::convertToDP);
+	public PageModel<User> page(Paging paging, String name) {
+//		return lambdaQuery().like(UserDO::getName, name).page(PageHelper.buildPage(paging)).convert(this::convertToDP);\
+		return null;
 	}
 }

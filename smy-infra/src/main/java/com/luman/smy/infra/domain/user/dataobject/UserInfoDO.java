@@ -1,6 +1,6 @@
-package com.luman.smy.infra.domain.user.mapper.dataobject;
+package com.luman.smy.infra.domain.user.dataobject;
 
-import com.luman.smy.infra.integration.dal.model.BaseDO;
+import com.luman.smy.infra.domain.dal.model.DO;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @TableName("org_user_info")
-public class UserInfoDO extends BaseDO {
+public class UserInfoDO extends DO {
 
     private Long id;
 

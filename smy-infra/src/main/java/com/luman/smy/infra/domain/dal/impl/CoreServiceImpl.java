@@ -1,14 +1,13 @@
-package com.luman.smy.infra.integration.dal.impl;
+package com.luman.smy.infra.domain.dal.impl;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.luman.smy.client.dto.PageModel;
 import com.luman.smy.client.dto.Paging;
-import com.luman.smy.infra.common.helper.PageHelper;
-import com.luman.smy.infra.integration.dal.CoreService;
+import com.luman.smy.domain.dal.CoreService;
+import com.luman.smy.domain.dal.model.DP;
+import com.luman.smy.infra.domain.dal.model.DO;
 import com.luman.smy.infra.integration.dal.convert.DataConvert;
-import com.luman.smy.infra.integration.dal.model.BaseDO;
-import com.luman.smy.infra.integration.dal.model.BaseDP;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
  * @date 2024/04/19
  */
 @SuppressWarnings("unused")
-public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M extends BaseMapper<P>> extends ServiceImpl<M, P> implements CoreService<D>, DataConvert<P, D> {
+public abstract class CoreServiceImpl<D extends DP, P extends DO, M extends BaseMapper<P>> extends ServiceImpl<M, P> implements CoreService<D>, DataConvert<P, D> {
 
 	@Override
 	public void save(D entity) {
@@ -71,7 +70,8 @@ public abstract class CoreServiceImpl<D extends BaseDP, P extends BaseDO, M exte
 	}
 
 	@Override
-	public IPage<D> listByPage(Paging paging) {
-		return lambdaQuery().page(PageHelper.buildPage(paging)).convert(this::convertToDP);
+	public PageModel<D> listByPage(Paging paging) {
+//		return lambdaQuery().page(PageHelper.buildPage(paging)).convert(this::convertToDP);
+		return null;
 	}
 }
