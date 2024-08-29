@@ -22,6 +22,7 @@ import static java.util.stream.Collectors.toList;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SuppressWarnings("unchecked")
 public class PageModel<T> extends DTO {
 
 	/**
@@ -62,7 +63,6 @@ public class PageModel<T> extends DTO {
 	 * @param <R>    转换后的泛型
 	 * @return 转换泛型后的 IPage
 	 */
-	@SuppressWarnings("unchecked")
 	public <R> PageModel<R> convert(Function<? super T, ? extends R> mapper) {
 		List<R> collect = this.getCollection().stream().map(mapper).collect(toList());
 		return ((PageModel<R>) this).setRecords(collect);
