@@ -26,26 +26,26 @@ import java.util.Objects;
 @Component
 public class UserInfoQueryExe {
 
-    @Autowired
-    private UserGateway userGateway;
+	@Autowired
+	private UserGateway userGateway;
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    public Response<UserVO> execute(Long id) {
-        UserEntity userEntity = userGateway.findById(id);
-        if (Objects.isNull(userEntity)) {
-        }
+	public Response<UserVO> execute(Long id) {
+		UserEntity userEntity = userGateway.findById(id);
+		if (Objects.isNull(userEntity)) {
+		}
 
-        return RHelper.success(UserAssembler.toValueObject(userEntity));
-    }
+		return RHelper.success(UserAssembler.toValueObject(userEntity));
+	}
 
-    public List<User> list() {
-        return userService.findAll();
-    }
+	public List<User> list() {
+		return userService.findAll();
+	}
 
 
-    public PageModel<User> page(UserPageQueryCmd cmd) {
-        return userService.page(cmd.getPaging(), cmd.getName());
-    }
+	public PageModel<User> page(UserPageQueryCmd cmd) {
+		return userService.page(cmd.getPaging(), cmd.getName());
+	}
 }

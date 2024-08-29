@@ -15,6 +15,28 @@ import java.util.stream.Collectors;
 public interface DataConvert<P extends DO, D extends DP> {
 
 	/**
+	 * 构建page
+	 *
+	 * @param page 分页
+	 */
+	default PageModel<D> buildPage(IPage<D> page) {
+		return new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal(), page.getRecords());
+	}
+
+	/**
+	 * 构建页面
+	 *
+	 * @param paging 分页
+	 * @return {@link IPage }<{@link P }>
+	 */
+	default IPage<P> buildPage(Paging paging) {
+		if (Objects.isNull(paging) || Objects.isNull(paging.getPageIndex()) || Objects.isNull(paging.getPageSize())) {
+			return new Page<>(DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE);
+		}
+		return new Page<>(paging.getPageIndex(), paging.getPageSize());
+	}
+
+	/**
 	 * 转换成Po
 	 *
 	 * @param d 域对象
@@ -65,26 +87,4 @@ public interface DataConvert<P extends DO, D extends DP> {
 	 * 默认页面大小
 	 */
 	Integer DEFAULT_PAGE_SIZE = 20;
-
-	/**
-	 * 构建page
-	 *
-	 * @param page 分页
-	 */
-	default PageModel<D> buildPage(IPage<D> page) {
-		return new PageModel<>(page.getSize(), page.getCurrent(), page.getTotal(), page.getRecords());
-	}
-
-	/**
-	 * 构建页面
-	 *
-	 * @param paging 分页
-	 * @return {@link IPage }<{@link P }>
-	 */
-	default IPage<P> buildPage(Paging paging) {
-		if (Objects.isNull(paging) || Objects.isNull(paging.getPageIndex()) || Objects.isNull(paging.getPageSize())) {
-			return new Page<>(DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE);
-		}
-		return new Page<>(paging.getPageIndex(), paging.getPageSize());
-	}
 }

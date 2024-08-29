@@ -53,7 +53,6 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public PageModel<UserVO> page(UserPageQueryCmd cmd) {
-//		return userInfoQueryExe.page(cmd).convert(this::convertUser);
-	return null;
+		return userInfoQueryExe.page(cmd).convert(this::convertUser);
 	}
 }
